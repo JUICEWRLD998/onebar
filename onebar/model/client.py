@@ -6,6 +6,7 @@ import re
 import threading
 from typing import Callable
 
+from onebar import budget
 from onebar.model.prompt import STOP
 
 BASE_URL = "https://tinker.thinkingmachines.dev/services/tinker-prod/oai/api/v1"
@@ -46,6 +47,10 @@ class TinkerDraft:
         self.calls = 0
 
     def __call__(self, prompt: str) -> str:
+        try:  # a spent cap must degrade to the template, never crash the pipeline
+            budget.default().check(self.model, est_prompt_tokens=len(prompt) // 3 + 1, est_completion_tokens=MAX_TOKENS)
+        except budget.BudgetExceeded as exc:
+            raise ModelError(str(exc)) from exc
         try:
             resp = self._client.completions.create(
                 model=self.model, prompt=prompt, max_tokens=MAX_TOKENS, temperature=0.0, stop=[STOP]
@@ -57,6 +62,11 @@ class TinkerDraft:
             self.calls += 1
             self.prompt_tokens += getattr(usage, "prompt_tokens", 0) or 0
             self.completion_tokens += getattr(usage, "completion_tokens", 0) or 0
+        budget.default().charge(
+            self.model,
+            getattr(usage, "prompt_tokens", None) or len(prompt) // 3 + 1,
+            getattr(usage, "completion_tokens", None) or 60,
+        )
         text = clean(resp.choices[0].text if resp.choices else "")
         if not text:
             raise ModelError("model returned an empty completion")

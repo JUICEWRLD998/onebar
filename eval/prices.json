@@ -3,9 +3,37 @@
   "fetched": "2026-10-09",
   "unit": "USD per million tokens",
   "models": {
-    "Qwen/Qwen3-8B": {"prefill": 0.195, "sample": 0.60},
-    "Qwen/Qwen3.5-397B-A17B": {"prefill": 3.00, "sample": 7.50},
-    "openai/gpt-oss-120b": {"prefill": 0.33, "sample": 0.84}
+    "Qwen/Qwen3-8B": {
+      "prefill": 0.195,
+      "sample": 0.6
+    },
+    "Qwen/Qwen3.5-397B-A17B": {
+      "prefill": 3.0,
+      "sample": 7.5
+    },
+    "openai/gpt-oss-120b": {
+      "prefill": 0.33,
+      "sample": 0.84
+    },
+    "Qwen/Qwen3.5-9B": {
+      "prefill": 0.66,
+      "sample": 1.995
+    },
+    "Qwen/Qwen3.6-35B-A3B": {
+      "prefill": 0.54,
+      "sample": 1.335
+    },
+    "Qwen/Qwen3.5-4B": {
+      "prefill": 0.33,
+      "sample": 1.005
+    },
+    "openai/gpt-oss-20b": {
+      "prefill": 0.18,
+      "sample": 0.45
+    }
   },
-  "note": "Tuned LoRA adapters sample at the base model's price; check the page before quoting a tuned-model cost."
+  "note": "Tuned LoRA adapters sample at the base model's price; check the page before quoting a tuned-model cost.",
+  "train": {
+    "Qwen/Qwen3-8B": 0.44
+  }
 }

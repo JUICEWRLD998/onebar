@@ -76,6 +76,15 @@ def test_token_usage_accumulates_and_tolerates_a_missing_usage_field(monkeypatch
     assert (d.calls, d.prompt_tokens, d.completion_tokens) == (2, 300, 25)
 
 
+def test_spent_cap_becomes_a_model_error_and_makes_no_request(monkeypatch):
+    monkeypatch.setenv("ONEBAR_BUDGET_USD", "0")
+    monkeypatch.setattr("onebar.budget._default", None)
+    d = _draft(_Resp(["never"]), monkeypatch)
+    with pytest.raises(ModelError, match="cap"):
+        d("P")
+    assert d._client.completions.kwargs is None
+
+
 def test_model_name_comes_from_env(monkeypatch):
     d = _draft(_Resp(["x"]), monkeypatch, model_env="tinker://abc/sampler_weights/000001")
     assert d.model == "tinker://abc/sampler_weights/000001"

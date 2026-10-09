@@ -72,3 +72,17 @@ def real_fixtures():
     fixtures = load_real_fixtures()
     assert len(fixtures) == 20
     return fixtures
+
+
+@pytest.fixture(autouse=True)
+def _isolated_ledger(tmp_path, monkeypatch):
+    """No test may write the real spend ledger or be blocked by its cap."""
+    from onebar import budget
+
+    monkeypatch.setenv("ONEBAR_LEDGER", str(tmp_path / "spend.json"))
+    monkeypatch.setenv("ONEBAR_BUDGET_USD", "1000")
+    monkeypatch.setattr(budget, "_default", None)
+    real = budget.Ledger.prices
+    fake = {"m": {"prefill": 1.0, "sample": 1.0}, "Qwen/Qwen3-8B": {"prefill": 0.195, "sample": 0.6},
+            "gpt-oss": {"prefill": 1.0, "sample": 1.0}}
+    monkeypatch.setattr(budget.Ledger, "prices", lambda self: self._prices if self._prices is not None else fake)

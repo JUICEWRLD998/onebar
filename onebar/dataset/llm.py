@@ -6,6 +6,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from typing import Any, Callable, Iterable, TypeVar
 
+from onebar import budget
 from onebar.model.client import BASE_URL, ModelError
 from onebar.model.prompt import STOP
 
@@ -32,6 +33,16 @@ class Sampler:
         self._client = client
 
     @staticmethod
+    def _est_tokens(prompt) -> int:
+        return len(prompt if isinstance(prompt, str) else str(prompt)) // 3 + 1  # about 3 characters per token
+
+    def _charge(self, resp, prompt) -> None:
+        usage = getattr(resp, "usage", None)
+        pt = getattr(usage, "prompt_tokens", None) or self._est_tokens(prompt)
+        ct = getattr(usage, "completion_tokens", None) or 60
+        budget.default().charge(self.model, pt, ct)
+
+    @staticmethod
     def _retryable(exc: Exception) -> bool:
         status = getattr(exc, "status_code", None)
         if status is not None:
@@ -52,6 +63,7 @@ class Sampler:
         for models (gpt-oss) that have no ChatML-with-closed-think form; their reasoning is kept short and
         `max_tokens` is raised to leave room for it."""
         last: Exception | None = None
+        budget.default().check(self.model, est_prompt_tokens=self._est_tokens(prompt), est_completion_tokens=max_tokens)
         for attempt in range(self.retries):
             try:
                 if isinstance(prompt, str):
@@ -59,11 +71,13 @@ class Sampler:
                         model=self.model, prompt=prompt, temperature=temperature,
                         max_tokens=max_tokens, stop=[STOP],
                     )
+                    self._charge(resp, prompt)
                     return [c.text for c in resp.choices]
                 resp = self._client.chat.completions.create(
                     model=self.model, messages=prompt, temperature=temperature,
                     max_tokens=max(max_tokens, CHAT_MIN_TOKENS), reasoning_effort="low",
                 )
+                self._charge(resp, prompt)
                 return [c.message.content or "" for c in resp.choices]
             except Exception as exc:
                 last = exc

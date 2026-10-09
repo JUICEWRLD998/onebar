@@ -191,7 +191,8 @@ def draw(sampler, model, row, n, temperature):
 def cmd_teacher_eval(args) -> None:
     rows = [r for r in read_jsonl(DATA / "questions.jsonl") if r["split"] == "train"]
     sample = random.Random(SEED).sample(rows, args.n)
-    report = {}
+    out = ROOT / "eval" / "results" / "teacher_choice.json"
+    report = json.loads(out.read_text(encoding="utf-8")) if out.is_file() else {}  # keep earlier candidates' rows
     for model in args.models:
         sampler = llm.Sampler(model)
         t0 = time.time()
@@ -210,7 +211,6 @@ def cmd_teacher_eval(args) -> None:
             "first_candidate_passes": first_pass, "seconds": round(time.time() - t0, 1),
         }
         log(model, report[model])
-    out = ROOT / "eval" / "results" / "teacher_choice.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     best = max(report, key=lambda m: (report[m]["with_a_passing_candidate"], -report[m]["seconds"]))
