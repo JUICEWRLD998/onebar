@@ -2,13 +2,9 @@ services:
   - type: web
     name: onebar
     runtime: docker
-    plan: starter            # persistent disks need a paid instance type (your credits cover it)
+    plan: free               # no card needed. No disk: state resets on every restart/redeploy.
     healthCheckPath: /api/health
     autoDeploy: true
-    disk:
-      name: onebar-data
-      mountPath: /app/data
-      sizeGB: 1
     envVars:
       - key: TINKER_API_KEY
         sync: false          # paste in the dashboard
