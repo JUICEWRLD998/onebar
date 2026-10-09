@@ -1,6 +1,6 @@
 {
-  "usd": 3.677221,
-  "calls": 5468,
+  "usd": 3.678331,
+  "calls": 5500,
   "by_model": {
     "Qwen/Qwen3.6-35B-A3B": {
       "usd": 2.761237,
@@ -15,8 +15,8 @@
       "calls": 155
     },
     "tinker://550c4d9c-20f5-543b-9a3d-8df46b4c10c1:train:0/sampler_weights/onebar-sft-e2": {
-      "usd": 0.041656,
-      "calls": 616
+      "usd": 0.042766,
+      "calls": 648
     }
   }
 }

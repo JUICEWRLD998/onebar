@@ -7,3 +7,12 @@ data/situations.jsonl
 data/questions.jsonl
 data/*.log
 data/demo-temporal.db*
+data/email_sent.jsonl
+data/email_seen.json
+data/email_threads.json
+data/web_replies/
+data/traces/
+data/e2e.log
+data/e2e-temporal.db*
+data/outbox.jsonl
+data/*.tmp

@@ -59,6 +59,15 @@ def test_malformed_trips_are_bad_with_a_usable_reason(text):
     assert not a.bad_chars and a.septets <= 320  # at most two SMS segments
 
 
+def test_phone_contacts_are_refused_when_no_sms_channel_exists():
+    text = "TRIP 46.5,7.9 BACK 17:00 CONTACT +44 7700 900123"
+    assert isinstance(C.parse(text), C.TripCmd)  # allowed by default
+    bad = C.parse(text, allow_phone=False)
+    assert isinstance(bad, C.BadCmd) and "email address" in bad.reason and "phone" not in bad.reason
+    assert isinstance(C.parse("TRIP 46.5,7.9 BACK 17:00 CONTACT a@b.co", allow_phone=False), C.TripCmd)
+    assert isinstance(C.parse("TRIP 46.5,7.9 BACK 17:00 CONTACT nobody", allow_phone=False), C.BadCmd)
+
+
 def test_empty_and_overlong_messages():
     assert isinstance(C.parse(""), C.BadCmd) and isinstance(C.parse("   "), C.BadCmd)
     assert isinstance(C.parse("x" * (C.MAX_LEN + 1)), C.BadCmd)

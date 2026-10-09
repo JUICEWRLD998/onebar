@@ -6,6 +6,8 @@ errors that retrying cannot fix are raised as non-retryable ApplicationError.
 from __future__ import annotations
 
 import os
+import threading
+import time as _time
 from dataclasses import dataclass, field
 from datetime import datetime, time, timedelta, timezone
 from typing import Callable
@@ -14,6 +16,7 @@ from temporalio import activity
 from temporalio.exceptions import ApplicationError
 
 from onebar import pipeline, trips
+from onebar.channels.traces import make_trace
 from onebar.facts.engine import Trip
 from onebar.facts.locate import Place, geocode
 from onebar.facts.open_meteo import ForecastError, fetch_forecast
@@ -29,17 +32,31 @@ class Deps:
     draft: Draft | None = None  # None means the template answers
     get_forecast: Callable[[str], dict] | None = None  # None uses the real Open-Meteo getter
     get_geocode: Callable[[str], dict] | None = None
+    traces: object | None = None  # a TraceStore: where the trace of each answer is saved
     grace_min: int = field(default_factory=lambda: int(os.environ.get("ONEBAR_GRACE_MIN", DEFAULT_GRACE_MIN)))
+    cache_ttl_s: float = 600.0  # 0 turns the forecast cache off
+    _cache: dict = field(default_factory=dict, repr=False)
+    _lock: threading.Lock = field(default_factory=threading.Lock, repr=False)
 
 
 def _forecast(deps: Deps, lat: float, lon: float) -> dict:
+    """The forecast for a place, reused for deps.cache_ttl_s seconds so follow-up questions skip the network call."""
+    key = (round(lat, 2), round(lon, 2))
+    now = _time.monotonic()  # `time` in this module is datetime.time
+    with deps._lock:
+        hit = deps._cache.get(key)
+        if hit and now - hit[0] < deps.cache_ttl_s:
+            return hit[1]
     kw = {"get": deps.get_forecast} if deps.get_forecast else {}
     try:
-        return fetch_forecast(lat, lon, **kw)
+        data = fetch_forecast(lat, lon, **kw)
     except ForecastError:
         raise  # transient as far as we can tell: let the retry policy decide
     except ValueError as exc:
         raise ApplicationError(str(exc), non_retryable=True) from exc
+    with deps._lock:
+        deps._cache[key] = (now, data)
+    return data
 
 
 class Activities:
@@ -78,6 +95,8 @@ class Activities:
             reply = pipeline.answer(req.question, at, forecast, self.deps.draft, trip=trip)
         except ValueError as exc:  # the forecast does not cover this moment; retrying will not change that
             raise ApplicationError(str(exc), non_retryable=True) from exc
+        if self.deps.traces is not None and req.msg_id:
+            self.deps.traces.save(req.msg_id, make_trace(req.question, reply))
         return AnswerResult(text=reply.text, path=reply.path, septets=reply.result.septets)
 
     @activity.defn

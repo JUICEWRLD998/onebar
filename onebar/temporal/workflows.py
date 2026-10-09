@@ -93,7 +93,7 @@ class TripWorkflow:
     async def _handle(self, msg: Inbound) -> None:
         self.s.processed += 1
         self.s.last_msg_iso = msg.ts
-        cmd = commands.parse(msg.text)
+        cmd = commands.parse(msg.text, allow_phone=self.s.allow_phone)
         if isinstance(cmd, commands.TripCmd):
             await self._register(msg, cmd)
         elif isinstance(cmd, commands.OutCmd):
@@ -146,7 +146,7 @@ class TripWorkflow:
             ans: AnswerResult = await workflow.execute_activity_method(
                 Activities.answer_question,
                 AnswerReq(question=text, lat=pos[0], lon=pos[1], now_iso=msg.ts, offset_s=offset,
-                          return_local=t.back_local if t else None),
+                          return_local=t.back_local if t else None, msg_id=msg.id),
                 start_to_close_timeout=timedelta(seconds=90), retry_policy=NET_RETRY,
             )
             reply = ans.text

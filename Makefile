@@ -20,3 +20,12 @@ eval:
 train:
 	python train/sft.py --dry-run
 	python train/sft.py
+
+web:
+	uvicorn onebar.channels.web_server:app --port 8000
+
+worker:
+	python -m onebar.temporal.worker
+
+poll:
+	python -m onebar.channels.email_poll

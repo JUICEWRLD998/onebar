@@ -40,6 +40,7 @@ class WorkflowState:
     processed: int = 0  # messages handled since the last continue-as-new
     can_after: int = 100  # continue-as-new after this many messages, to keep history small
     idle_s: int = 7 * 24 * 3600  # a quiet workflow with no active trip ends after this long
+    allow_phone: bool = False  # phone contacts need an SMS channel, which this deployment does not have
 
 
 @dataclass
@@ -72,6 +73,7 @@ class AnswerReq:
     now_iso: str
     offset_s: int
     return_local: Optional[str] = None
+    msg_id: str = ""  # the inbound message id; the trace of the answer is stored under it
 
 
 @dataclass

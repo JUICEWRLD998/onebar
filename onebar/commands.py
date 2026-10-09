@@ -69,7 +69,8 @@ def parse_clock(text: str) -> time | None:
     return time(h, mi) if h <= 23 and mi <= 59 else None
 
 
-def parse(text: str) -> Command:
+def parse(text: str, allow_phone: bool = True) -> Command:
+    """`allow_phone=False` refuses phone numbers as the contact, for deployments with no SMS channel."""
     text = (text or "").strip()
     if not text:
         return BadCmd("Empty message. Text HELP for the commands.")
@@ -79,11 +80,11 @@ def parse(text: str) -> Command:
     if word and word.group(1).lower() in _WORD:
         return _WORD[word.group(1).lower()]()
     if re.match(r"trip\b", text, _I):
-        return _parse_trip(text)
+        return _parse_trip(text, allow_phone)
     return QuestionCmd(text)
 
 
-def _parse_trip(text: str) -> Command:
+def _parse_trip(text: str, allow_phone: bool = True) -> Command:
     m = _TRIP.fullmatch(text)
     if not m:
         return BadCmd(USAGE_TRIP)
@@ -91,7 +92,10 @@ def _parse_trip(text: str) -> Command:
     if back is None:
         return BadCmd("Time must be 24-hour HH:MM, like 17:00. " + USAGE_TRIP)
     contact = m.group("contact").strip()
-    if not (_EMAIL.fullmatch(contact) or _PHONE.fullmatch(contact)):
+    if not allow_phone:
+        if not _EMAIL.fullmatch(contact):
+            return BadCmd("CONTACT must be an email address. " + USAGE_TRIP.replace(" or phone", ""))
+    elif not (_EMAIL.fullmatch(contact) or _PHONE.fullmatch(contact)):
         return BadCmd("CONTACT must be an email or a phone number. " + USAGE_TRIP)
     place = m.group("place").strip()
     coords = None

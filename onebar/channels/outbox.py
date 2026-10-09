@@ -22,6 +22,18 @@ class OutboxSender:
             keys.add(row["key"])
         return keys
 
+    def has(self, key: str) -> bool:
+        with self._lock:
+            return key in self._keys()
+
+    def record(self, key: str, to: str, text: str) -> None:
+        """Write the line that makes `key` count as sent. Real senders call this after delivery succeeds."""
+        with self._lock:
+            self.path.parent.mkdir(parents=True, exist_ok=True)
+            row = {"key": key, "to": to, "text": text, "at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
+            with self.path.open("a", encoding="utf-8") as fh:
+                fh.write(json.dumps(row, ensure_ascii=False) + "\n")
+
     def send(self, key: str, to: str, text: str) -> bool:
         """True when the message was written, False when this key was already sent."""
         with self._lock:

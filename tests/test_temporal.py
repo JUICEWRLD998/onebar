@@ -217,7 +217,7 @@ def test_forecast_outage_gives_a_clear_reply_after_retries(tmp_path):
             raise ForecastError("down")
         return forecast(h.now)
 
-    h = Harness(tmp_path, get_forecast=get)
+    h = Harness(tmp_path, get_forecast=get, cache_ttl_s=0)  # cache off, so the outage is really seen
 
     async def scenario(env, h):
         await deliver(env.client, SENDER, trip_msg(h))
