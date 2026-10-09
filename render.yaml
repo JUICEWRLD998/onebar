@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: onebar
+    runtime: docker
+    plan: starter            # persistent disks need a paid instance type (your credits cover it)
+    healthCheckPath: /api/health
+    autoDeploy: true
+    disk:
+      name: onebar-data
+      mountPath: /app/data
+      sizeGB: 1
+    envVars:
+      - key: TINKER_API_KEY
+        sync: false          # paste in the dashboard
+      - key: ONEBAR_MODEL
+        sync: false          # tinker://.../sampler_weights/... (the tuned model)
+      - key: IMAP_USER
+        sync: false
+      - key: IMAP_APP_PASSWORD
+        sync: false
+      - key: ONEBAR_PUBLIC_URL
+        sync: false          # your final https://....onrender.com URL, used for trace links in email
+      - key: ONEBAR_BUDGET_USD
+        value: "3.2"
+      - key: TEMPORAL_ADDRESS
+        value: 127.0.0.1:7233
