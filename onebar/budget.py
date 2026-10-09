@@ -45,7 +45,9 @@ class Ledger:
         return self._read()["usd"]
 
     def cost(self, model: str, prompt_tokens: int, completion_tokens: int) -> float:
-        price = self.prices().get(model)
+        prices = self.prices()
+        # a tuned LoRA adapter (tinker://...) samples at its base model's price
+        price = prices.get("Qwen/Qwen3-8B" if model.startswith("tinker://") else model)
         if price is None:
             raise BudgetExceeded(f"no price known for {model}; add it to eval/prices.json before using it")
         return (prompt_tokens * price["prefill"] + completion_tokens * price["sample"]) / 1_000_000
@@ -69,6 +71,22 @@ class Ledger:
             self.path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
         return usd
 
+
+def _charge_usd(self, label: str, usd: float) -> float:
+    """Record a spend that is not token-priced sampling, such as a training run."""
+    with self._lock:
+        data = self._read()
+        data["usd"] = round(data["usd"] + usd, 6)
+        data["calls"] += 1
+        m = data["by_model"].setdefault(label, {"usd": 0.0, "calls": 0})
+        m["usd"] = round(m["usd"] + usd, 6)
+        m["calls"] += 1
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        self.path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+    return usd
+
+
+Ledger.charge_usd = _charge_usd  # type: ignore[attr-defined]
 
 _default: Ledger | None = None
 

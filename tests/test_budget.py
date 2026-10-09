@@ -50,3 +50,10 @@ def test_concurrent_charges_do_not_lose_updates(tmp_path):
     with ThreadPoolExecutor(8) as pool:
         list(pool.map(lambda _: led.charge("cheap", 1000, 0), range(200)))
     assert led.spent() == pytest.approx(200 * 1000 / 1_000_000)
+
+
+def test_charge_usd_records_a_labelled_spend(tmp_path):
+    led = ledger(tmp_path, 10)
+    led.charge_usd("train:Qwen/Qwen3-8B", 0.75)
+    assert led.spent() == pytest.approx(0.75)
+    assert json.loads((tmp_path / "spend.json").read_text())["by_model"]["train:Qwen/Qwen3-8B"]["usd"] == 0.75

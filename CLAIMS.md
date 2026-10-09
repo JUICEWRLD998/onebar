@@ -15,3 +15,8 @@ Every number in the README or post links to a row here, and each row points at a
 | Teacher choice on 50 questions: Qwen3.5-397B-A17B vs GPT-OSS-120B questions with a passing candidate | 44/50 vs 41/50 | `eval/results/teacher_choice.json` | measured 2026-10-09 |
 | Larger Qwen3.6-35B-A3B on the same test set: first-try checker pass, served by model, cost per answer | 57.2%, 96.6%, $0.00027 | `eval/results/large.json`, `eval/TABLE.md` | measured 2026-10-09 |
 | Total Tinker sampling spend for data and eval on the grant key | $2.76 | `data/spend.json` | by published prices, upper bound |
+| Tuned Qwen3-8B (LoRA, SFT) first-try checker pass on the 414 test questions, against base | 98.1% vs 56.8% | `eval/results/tuned.json`, `eval/results/base.json` | measured 2026-10-09; one training run; the checker measures structure, not forecast skill |
+| Tuned: invented-number rate, contradiction rate, required-fact coverage (first draft) | 0.0%, 0.0%, 99.1% | `eval/results/tuned.json` | measured 2026-10-09 |
+| Tuned: cost per answer, calls per answer, mean septets | $0.000069, 1.02, 47 | `eval/results/tuned.json`, `eval/prices.json` | measured 2026-10-09 |
+| SFT run: 3,290 rows, 2 epochs, LoRA rank 32, validation first-try pass epoch 1 / epoch 2 | 96.7% / 98.7% (150 val questions) | `eval/results/sft_run.json` | measured 2026-10-09 |
+| Whole-grant Tinker spend through Phase 4 | $3.68 | `data/spend.json` | by published prices, upper bound |

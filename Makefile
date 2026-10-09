@@ -16,3 +16,7 @@ eval:
 	python eval/run_eval.py --system base
 	python eval/run_eval.py --system large
 	python eval/table.py
+
+train:
+	python train/sft.py --dry-run
+	python train/sft.py

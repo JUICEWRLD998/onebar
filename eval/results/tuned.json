@@ -1,0 +1,3355 @@
+{
+  "system": "tuned",
+  "model": "tinker://550c4d9c-20f5-543b-9a3d-8df46b4c10c1:train:0/sampler_weights/onebar-sft-e2",
+  "test_rows": 414,
+  "wall_seconds_concurrent": 68.1,
+  "metrics": {
+    "n": 414,
+    "first_try_pass": 0.9806763285024155,
+    "served_by_model": 1.0,
+    "template_fallback": 0.0,
+    "model_errors": 0,
+    "invented_number_rate": 0.0,
+    "contradiction_rate": 0.0,
+    "too_long_rate": 0.0,
+    "required_fact_coverage": 0.9907407407407408,
+    "septets_mean": 47.07729468599034,
+    "septets_p95": 81,
+    "latency_p50_s": 1.1904974000062793,
+    "latency_p95_s": 6.245506100007333,
+    "latency_n": 40,
+    "cost_per_answer_usd": 6.880340579710145e-05,
+    "model_calls_per_answer": 1.0193236714975846,
+    "tokens_per_answer": 305.1038647342995
+  },
+  "rows": [
+    {
+      "id": "osm:n11537845363|2025-10-07T09:09",
+      "path": "model",
+      "reply": "No storm, gusts 50km/h. Sunset 18:56, 9h47m left.",
+      "septets": 49,
+      "first_text": "No storm, gusts 50km/h. Sunset 18:56, 9h47m left.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n11537845363|2025-10-12T15:21",
+      "path": "model",
+      "reply": "6C now, feels like -4C at the coldest.",
+      "septets": 38,
+      "first_text": "6C now, feels like -4C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n11537845363|2025-10-06T10:18",
+      "path": "model",
+      "reply": "No storm. Gusts to 74km/h.",
+      "septets": 26,
+      "first_text": "No storm. Gusts to 74km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1244935694|2025-07-27T13:20",
+      "path": "model",
+      "reply": "No rain until 18:00. Chance up to 78%.",
+      "septets": 38,
+      "first_text": "No rain until 18:00. Chance up to 78%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1244935694|2025-07-21T07:23",
+      "path": "model",
+      "reply": "Rain started at 07:00, chance 100%. No storm.",
+      "septets": 45,
+      "first_text": "Rain started at 07:00, chance 100%. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1244935694|2025-07-19T06:12",
+      "path": "model",
+      "reply": "5C now, feels like 2C. Storm starts at 14:00 with gusts to 52km/h.",
+      "septets": 66,
+      "first_text": "5C now, feels like 2C. Storm starts at 14:00 with gusts to 52km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1373128447|2026-09-10T12:55",
+      "path": "model",
+      "reply": "1C now, feels like -5C. Sunset at 19:49.",
+      "septets": 40,
+      "first_text": "1C now, feels like -5C. Sunset at 19:49.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1373128447|2026-09-09T11:07",
+      "path": "model",
+      "reply": "No storm. Gusts to 57km/h at 12:00. Rain from 15:00, 98% chance. 2C now, feels like -7C.",
+      "septets": 88,
+      "first_text": "No storm. Gusts to 57km/h at 12:00. Rain from 15:00, 98% chance. 2C now, feels like -7C.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1373128447|2026-09-08T17:43",
+      "path": "model",
+      "reply": "Turn back by 19:00. No storm before 22:00, gusts up to 64km/h.",
+      "septets": 62,
+      "first_text": "Turn back by 19:00. No storm before 22:00, gusts up to 64km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5474329937|2025-12-10T17:14",
+      "path": "model",
+      "reply": "Sunset is 17:39 with 25m left. No storm, gusts 17km/h.",
+      "septets": 54,
+      "first_text": "Sunset is 17:39 with 25m left. No storm, gusts 17km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5474329937|2025-12-12T08:16",
+      "path": "model",
+      "reply": "0% chance. No rain expected.",
+      "septets": 28,
+      "first_text": "0% chance. No rain expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5474329937|2025-12-15T12:18",
+      "path": "model",
+      "reply": "Bail. No storm, gusts 32km/h. Sunset 17:40, 5h22m left.",
+      "septets": 55,
+      "first_text": "Bail. No storm, gusts 32km/h. Sunset 17:40, 5h22m left.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n6918494141|2026-06-27T10:58",
+      "path": "model",
+      "reply": "Feels like 9C at the coldest. Storm starts at 12:00 with gusts up to 33km/h.",
+      "septets": 76,
+      "first_text": "Feels like 9C at the coldest. Storm starts at 12:00 with gusts up to 33km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n6918494141|2026-06-29T10:19",
+      "path": "model",
+      "reply": "First storm at 17:00. Gusts up to 36km/h.",
+      "septets": 41,
+      "first_text": "First storm at 17:00. Gusts up to 36km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n6918494141|2026-06-22T16:33",
+      "path": "model",
+      "reply": "No storm coming. Gusts up to 23km/h.",
+      "septets": 36,
+      "first_text": "No storm coming. Gusts up to 23km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n6927207747|2026-08-14T09:58",
+      "path": "model",
+      "reply": "No. Storm starts at 16:00 with gusts up to 35km/h.",
+      "septets": 50,
+      "first_text": "No. Storm starts at 16:00 with gusts up to 35km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n6927207747|2026-08-17T12:16",
+      "path": "model",
+      "reply": "Sunset is 20:33. Rain starts at 14:00 with an 85% chance.",
+      "septets": 57,
+      "first_text": "Sunset is 20:33. Rain starts at 14:00 with an 85% chance.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n6927207747|2026-08-19T13:46",
+      "path": "model",
+      "reply": "Yes, ridge ok by 15:30. No storm until 21:00, gusts up to 54km/h.",
+      "septets": 65,
+      "first_text": "Yes, ridge ok by 15:30. No storm until 21:00, gusts up to 54km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7366371502|2026-02-01T06:17",
+      "path": "model",
+      "reply": "No storm. Gusts 13km/h.",
+      "septets": 23,
+      "first_text": "No storm. Gusts 13km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7366371502|2026-02-02T07:33",
+      "path": "model",
+      "reply": "No storm before 10:30. Gusts up to 16km/h.",
+      "septets": 42,
+      "first_text": "No storm before 10:30. Gusts up to 16km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7366371502|2026-01-30T06:11",
+      "path": "model",
+      "reply": "Sunrise at 08:51. Sunset at 18:28.",
+      "septets": 34,
+      "first_text": "Sunrise at 08:51. Sunset at 18:28.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n12040710572|2025-06-04T07:41",
+      "path": "model",
+      "reply": "13h34m left. Sunset is 21:15.",
+      "septets": 29,
+      "first_text": "13h34m left. Sunset is 21:15.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n12040710572|2025-06-07T15:44",
+      "path": "model",
+      "reply": "Yes, rain started at 15:00. Chance up to 100%.",
+      "septets": 46,
+      "first_text": "Yes, rain started at 15:00. Chance up to 100%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n12040710572|2025-06-10T15:53",
+      "path": "model",
+      "reply": "Yes. No storm, gusts up to 32km/h.",
+      "septets": 34,
+      "first_text": "Yes. No storm, gusts up to 32km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4987947849|2025-08-09T12:28",
+      "path": "model-retry",
+      "reply": "No turn-around time given. Sunset at 20:46. No storm, gusts up to 26km/h.",
+      "septets": 73,
+      "first_text": "No turn-around time given. No storm, gusts up to 26km/h.",
+      "first_reasons": [
+        "missing_fact:sunset"
+      ]
+    },
+    {
+      "id": "osm:n4987947849|2025-08-08T10:35",
+      "path": "model",
+      "reply": "Sunset is 20:47.",
+      "septets": 16,
+      "first_text": "Sunset is 20:47.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4987947849|2025-08-14T11:36",
+      "path": "model",
+      "reply": "No. Storm starts at 16:00, gusts up to 34km/h.",
+      "septets": 46,
+      "first_text": "No. Storm starts at 16:00, gusts up to 34km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n502559768|2025-07-04T06:01",
+      "path": "model",
+      "reply": "No. Storm started at 06:00 with gusts up to 31km/h.",
+      "septets": 51,
+      "first_text": "No. Storm started at 06:00 with gusts up to 31km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n502559768|2025-07-05T09:21",
+      "path": "model",
+      "reply": "Turn back by 15:15. No storm, gusts up to 31km/h.",
+      "septets": 49,
+      "first_text": "Turn back by 15:15. No storm, gusts up to 31km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n502559768|2025-07-06T07:19",
+      "path": "model",
+      "reply": "No storm. Gusts to 36km/h.",
+      "septets": 26,
+      "first_text": "No storm. Gusts to 36km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1580241385|2025-10-23T10:13",
+      "path": "model",
+      "reply": "No. Turn around by 14:15. No storm, but gusts to 68km/h.",
+      "septets": 56,
+      "first_text": "No. Turn around by 14:15. No storm, but gusts to 68km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1580241385|2025-10-22T09:43",
+      "path": "model",
+      "reply": "Yes. No storm, gusts up to 44km/h.",
+      "septets": 34,
+      "first_text": "Yes. No storm, gusts up to 44km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1580241385|2025-10-29T08:59",
+      "path": "model",
+      "reply": "Bail. No storm, gusts 58km/h.",
+      "septets": 29,
+      "first_text": "Bail. No storm, gusts 58km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1642945247|2025-12-01T08:49",
+      "path": "model",
+      "reply": "Turn back by 11:45. No storm, gusts up to 67km/h.",
+      "septets": 49,
+      "first_text": "Turn back by 11:45. No storm, gusts up to 67km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1642945247|2025-12-02T11:52",
+      "path": "model",
+      "reply": "1C now, feels like -4C. Gusts to 52km/h at 15:00. No rain, no storm.",
+      "septets": 68,
+      "first_text": "1C now, feels like -4C. Gusts to 52km/h at 15:00. No rain, no storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1642945247|2025-11-30T16:55",
+      "path": "model",
+      "reply": "Yes, no storm. Gusts up to 19km/h.",
+      "septets": 34,
+      "first_text": "Yes, no storm. Gusts up to 19km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2329366391|2025-12-29T05:49",
+      "path": "model",
+      "reply": "Yes. No storm, gusts up to 25km/h. Sunset is 17:31.",
+      "septets": 51,
+      "first_text": "Yes. No storm, gusts up to 25km/h. Sunset is 17:31.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2329366391|2025-12-27T05:22",
+      "path": "model",
+      "reply": "No storm. Gusts up to 40km/h at 06:00.",
+      "septets": 38,
+      "first_text": "No storm. Gusts up to 40km/h at 06:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2329366391|2025-12-26T13:57",
+      "path": "model",
+      "reply": "No storm or rain before 20:30. Chance is 0%.",
+      "septets": 44,
+      "first_text": "No storm or rain before 20:30. Chance is 0%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n294758495|2026-08-07T09:27",
+      "path": "model",
+      "reply": "Bail. Turn around by 12:15. Storm starts at 15:00 with gusts to 28km/h.",
+      "septets": 71,
+      "first_text": "Bail. Turn around by 12:15. Storm starts at 15:00 with gusts to 28km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n294758495|2026-08-06T14:11",
+      "path": "model",
+      "reply": "Storm started at 14:00. Gusts up to 23km/h.",
+      "septets": 43,
+      "first_text": "Storm started at 14:00. Gusts up to 23km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n294758495|2026-08-08T11:58",
+      "path": "model",
+      "reply": "No storm, no rain. Gusts to 21km/h. 12C. Turn around by 17:00.",
+      "septets": 62,
+      "first_text": "No storm, no rain. Gusts to 21km/h. 12C. Turn around by 17:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n413596354|2025-12-25T07:28",
+      "path": "model",
+      "reply": "Yes. It is dark. Sunrise is 09:00.",
+      "septets": 34,
+      "first_text": "Yes. It is dark. Sunrise is 09:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n413596354|2025-12-17T16:10",
+      "path": "model",
+      "reply": "Gusts to 14km/h. Feels like -2C. No storm.",
+      "septets": 42,
+      "first_text": "Gusts to 14km/h. Feels like -2C. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n413596354|2025-12-19T10:43",
+      "path": "model",
+      "reply": "No rain expected, 0% chance.",
+      "septets": 28,
+      "first_text": "No rain expected, 0% chance.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n417668849|2026-07-14T11:02",
+      "path": "model-retry",
+      "reply": "Yes, storm starts at 12:00. No rain, gusts up to 42km/h.",
+      "septets": 56,
+      "first_text": "Yes, storm starts at 12:00. Gusts up to 42km/h.",
+      "first_reasons": [
+        "missing_fact:rain_none|pop_max"
+      ]
+    },
+    {
+      "id": "osm:n417668849|2026-07-11T05:28",
+      "path": "model",
+      "reply": "Yes, it's dark. Sunrise is 05:30.",
+      "septets": 33,
+      "first_text": "Yes, it's dark. Sunrise is 05:30.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n417668849|2026-07-19T10:57",
+      "path": "model",
+      "reply": "Gusts to 40km/h at 11:00, rain from 12:00 (90% chance). 11C now, feels like 9C at the coldest.",
+      "septets": 94,
+      "first_text": "Gusts to 40km/h at 11:00, rain from 12:00 (90% chance). 11C now, feels like 9C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n8196697269|2026-03-27T09:15",
+      "path": "model",
+      "reply": "Gusts 21km/h, feels like -16C. No storm.",
+      "septets": 40,
+      "first_text": "Gusts 21km/h, feels like -16C. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n8196697269|2026-03-31T13:36",
+      "path": "model",
+      "reply": "Gusts to 39km/h at 18:00, rain from 13:00 with 100% chance. Feels like -14C.",
+      "septets": 76,
+      "first_text": "Gusts to 39km/h at 18:00, rain from 13:00 with 100% chance. Feels like -14C.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n8196697269|2026-03-26T09:40",
+      "path": "model",
+      "reply": "Gusts up to 41km/h at 11:00. No storm expected.",
+      "septets": 47,
+      "first_text": "Gusts up to 41km/h at 11:00. No storm expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n8569829700|2025-07-23T16:03",
+      "path": "model",
+      "reply": "No car time given. Storm starts at 17:00 with gusts to 36km/h. Sunset is 20:58.",
+      "septets": 79,
+      "first_text": "No car time given. Storm starts at 17:00 with gusts to 36km/h. Sunset is 20:58.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n8569829700|2025-07-28T11:08",
+      "path": "model",
+      "reply": "100% chance. Rain starts at 14:00.",
+      "septets": 34,
+      "first_text": "100% chance. Rain starts at 14:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n8569829700|2025-07-24T11:58",
+      "path": "model",
+      "reply": "Sunset is 20:57.",
+      "septets": 16,
+      "first_text": "Sunset is 20:57.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9111679230|2026-03-12T13:06",
+      "path": "model",
+      "reply": "No storm, gusts 14km/h. Sunset 19:16, 6h10m left.",
+      "septets": 49,
+      "first_text": "No storm, gusts 14km/h. Sunset 19:16, 6h10m left.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9111679230|2026-03-13T14:14",
+      "path": "model",
+      "reply": "No storm, no rain. Gusts to 27km/h. 7C now, feels like -2C later.",
+      "septets": 65,
+      "first_text": "No storm, no rain. Gusts to 27km/h. 7C now, feels like -2C later.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9111679230|2026-03-11T17:00",
+      "path": "model",
+      "reply": "Feels like -2C. No storm, gusts 26km/h.",
+      "septets": 39,
+      "first_text": "Feels like -2C. No storm, gusts 26km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1128659587|2026-01-11T09:59",
+      "path": "model",
+      "reply": "Feels like -25C. Gusts to 71km/h. No storm.",
+      "septets": 43,
+      "first_text": "Feels like -25C. Gusts to 71km/h. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1128659587|2026-01-16T14:31",
+      "path": "model",
+      "reply": "Sunset at 17:54. No rain expected.",
+      "septets": 34,
+      "first_text": "Sunset at 17:54. No rain expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1128659587|2026-01-14T14:23",
+      "path": "model",
+      "reply": "Yes, ridge ok by 17:30. No storm, gusts 25km/h. Car at 19:00.",
+      "septets": 61,
+      "first_text": "Yes, ridge ok by 17:30. No storm, gusts 25km/h. Car at 19:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1430925987|2025-05-04T10:19",
+      "path": "model",
+      "reply": "Yes, storm starts at 15:00. Gusts up to 36km/h.",
+      "septets": 47,
+      "first_text": "Yes, storm starts at 15:00. Gusts up to 36km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1430925987|2025-05-07T10:53",
+      "path": "model",
+      "reply": "Turn around by 14:30. No storm, gusts up to 22km/h.",
+      "septets": 51,
+      "first_text": "Turn around by 14:30. No storm, gusts up to 22km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1430925987|2025-05-05T08:35",
+      "path": "model",
+      "reply": "Yes. No storm until 10:00, gusts up to 26km/h.",
+      "septets": 46,
+      "first_text": "Yes. No storm until 10:00, gusts up to 26km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1836979545|2025-11-18T14:29",
+      "path": "model",
+      "reply": "Turn around by 17:30. No storm, gusts up to 27km/h.",
+      "septets": 51,
+      "first_text": "Turn around by 17:30. No storm, gusts up to 27km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1836979545|2025-11-15T05:44",
+      "path": "model",
+      "reply": "No rain. Chance up to 23%.",
+      "septets": 26,
+      "first_text": "No rain. Chance up to 23%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1836979545|2025-11-16T14:33",
+      "path": "model",
+      "reply": "Gusts 22km/h, rain from 14:00 (100% chance). 3C now, feels like 0C.",
+      "septets": 67,
+      "first_text": "Gusts 22km/h, rain from 14:00 (100% chance). 3C now, feels like 0C.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2208275958|2026-05-02T08:30",
+      "path": "model",
+      "reply": "No rain. Chance is 3%.",
+      "septets": 22,
+      "first_text": "No rain. Chance is 3%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2208275958|2026-04-29T07:05",
+      "path": "model",
+      "reply": "Gusts to 24km/h at 08:00. Feels like -2C at the coldest.",
+      "septets": 56,
+      "first_text": "Gusts to 24km/h at 08:00. Feels like -2C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2208275958|2026-04-25T17:24",
+      "path": "model",
+      "reply": "No. Turn around by 18:15 to reach the car by 19:45. No storm, gusts up to 26km/h.",
+      "septets": 81,
+      "first_text": "No. Turn around by 18:15 to reach the car by 19:45. No storm, gusts up to 26km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2491762944|2026-07-14T06:10",
+      "path": "model",
+      "reply": "No. Storm starts at 12:00 with gusts up to 50km/h.",
+      "septets": 50,
+      "first_text": "No. Storm starts at 12:00 with gusts up to 50km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2491762944|2026-07-07T09:43",
+      "path": "model",
+      "reply": "No. Sunset is 21:05, so you have 11h22m of light.",
+      "septets": 49,
+      "first_text": "No. Sunset is 21:05, so you have 11h22m of light.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2491762944|2026-07-10T08:31",
+      "path": "model-retry",
+      "reply": "No. Rain starts at 18:00, and you must turn around by 12:45. Sunset is 21:04.",
+      "septets": 77,
+      "first_text": "No. Rain starts at 18:00, and you must turn around by 12:45.",
+      "first_reasons": [
+        "missing_fact:sunset"
+      ]
+    },
+    {
+      "id": "osm:n286290910|2025-05-21T15:33",
+      "path": "model",
+      "reply": "Yes, a storm started at 15:00. Gusts up to 31km/h.",
+      "septets": 50,
+      "first_text": "Yes, a storm started at 15:00. Gusts up to 31km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n286290910|2025-05-20T06:17",
+      "path": "model",
+      "reply": "No. Rain starts at 11:00. Turn around by 11:00 to reach car by 12:30. Sunset is 20:46.",
+      "septets": 86,
+      "first_text": "No. Rain starts at 11:00. Turn around by 11:00 to reach car by 12:30. Sunset is 20:46.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n286290910|2025-05-16T05:24",
+      "path": "model",
+      "reply": "Yes. Feels like -3C. No storm, gusts 36km/h.",
+      "septets": 44,
+      "first_text": "Yes. Feels like -3C. No storm, gusts 36km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n3219474427|2026-09-18T05:03",
+      "path": "model",
+      "reply": "Gusts up to 18km/h at 11:00.",
+      "septets": 28,
+      "first_text": "Gusts up to 18km/h at 11:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n3219474427|2026-09-22T11:06",
+      "path": "model",
+      "reply": "No storm, no rain. Gusts to 31km/h at 15:00. Feels like 1C at the coldest.",
+      "septets": 74,
+      "first_text": "No storm, no rain. Gusts to 31km/h at 15:00. Feels like 1C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n3219474427|2026-09-14T11:19",
+      "path": "model",
+      "reply": "No storm or rain before 15:00. Chance is 0%.",
+      "septets": 44,
+      "first_text": "No storm or rain before 15:00. Chance is 0%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n3219514665|2025-11-23T14:34",
+      "path": "model",
+      "reply": "-5C now, feels like -15C. Sunset at 17:31.",
+      "septets": 42,
+      "first_text": "-5C now, feels like -15C. Sunset at 17:31.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n3219514665|2025-11-28T13:46",
+      "path": "model",
+      "reply": "Yes, safe until 18:30. No storm expected, gusts up to 24km/h.",
+      "septets": 61,
+      "first_text": "Yes, safe until 18:30. No storm expected, gusts up to 24km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n3219514665|2025-11-26T08:53",
+      "path": "model",
+      "reply": "Gusts up to 64km/h. No storm expected.",
+      "septets": 38,
+      "first_text": "Gusts up to 64km/h. No storm expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n427618694|2026-02-19T10:44",
+      "path": "model",
+      "reply": "-7C now, feels like -14C. Gusts to 75km/h at 13:00. Rain since 10:00, 100% chance. No storm.",
+      "septets": 92,
+      "first_text": "-7C now, feels like -14C. Gusts to 75km/h at 13:00. Rain since 10:00, 100% chance. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n427618694|2026-02-16T11:58",
+      "path": "model",
+      "reply": "-9C now, feels like -15C at the coldest.",
+      "septets": 40,
+      "first_text": "-9C now, feels like -15C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n427618694|2026-02-13T16:07",
+      "path": "model",
+      "reply": "Feels like -13C. No storm, gusts to 45km/h.",
+      "septets": 43,
+      "first_text": "Feels like -13C. No storm, gusts to 45km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4763705126|2025-12-22T12:39",
+      "path": "model",
+      "reply": "No storm before 15:30. Gusts up to 19km/h.",
+      "septets": 42,
+      "first_text": "No storm before 15:30. Gusts up to 19km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4763705126|2025-12-24T14:20",
+      "path": "model",
+      "reply": "No. Turn back by 16:45. No storm, gusts 50km/h.",
+      "septets": 47,
+      "first_text": "No. Turn back by 16:45. No storm, gusts 50km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4763705126|2025-12-26T14:50",
+      "path": "model",
+      "reply": "Yes. No storm, gusts up to 39km/h.",
+      "septets": 34,
+      "first_text": "Yes. No storm, gusts up to 39km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4789534260|2026-04-25T05:52",
+      "path": "model",
+      "reply": "No. Turn around by 11:00 to reach car by 12:30. No storm, gusts 22km/h.",
+      "septets": 71,
+      "first_text": "No. Turn around by 11:00 to reach car by 12:30. No storm, gusts 22km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4789534260|2026-04-29T15:46",
+      "path": "model",
+      "reply": "Gusts up to 25km/h at 18:00. No storm expected.",
+      "septets": 47,
+      "first_text": "Gusts up to 25km/h at 18:00. No storm expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4789534260|2026-04-28T15:54",
+      "path": "model",
+      "reply": "Gusts up to 29km/h at 17:00. Storm started at 15:00.",
+      "septets": 52,
+      "first_text": "Gusts up to 29km/h at 17:00. Storm started at 15:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4945767199|2025-10-09T07:54",
+      "path": "model",
+      "reply": "No. Sunset is 18:37, so you have 10h43m of light.",
+      "septets": 49,
+      "first_text": "No. Sunset is 18:37, so you have 10h43m of light.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4945767199|2025-10-05T17:25",
+      "path": "model",
+      "reply": "No. Sunset is 18:45, 1h20m left. No storm, gusts 56km/h.",
+      "septets": 56,
+      "first_text": "No. Sunset is 18:45, 1h20m left. No storm, gusts 56km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4945767199|2025-10-04T10:45",
+      "path": "model",
+      "reply": "Yes. No storm, gusts 34km/h.",
+      "septets": 28,
+      "first_text": "Yes. No storm, gusts 34km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n500343065|2025-12-09T08:16",
+      "path": "model",
+      "reply": "No rain. Chance is 0%.",
+      "septets": 22,
+      "first_text": "No rain. Chance is 0%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n500343065|2025-12-14T17:25",
+      "path": "model",
+      "reply": "Feels like -9C. No storm, gusts 29km/h.",
+      "septets": 39,
+      "first_text": "Feels like -9C. No storm, gusts 29km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n500343065|2025-12-13T14:24",
+      "path": "model",
+      "reply": "No storm or rain before 19:30. Chance is 0%.",
+      "septets": 44,
+      "first_text": "No storm or rain before 19:30. Chance is 0%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5030273804|2025-12-20T13:33",
+      "path": "model",
+      "reply": "-4C now, feels like -8C. Sunset at 17:28.",
+      "septets": 41,
+      "first_text": "-4C now, feels like -8C. Sunset at 17:28.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5030273804|2025-12-19T08:46",
+      "path": "model",
+      "reply": "No storm. Gusts to 43km/h.",
+      "septets": 26,
+      "first_text": "No storm. Gusts to 43km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5030273804|2025-12-22T07:13",
+      "path": "model",
+      "reply": "No rain before 10:00. Chance is 0%.",
+      "septets": 35,
+      "first_text": "No rain before 10:00. Chance is 0%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5922042819|2025-12-12T17:13",
+      "path": "model",
+      "reply": "Turn around by 18:15. No storm, gusts up to 9km/h.",
+      "septets": 50,
+      "first_text": "Turn around by 18:15. No storm, gusts up to 9km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5922042819|2025-12-06T17:05",
+      "path": "model",
+      "reply": "No. Sunset is 17:26 with 21m left. No storm, gusts 22km/h.",
+      "septets": 58,
+      "first_text": "No. Sunset is 17:26 with 21m left. No storm, gusts 22km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5922042819|2025-12-10T17:38",
+      "path": "model",
+      "reply": "No. Sunset was 17:25, so it's dark. No storm, gusts up to 32km/h.",
+      "septets": 65,
+      "first_text": "No. Sunset was 17:25, so it's dark. No storm, gusts up to 32km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n722738557|2026-05-11T15:05",
+      "path": "model",
+      "reply": "No. Storm starts at 20:00, gusts up to 50km/h.",
+      "septets": 46,
+      "first_text": "No. Storm starts at 20:00, gusts up to 50km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n722738557|2026-05-13T16:00",
+      "path": "model",
+      "reply": "Sunset is 20:36. You have 4h36m of daylight left.",
+      "septets": 49,
+      "first_text": "Sunset is 20:36. You have 4h36m of daylight left.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n722738557|2026-05-18T14:50",
+      "path": "model",
+      "reply": "No storm before 17:30. First one starts at 17:00.",
+      "septets": 49,
+      "first_text": "No storm before 17:30. First one starts at 17:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9951593620|2026-04-04T06:34",
+      "path": "model",
+      "reply": "Sunset is 19:45.",
+      "septets": 16,
+      "first_text": "Sunset is 19:45.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9951593620|2026-04-02T16:01",
+      "path": "model",
+      "reply": "No storm before 19:00. Gusts up to 30km/h.",
+      "septets": 42,
+      "first_text": "No storm before 19:00. Gusts up to 30km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9951593620|2026-03-31T09:43",
+      "path": "model",
+      "reply": "No rain expected. Sunset is 19:40, so you have 9h57m of light.",
+      "septets": 62,
+      "first_text": "No rain expected. Sunset is 19:40, so you have 9h57m of light.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n11414200424|2026-02-03T06:53",
+      "path": "model",
+      "reply": "Feels like -26C. No storm, gusts to 41km/h.",
+      "septets": 43,
+      "first_text": "Feels like -26C. No storm, gusts to 41km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n11414200424|2026-02-07T05:57",
+      "path": "model",
+      "reply": "Yes. No storm, gusts up to 60km/h.",
+      "septets": 34,
+      "first_text": "Yes. No storm, gusts up to 60km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n11414200424|2026-02-04T12:18",
+      "path": "model",
+      "reply": "No. Turn around by 16:30. No storm, gusts 69km/h.",
+      "septets": 49,
+      "first_text": "No. Turn around by 16:30. No storm, gusts 69km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n11415521364|2025-09-21T09:15",
+      "path": "model",
+      "reply": "Sunset is 19:32.",
+      "septets": 16,
+      "first_text": "Sunset is 19:32.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n11415521364|2025-09-24T11:13",
+      "path": "model",
+      "reply": "No storm or rain before 15:00. Chance stays at 0%.",
+      "septets": 50,
+      "first_text": "No storm or rain before 15:00. Chance stays at 0%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n11415521364|2025-09-20T13:44",
+      "path": "model",
+      "reply": "Sunset is 19:35. No storm, gusts 31km/h.",
+      "septets": 40,
+      "first_text": "Sunset is 19:35. No storm, gusts 31km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1356459438|2026-06-02T13:20",
+      "path": "model",
+      "reply": "No storm. Gusts up to 19km/h.",
+      "septets": 29,
+      "first_text": "No storm. Gusts up to 19km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1356459438|2026-06-04T08:37",
+      "path": "model-retry",
+      "reply": "No. Rain starts at 14:00, but you must turn around by 12:15 to reach the car by 13:45. No storm expected. Sunset is 22:56.",
+      "septets": 122,
+      "first_text": "No. Rain starts at 14:00, but you must turn around by 12:15 to reach the car by 13:45. No storm expected.",
+      "first_reasons": [
+        "missing_fact:sunset"
+      ]
+    },
+    {
+      "id": "osm:n1356459438|2026-06-08T11:15",
+      "path": "model-retry",
+      "reply": "No storm. Gusts 26km/h. Rain starts 18:00. Sunset 23:02.",
+      "septets": 56,
+      "first_text": "No storm. Gusts 26km/h. Rain starts 18:00.",
+      "first_reasons": [
+        "missing_fact:target|sunset"
+      ]
+    },
+    {
+      "id": "osm:n7330004965|2025-05-16T12:34",
+      "path": "model",
+      "reply": "Sunset is 22:14, so you have 9h40m of light. Bring one if you might be out near dusk.",
+      "septets": 85,
+      "first_text": "Sunset is 22:14, so you have 9h40m of light. Bring one if you might be out near dusk.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7330004965|2025-05-14T10:53",
+      "path": "model",
+      "reply": "No. Turn around by 11:45 to reach car by 13:15. No storm, gusts 66km/h.",
+      "septets": 71,
+      "first_text": "No. Turn around by 11:45 to reach car by 13:15. No storm, gusts 66km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7330004965|2025-05-19T07:55",
+      "path": "model",
+      "reply": "Yes. Feels like -11C. No storm, gusts to 45km/h.",
+      "septets": 48,
+      "first_text": "Yes. Feels like -11C. No storm, gusts to 45km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n862094863|2025-07-29T10:26",
+      "path": "model",
+      "reply": "Yes, ridge ok by 14:30. No storm, gusts up to 49km/h.",
+      "septets": 53,
+      "first_text": "Yes, ridge ok by 14:30. No storm, gusts up to 49km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n862094863|2025-07-27T11:52",
+      "path": "model",
+      "reply": "No. Turn around by 13:00 to reach the car by 14:30. No storm, gusts up to 25km/h.",
+      "septets": 81,
+      "first_text": "No. Turn around by 13:00 to reach the car by 14:30. No storm, gusts up to 25km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n862094863|2025-08-02T07:50",
+      "path": "model",
+      "reply": "Yes. It's 2C now and will feel like -1C.",
+      "septets": 40,
+      "first_text": "Yes. It's 2C now and will feel like -1C.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n862095569|2026-03-24T16:44",
+      "path": "model",
+      "reply": "-7C now, feels like -22C. Gusts to 89km/h at 17:00. Rain since 16:00, 100% chance. No storm.",
+      "septets": 92,
+      "first_text": "-7C now, feels like -22C. Gusts to 89km/h at 17:00. Rain since 16:00, 100% chance. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n862095569|2026-03-22T14:48",
+      "path": "model",
+      "reply": "Gusts to 101km/h. Feels like -26C. No storm.",
+      "septets": 44,
+      "first_text": "Gusts to 101km/h. Feels like -26C. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n862095569|2026-03-18T06:46",
+      "path": "model",
+      "reply": "-6C now, feels like -19C. Rain from 11:00, 100% chance. Gusts to 88km/h at 16:00. No storm.",
+      "septets": 91,
+      "first_text": "-6C now, feels like -19C. Rain from 11:00, 100% chance. Gusts to 88km/h at 16:00. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1356403681|2025-09-04T08:33",
+      "path": "model",
+      "reply": "No. Turn around by 12:15. No storm, gusts up to 73km/h.",
+      "septets": 55,
+      "first_text": "No. Turn around by 12:15. No storm, gusts up to 73km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1356403681|2025-08-29T06:17",
+      "path": "model",
+      "reply": "Turn around by 09:30 to reach the car by 11:00. No storm, gusts up to 34km/h.",
+      "septets": 77,
+      "first_text": "Turn around by 09:30 to reach the car by 11:00. No storm, gusts up to 34km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1356403681|2025-08-28T17:46",
+      "path": "model",
+      "reply": "No rain expected. Chance is 0%.",
+      "septets": 31,
+      "first_text": "No rain expected. Chance is 0%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1698342586|2026-06-16T06:59",
+      "path": "model",
+      "reply": "No storm, gusts up to 27km/h. It's dark now, sunrise is 00:00.",
+      "septets": 62,
+      "first_text": "No storm, gusts up to 27km/h. It's dark now, sunrise is 00:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1698342586|2026-06-20T09:26",
+      "path": "model",
+      "reply": "1C now, feels like -7C at the coldest.",
+      "septets": 38,
+      "first_text": "1C now, feels like -7C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1698342586|2026-06-18T17:38",
+      "path": "model",
+      "reply": "No storm. Gusts to 25km/h.",
+      "septets": 26,
+      "first_text": "No storm. Gusts to 25km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n26864592|2026-01-22T11:24",
+      "path": "model",
+      "reply": "-24C now, feels like -31C. Sunset at 15:08.",
+      "septets": 43,
+      "first_text": "-24C now, feels like -31C. Sunset at 15:08.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n26864592|2026-01-24T07:04",
+      "path": "model",
+      "reply": "No rain expected, 0% chance.",
+      "septets": 28,
+      "first_text": "No rain expected, 0% chance.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n26864592|2026-01-28T13:07",
+      "path": "model",
+      "reply": "Sunset is 15:37. No storm. Gusts 29km/h.",
+      "septets": 40,
+      "first_text": "Sunset is 15:37. No storm. Gusts 29km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n26865106|2026-07-14T16:25",
+      "path": "model",
+      "reply": "No storm. Gusts up to 62km/h.",
+      "septets": 29,
+      "first_text": "No storm. Gusts up to 62km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n26865106|2026-07-22T13:31",
+      "path": "model",
+      "reply": "Yes. Gusts up to 50km/h at 16:00. No storm.",
+      "septets": 43,
+      "first_text": "Yes. Gusts up to 50km/h at 16:00. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n26865106|2026-07-15T10:12",
+      "path": "model",
+      "reply": "No storm. Gusts up to 58km/h.",
+      "septets": 29,
+      "first_text": "No storm. Gusts up to 58km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n339295282|2025-06-27T09:59",
+      "path": "model",
+      "reply": "Yes. It is dark. Sunset is 00:00.",
+      "septets": 33,
+      "first_text": "Yes. It is dark. Sunset is 00:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n339295282|2025-06-23T12:31",
+      "path": "model",
+      "reply": "No rain before 19:00. Chance stays at 0%.",
+      "septets": 41,
+      "first_text": "No rain before 19:00. Chance stays at 0%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n339295282|2025-06-24T09:16",
+      "path": "model",
+      "reply": "No. Turn around by 10:45 to reach car by 12:15. No storm, gusts 22km/h.",
+      "septets": 71,
+      "first_text": "No. Turn around by 10:45 to reach car by 12:15. No storm, gusts 22km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n342300978|2025-10-10T15:32",
+      "path": "model",
+      "reply": "Yes, rain starts at 17:00 with a 96% chance. No storm, gusts up to 50km/h.",
+      "septets": 74,
+      "first_text": "Yes, rain starts at 17:00 with a 96% chance. No storm, gusts up to 50km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n342300978|2025-10-12T14:38",
+      "path": "model-retry",
+      "reply": "No storm. Gusts up to 66km/h. Sunset at 17:24.",
+      "septets": 46,
+      "first_text": "No storm. Gusts up to 66km/h.",
+      "first_reasons": [
+        "missing_fact:sunset"
+      ]
+    },
+    {
+      "id": "osm:n342300978|2025-10-06T06:20",
+      "path": "model",
+      "reply": "No storm. Gusts up to 32km/h at 10:00.",
+      "septets": 38,
+      "first_text": "No storm. Gusts up to 32km/h at 10:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4114750066|2026-06-21T11:50",
+      "path": "model",
+      "reply": "Gusts to 48km/h at 16:00. Feels like -4C at the coldest.",
+      "septets": 56,
+      "first_text": "Gusts to 48km/h at 16:00. Feels like -4C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4114750066|2026-06-22T06:02",
+      "path": "model",
+      "reply": "Rain started at 06:00. No storm.",
+      "septets": 32,
+      "first_text": "Rain started at 06:00. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4114750066|2026-06-26T14:28",
+      "path": "model",
+      "reply": "4C now, feels like -1C at the coldest.",
+      "septets": 38,
+      "first_text": "4C now, feels like -1C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4428241427|2025-11-11T12:22",
+      "path": "model",
+      "reply": "Gusts to 27km/h at 23:00. Rain from 20:00, 98% chance. -16C now, feels like -22C.",
+      "septets": 81,
+      "first_text": "Gusts to 27km/h at 23:00. Rain from 20:00, 98% chance. -16C now, feels like -22C.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4428241427|2025-11-06T14:46",
+      "path": "model",
+      "reply": "No. Sunset is 15:39, so you have only 53m of daylight left. No storm, but gusts up to 72km/h.",
+      "septets": 93,
+      "first_text": "No. Sunset is 15:39, so you have only 53m of daylight left. No storm, but gusts up to 72km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4428241427|2025-11-07T12:51",
+      "path": "model",
+      "reply": "Gusts to 54km/h at 17:00. Feels like -14C. No storm.",
+      "septets": 52,
+      "first_text": "Gusts to 54km/h at 17:00. Feels like -14C. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9196406818|2025-11-26T05:16",
+      "path": "model",
+      "reply": "Yes, it is dark. Sunrise is 10:57.",
+      "septets": 34,
+      "first_text": "Yes, it is dark. Sunrise is 10:57.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9196406818|2025-11-28T16:03",
+      "path": "model",
+      "reply": "Yes, rain started at 16:00 with 100% chance. Gusts up to 67km/h.",
+      "septets": 64,
+      "first_text": "Yes, rain started at 16:00 with 100% chance. Gusts up to 67km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9196406818|2025-12-03T14:30",
+      "path": "model",
+      "reply": "No. It's dark, no storm, but gusts up to 86km/h. Turn around by 21:30.",
+      "septets": 70,
+      "first_text": "No. It's dark, no storm, but gusts up to 86km/h. Turn around by 21:30.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9196413529|2025-07-26T05:19",
+      "path": "model",
+      "reply": "Yes, turn around by 11:15. No storm, gusts up to 26km/h.",
+      "septets": 56,
+      "first_text": "Yes, turn around by 11:15. No storm, gusts up to 26km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9196413529|2025-07-24T09:42",
+      "path": "model",
+      "reply": "No storm. Gusts up to 34km/h.",
+      "septets": 29,
+      "first_text": "No storm. Gusts up to 34km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9196413529|2025-07-29T10:41",
+      "path": "model",
+      "reply": "Gusts up to 18km/h. No storm.",
+      "septets": 29,
+      "first_text": "Gusts up to 18km/h. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1721107114|2026-04-06T16:36",
+      "path": "model",
+      "reply": "First storm at 02:00. Gusts up to 165km/h.",
+      "septets": 42,
+      "first_text": "First storm at 02:00. Gusts up to 165km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1721107114|2026-04-07T08:50",
+      "path": "model",
+      "reply": "No storm before 10:30. First one starts at 11:00. Gusts up to 95km/h.",
+      "septets": 69,
+      "first_text": "No storm before 10:30. First one starts at 11:00. Gusts up to 95km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1721107114|2026-04-13T17:35",
+      "path": "model",
+      "reply": "3h8m left. Sunset is 20:43.",
+      "septets": 27,
+      "first_text": "3h8m left. Sunset is 20:43.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1721140173|2025-09-19T09:16",
+      "path": "model",
+      "reply": "Sunset at 19:28. No rain expected.",
+      "septets": 34,
+      "first_text": "Sunset at 19:28. No rain expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1721140173|2025-09-13T06:41",
+      "path": "model",
+      "reply": "No. Gusts up to 78km/h at 08:00. No storm expected.",
+      "septets": 51,
+      "first_text": "No. Gusts up to 78km/h at 08:00. No storm expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1721140173|2025-09-14T17:42",
+      "path": "model",
+      "reply": "No storm. Gusts to 74km/h.",
+      "septets": 26,
+      "first_text": "No storm. Gusts to 74km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2260042952|2026-02-12T05:42",
+      "path": "model",
+      "reply": "Sunset is 17:42. No rain expected.",
+      "septets": 34,
+      "first_text": "Sunset is 17:42. No rain expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2260042952|2026-02-13T14:57",
+      "path": "model",
+      "reply": "-12C now, feels like -22C. No rain, no storm. Gusts 7km/h.",
+      "septets": 58,
+      "first_text": "-12C now, feels like -22C. No rain, no storm. Gusts 7km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2260042952|2026-02-09T14:55",
+      "path": "model",
+      "reply": "No storm expected.",
+      "septets": 18,
+      "first_text": "No storm expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2260042985|2026-07-28T11:41",
+      "path": "model",
+      "reply": "No storm before 17:00. Gusts up to 48km/h at 15:00.",
+      "septets": 51,
+      "first_text": "No storm before 17:00. Gusts up to 48km/h at 15:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2260042985|2026-07-27T13:51",
+      "path": "model",
+      "reply": "8h42m left. Sunset is 22:33.",
+      "septets": 28,
+      "first_text": "8h42m left. Sunset is 22:33.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2260042985|2026-07-26T13:41",
+      "path": "model",
+      "reply": "No rain before 16:30. Chance is 0%.",
+      "septets": 35,
+      "first_text": "No rain before 16:30. Chance is 0%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2877110036|2026-02-27T17:24",
+      "path": "model",
+      "reply": "No storm.",
+      "septets": 9,
+      "first_text": "No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2877110036|2026-02-22T11:11",
+      "path": "model",
+      "reply": "No storm. Gusts to 92km/h. Rain from 11:00, 98% chance. Feels like -19C.",
+      "septets": 72,
+      "first_text": "No storm. Gusts to 92km/h. Rain from 11:00, 98% chance. Feels like -19C.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2877110036|2026-03-02T06:02",
+      "path": "model",
+      "reply": "No rain expected, 0% chance.",
+      "septets": 28,
+      "first_text": "No rain expected, 0% chance.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4212125600|2026-03-07T17:24",
+      "path": "model",
+      "reply": "No storm before 19:30. Gusts up to 70km/h.",
+      "septets": 42,
+      "first_text": "No storm before 19:30. Gusts up to 70km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4212125600|2026-03-01T07:25",
+      "path": "model",
+      "reply": "Yes. No storm, gusts 23km/h. Sunset 18:34.",
+      "septets": 42,
+      "first_text": "Yes. No storm, gusts 23km/h. Sunset 18:34.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4212125600|2026-03-06T14:47",
+      "path": "model",
+      "reply": "No. Rain started at 14:00. Sunset is 18:50.",
+      "septets": 43,
+      "first_text": "No. Rain started at 14:00. Sunset is 18:50.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4212125601|2025-08-18T09:33",
+      "path": "model",
+      "reply": "Feels like 3C at the coldest.",
+      "septets": 29,
+      "first_text": "Feels like 3C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4212125601|2025-08-20T16:08",
+      "path": "model",
+      "reply": "Feels like 2C at the coldest. No storm, gusts up to 45km/h.",
+      "septets": 59,
+      "first_text": "Feels like 2C at the coldest. No storm, gusts up to 45km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4212125601|2025-08-17T09:04",
+      "path": "model",
+      "reply": "No storm, gusts up to 38km/h. Sunset is 21:22 with 12h18m of daylight left.",
+      "septets": 75,
+      "first_text": "No storm, gusts up to 38km/h. Sunset is 21:22 with 12h18m of daylight left.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4212125609|2025-09-25T12:34",
+      "path": "model",
+      "reply": "No storm.",
+      "septets": 9,
+      "first_text": "No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4212125609|2025-09-21T14:42",
+      "path": "model",
+      "reply": "Yes, turn around by 16:15 to reach the car by 17:45. No storm, gusts up to 64km/h.",
+      "septets": 82,
+      "first_text": "Yes, turn around by 16:15 to reach the car by 17:45. No storm, gusts up to 64km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4212125609|2025-09-27T08:18",
+      "path": "model",
+      "reply": "Yes, turn back by 13:00. No storm, gusts up to 40km/h.",
+      "septets": 54,
+      "first_text": "Yes, turn back by 13:00. No storm, gusts up to 40km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4286310641|2025-07-17T10:19",
+      "path": "model",
+      "reply": "Yes. No storm, gusts up to 55km/h.",
+      "septets": 34,
+      "first_text": "Yes. No storm, gusts up to 55km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4286310641|2025-07-18T09:48",
+      "path": "model",
+      "reply": "Turn around by 12:15 to make the car by 13:45. No storm, gusts up to 23km/h.",
+      "septets": 76,
+      "first_text": "Turn around by 12:15 to make the car by 13:45. No storm, gusts up to 23km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4286310641|2025-07-10T11:49",
+      "path": "model",
+      "reply": "10C now, feels like 5C. Gusts to 34km/h at 14:00. No rain, no storm.",
+      "septets": 68,
+      "first_text": "10C now, feels like 5C. Gusts to 34km/h at 14:00. No rain, no storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4286310646|2026-01-17T09:24",
+      "path": "model",
+      "reply": "No storm. Gusts 117km/h.",
+      "septets": 24,
+      "first_text": "No storm. Gusts 117km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4286310646|2026-01-20T12:47",
+      "path": "model",
+      "reply": "0C now, feels like -11C. Gusts to 81km/h at 17:00. No storm.",
+      "septets": 60,
+      "first_text": "0C now, feels like -11C. Gusts to 81km/h at 17:00. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4286310646|2026-01-19T12:49",
+      "path": "model",
+      "reply": "No. Rain starts at 14:00 with 100% chance. Gusts up to 82km/h. No storm.",
+      "septets": 72,
+      "first_text": "No. Rain starts at 14:00 with 100% chance. Gusts up to 82km/h. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4286310648|2025-05-06T08:21",
+      "path": "model",
+      "reply": "Gusts up to 84km/h at 17:00.",
+      "septets": 28,
+      "first_text": "Gusts up to 84km/h at 17:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4286310648|2025-05-12T16:46",
+      "path": "model",
+      "reply": "No storm expected.",
+      "septets": 18,
+      "first_text": "No storm expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4286310648|2025-05-05T16:45",
+      "path": "model",
+      "reply": "100%. Rain started at 16:00. No storm, gusts up to 73km/h.",
+      "septets": 58,
+      "first_text": "100%. Rain started at 16:00. No storm, gusts up to 73km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4286310659|2025-05-19T15:39",
+      "path": "model",
+      "reply": "No storm. Gusts up to 23km/h.",
+      "septets": 29,
+      "first_text": "No storm. Gusts up to 23km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4286310659|2025-05-15T08:52",
+      "path": "model",
+      "reply": "Yes. No storm, gusts up to 55km/h. Turn around by 12:30 to reach car by 14:00.",
+      "septets": 78,
+      "first_text": "Yes. No storm, gusts up to 55km/h. Turn around by 12:30 to reach car by 14:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4286310659|2025-05-23T11:18",
+      "path": "model",
+      "reply": "No storm. Gusts up to 26km/h at 13:00.",
+      "septets": 38,
+      "first_text": "No storm. Gusts up to 26km/h at 13:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4286310660|2026-04-19T13:18",
+      "path": "model",
+      "reply": "Yes, ridge ok by 16:00. No storm, gusts up to 73km/h.",
+      "septets": 53,
+      "first_text": "Yes, ridge ok by 16:00. No storm, gusts up to 73km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4286310660|2026-04-20T14:40",
+      "path": "model",
+      "reply": "4C now, feels like -4C. Sunset at 21:04.",
+      "septets": 40,
+      "first_text": "4C now, feels like -4C. Sunset at 21:04.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4286310660|2026-04-18T15:29",
+      "path": "model",
+      "reply": "No car time given. Sunset 20:58, 5h29m left. No storm, gusts 26km/h.",
+      "septets": 68,
+      "first_text": "No car time given. Sunset 20:58, 5h29m left. No storm, gusts 26km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5921060684|2025-06-16T09:54",
+      "path": "model",
+      "reply": "No rain expected. Chance up to 55%.",
+      "septets": 35,
+      "first_text": "No rain expected. Chance up to 55%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5921060684|2025-06-17T13:41",
+      "path": "model",
+      "reply": "4C now, feels like -4C at the coldest.",
+      "septets": 38,
+      "first_text": "4C now, feels like -4C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5921060684|2025-06-13T11:08",
+      "path": "model",
+      "reply": "4C now, feels like -1C. Gusts to 39km/h. No rain, no storm.",
+      "septets": 59,
+      "first_text": "4C now, feels like -1C. Gusts to 39km/h. No rain, no storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n6439821347|2025-07-04T11:39",
+      "path": "model",
+      "reply": "No storm, no rain. Gusts to 34km/h at 19:00. 8C now, feels like 4C later.",
+      "septets": 73,
+      "first_text": "No storm, no rain. Gusts to 34km/h at 19:00. 8C now, feels like 4C later.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n6439821347|2025-07-03T11:06",
+      "path": "model",
+      "reply": "8C now, feels like 3C at the coldest. Sunset is 23:34.",
+      "septets": 54,
+      "first_text": "8C now, feels like 3C at the coldest. Sunset is 23:34.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n6439821347|2025-06-27T11:03",
+      "path": "model",
+      "reply": "No. Turn around by 14:00 to reach car by 15:30. No storm, gusts 52km/h.",
+      "septets": 71,
+      "first_text": "No. Turn around by 14:00 to reach car by 15:30. No storm, gusts 52km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n675999558|2026-07-19T17:46",
+      "path": "model",
+      "reply": "No storm, gusts 17km/h. Rain starts 00:00, 82% chance.",
+      "septets": 54,
+      "first_text": "No storm, gusts 17km/h. Rain starts 00:00, 82% chance.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n675999558|2026-07-18T11:58",
+      "path": "model",
+      "reply": "No rain before 16:30. Chance up to 73%.",
+      "septets": 39,
+      "first_text": "No rain before 16:30. Chance up to 73%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n675999558|2026-07-20T08:40",
+      "path": "model",
+      "reply": "No storm.",
+      "septets": 9,
+      "first_text": "No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n867366237|2025-10-01T09:25",
+      "path": "model",
+      "reply": "No storm. Gusts up to 74km/h. Rain starts at 10:00.",
+      "septets": 51,
+      "first_text": "No storm. Gusts up to 74km/h. Rain starts at 10:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n867366237|2025-10-08T14:56",
+      "path": "model",
+      "reply": "Bail. Storm starts at 16:00 with gusts to 112km/h.",
+      "septets": 50,
+      "first_text": "Bail. Storm starts at 16:00 with gusts to 112km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n867366237|2025-10-04T10:39",
+      "path": "model",
+      "reply": "Yes, ridge ok by 16:30. No storm, gusts up to 90km/h.",
+      "septets": 53,
+      "first_text": "Yes, ridge ok by 16:30. No storm, gusts up to 90km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n12250061251|2025-05-06T07:11",
+      "path": "model",
+      "reply": "No car time given. Sunset 20:49, light dark. No storm, gusts 29km/h.",
+      "septets": 68,
+      "first_text": "No car time given. Sunset 20:49, light dark. No storm, gusts 29km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n12250061251|2025-05-10T06:11",
+      "path": "model",
+      "reply": "Yes. No storm, gusts up to 28km/h.",
+      "septets": 34,
+      "first_text": "Yes. No storm, gusts up to 28km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n12250061251|2025-05-13T17:17",
+      "path": "model",
+      "reply": "-4C now, feels like -16C. Sunset at 20:53.",
+      "septets": 42,
+      "first_text": "-4C now, feels like -16C. Sunset at 20:53.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5928724813|2026-02-19T17:28",
+      "path": "model",
+      "reply": "Feels like -31C. No storm, gusts 21km/h.",
+      "septets": 40,
+      "first_text": "Feels like -31C. No storm, gusts 21km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5928724813|2026-02-18T15:17",
+      "path": "model-retry",
+      "reply": "No storm coming. Sunset is 18:08, 2h51m left. Gusts up to 15km/h.",
+      "septets": 65,
+      "first_text": "No storm coming. Sunset is 18:08, so you have 2h51m left.",
+      "first_reasons": [
+        "missing_fact:gust_max"
+      ]
+    },
+    {
+      "id": "osm:n5928724813|2026-02-22T12:49",
+      "path": "model",
+      "reply": "No. Coldest feels-like is -29C, gusts 16km/h. No storm.",
+      "septets": 55,
+      "first_text": "No. Coldest feels-like is -29C, gusts 16km/h. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5928937138|2025-07-13T09:24",
+      "path": "model",
+      "reply": "No storm, no rain. Gusts to 40km/h at 16:00. 11C now, feels like 8C later.",
+      "septets": 74,
+      "first_text": "No storm, no rain. Gusts to 40km/h at 16:00. 11C now, feels like 8C later.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5928937138|2025-07-15T14:04",
+      "path": "model",
+      "reply": "Gusts to 46km/h at 17:00, no rain until 01:00. 13C now, feels like 7C at the coldest.",
+      "septets": 85,
+      "first_text": "Gusts to 46km/h at 17:00, no rain until 01:00. 13C now, feels like 7C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5928937138|2025-07-10T10:01",
+      "path": "model",
+      "reply": "Gusts up to 46km/h at 16:00.",
+      "septets": 28,
+      "first_text": "Gusts up to 46km/h at 16:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7687458366|2026-06-30T16:01",
+      "path": "model",
+      "reply": "No storm or rain before 21:30. Chance is 0%.",
+      "septets": 44,
+      "first_text": "No storm or rain before 21:30. Chance is 0%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7687458366|2026-06-28T11:21",
+      "path": "model",
+      "reply": "No storm. Rain started at 11:00 with a 73% chance.",
+      "septets": 50,
+      "first_text": "No storm. Rain started at 11:00 with a 73% chance.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7687458366|2026-06-29T05:15",
+      "path": "model",
+      "reply": "Yes. No storm, gusts up to 42km/h.",
+      "septets": 34,
+      "first_text": "Yes. No storm, gusts up to 42km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7687458367|2025-11-27T15:48",
+      "path": "model",
+      "reply": "Turn around by 19:15. No storm, gusts up to 30km/h.",
+      "septets": 51,
+      "first_text": "Turn around by 19:15. No storm, gusts up to 30km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7687458367|2025-12-01T10:37",
+      "path": "model",
+      "reply": "Bail. No storm, gusts 44km/h.",
+      "septets": 29,
+      "first_text": "Bail. No storm, gusts 44km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7687458367|2025-11-25T08:42",
+      "path": "model",
+      "reply": "Feels like -18C. No storm, gusts to 29km/h.",
+      "septets": 43,
+      "first_text": "Feels like -18C. No storm, gusts to 29km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7687458368|2025-09-24T17:44",
+      "path": "model",
+      "reply": "Gusts up to 66km/h. No storm.",
+      "septets": 29,
+      "first_text": "Gusts up to 66km/h. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7687458368|2025-09-20T11:47",
+      "path": "model",
+      "reply": "No. Turn around by 12:45 to reach car by 14:15. No storm, gusts 48km/h.",
+      "septets": 71,
+      "first_text": "No. Turn around by 12:45 to reach car by 14:15. No storm, gusts 48km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7687458368|2025-09-18T15:23",
+      "path": "model",
+      "reply": "No storm expected.",
+      "septets": 18,
+      "first_text": "No storm expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7687458369|2025-06-28T07:36",
+      "path": "model",
+      "reply": "Yes. No storm, gusts up to 41km/h.",
+      "septets": 34,
+      "first_text": "Yes. No storm, gusts up to 41km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7687458369|2025-06-29T12:54",
+      "path": "model",
+      "reply": "No rain. Chance up to 39%.",
+      "septets": 26,
+      "first_text": "No rain. Chance up to 39%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7687458369|2025-06-25T08:14",
+      "path": "model",
+      "reply": "0% chance. No rain expected.",
+      "septets": 28,
+      "first_text": "0% chance. No rain expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7687458371|2025-05-07T13:29",
+      "path": "model",
+      "reply": "No. Turn around by 14:15. No storm, gusts 26km/h.",
+      "septets": 49,
+      "first_text": "No. Turn around by 14:15. No storm, gusts 26km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7687458371|2025-05-03T14:47",
+      "path": "model",
+      "reply": "Gusts up to 29km/h at 15:00. No storm expected.",
+      "septets": 47,
+      "first_text": "Gusts up to 29km/h at 15:00. No storm expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7687458371|2025-05-01T07:31",
+      "path": "model",
+      "reply": "No storm, gusts 25km/h. Sunset 19:05, 11h34m left.",
+      "septets": 50,
+      "first_text": "No storm, gusts 25km/h. Sunset 19:05, 11h34m left.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7713554422|2025-10-28T13:47",
+      "path": "model",
+      "reply": "No rain expected, 0% chance.",
+      "septets": 28,
+      "first_text": "No rain expected, 0% chance.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7713554422|2025-10-30T10:07",
+      "path": "model",
+      "reply": "Sunset is 17:29. No storm, gusts 27km/h.",
+      "septets": 40,
+      "first_text": "Sunset is 17:29. No storm, gusts 27km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7713554422|2025-10-29T09:25",
+      "path": "model",
+      "reply": "-7C now, feels like -12C. Gusts to 41km/h at 18:00. No rain, no storm.",
+      "septets": 70,
+      "first_text": "-7C now, feels like -12C. Gusts to 41km/h at 18:00. No rain, no storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7713554423|2025-07-07T06:50",
+      "path": "model",
+      "reply": "Gusts to 58km/h, no rain. 8C now, feels like 5C at the coldest.",
+      "septets": 63,
+      "first_text": "Gusts to 58km/h, no rain. 8C now, feels like 5C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7713554423|2025-06-29T06:57",
+      "path": "model",
+      "reply": "Yes. Feels like 3C at the coldest.",
+      "septets": 34,
+      "first_text": "Yes. Feels like 3C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7713554423|2025-06-30T14:22",
+      "path": "model",
+      "reply": "Bail. Turn around by 17:15. No storm, gusts 62km/h.",
+      "septets": 51,
+      "first_text": "Bail. Turn around by 17:15. No storm, gusts 62km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7726312633|2026-02-24T10:43",
+      "path": "model",
+      "reply": "Feels like -30C. No storm, gusts 19km/h.",
+      "septets": 40,
+      "first_text": "Feels like -30C. No storm, gusts 19km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7726312633|2026-02-18T12:55",
+      "path": "model",
+      "reply": "0% chance. No rain expected.",
+      "septets": 28,
+      "first_text": "0% chance. No rain expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7726312633|2026-02-20T06:10",
+      "path": "model",
+      "reply": "No storm, gusts 10km/h. Sunset 18:08. Sunrise 07:01.",
+      "septets": 52,
+      "first_text": "No storm, gusts 10km/h. Sunset 18:08. Sunrise 07:01.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7726312634|2025-10-26T05:10",
+      "path": "model",
+      "reply": "No rain before 11:30. Chance stays at 0%.",
+      "septets": 41,
+      "first_text": "No rain before 11:30. Chance stays at 0%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7726312634|2025-10-25T11:31",
+      "path": "model",
+      "reply": "Sunset is 17:34.",
+      "septets": 16,
+      "first_text": "Sunset is 17:34.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7726312634|2025-10-27T08:47",
+      "path": "model",
+      "reply": "Yes. It's -16C now and will feel like -24C.",
+      "septets": 43,
+      "first_text": "Yes. It's -16C now and will feel like -24C.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7862828525|2025-09-07T11:29",
+      "path": "model",
+      "reply": "Feels like -6C. Sunset at 18:37.",
+      "septets": 32,
+      "first_text": "Feels like -6C. Sunset at 18:37.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7862828525|2025-09-09T08:14",
+      "path": "model",
+      "reply": "Yes, rain starts at 15:00 with a 71% chance.",
+      "septets": 44,
+      "first_text": "Yes, rain starts at 15:00 with a 71% chance.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7862828525|2025-09-08T14:21",
+      "path": "model",
+      "reply": "No storm before 19:30. Gusts up to 31km/h.",
+      "septets": 42,
+      "first_text": "No storm before 19:30. Gusts up to 31km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n8596728084|2025-08-18T15:52",
+      "path": "model",
+      "reply": "Yes. Feels like -3C. No storm.",
+      "septets": 30,
+      "first_text": "Yes. Feels like -3C. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n8596728084|2025-08-11T10:46",
+      "path": "model",
+      "reply": "No need to turn around by 15:00. No storm, gusts up to 50km/h.",
+      "septets": 62,
+      "first_text": "No need to turn around by 15:00. No storm, gusts up to 50km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n8596728084|2025-08-14T07:03",
+      "path": "model",
+      "reply": "No storm. Rain starts at 16:00, so none before 11:30.",
+      "septets": 53,
+      "first_text": "No storm. Rain starts at 16:00, so none before 11:30.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n8596942908|2026-08-31T07:48",
+      "path": "model",
+      "reply": "Feels like -6C. Sunset at 18:48.",
+      "septets": 32,
+      "first_text": "Feels like -6C. Sunset at 18:48.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n8596942908|2026-08-27T15:38",
+      "path": "model",
+      "reply": "Sunset at 18:53. No rain expected.",
+      "septets": 34,
+      "first_text": "Sunset at 18:53. No rain expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n8596942908|2026-08-30T17:22",
+      "path": "model",
+      "reply": "Sunset is 18:49, 1h27m left. No storm, gusts 23km/h.",
+      "septets": 52,
+      "first_text": "Sunset is 18:49, 1h27m left. No storm, gusts 23km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9790117733|2026-01-18T10:42",
+      "path": "model",
+      "reply": "-22C, feels like -30C. Gusts to 49km/h at 13:00. No rain, no storm.",
+      "septets": 67,
+      "first_text": "-22C, feels like -30C. Gusts to 49km/h at 13:00. No rain, no storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9790117733|2026-01-15T16:06",
+      "path": "model",
+      "reply": "Yes. Sunset is 17:35, no rain expected.",
+      "septets": 39,
+      "first_text": "Yes. Sunset is 17:35, no rain expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9790117733|2026-01-17T10:11",
+      "path": "model",
+      "reply": "Yes, turn by 16:30. No storm, gusts 61km/h.",
+      "septets": 43,
+      "first_text": "Yes, turn by 16:30. No storm, gusts 61km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9790117734|2025-06-19T06:07",
+      "path": "model",
+      "reply": "No rain before 11:00. Chance stays at 0%.",
+      "septets": 41,
+      "first_text": "No rain before 11:00. Chance stays at 0%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9790117734|2025-06-18T14:02",
+      "path": "model",
+      "reply": "No storm. Gusts to 31km/h.",
+      "septets": 26,
+      "first_text": "No storm. Gusts to 31km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9790117734|2025-06-17T11:50",
+      "path": "model",
+      "reply": "Yes. No storm, gusts 26km/h. Rain starts 14:00.",
+      "septets": 47,
+      "first_text": "Yes. No storm, gusts 26km/h. Rain starts 14:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9822498076|2026-07-11T17:45",
+      "path": "model",
+      "reply": "No storm. Gusts 25km/h.",
+      "septets": 23,
+      "first_text": "No storm. Gusts 25km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9822498076|2026-07-12T13:58",
+      "path": "model",
+      "reply": "No storm.",
+      "septets": 9,
+      "first_text": "No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9822498076|2026-07-17T13:08",
+      "path": "model",
+      "reply": "Yes. No storm, gusts up to 33km/h.",
+      "septets": 34,
+      "first_text": "Yes. No storm, gusts up to 33km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9822792090|2026-03-27T15:41",
+      "path": "model",
+      "reply": "Sunset is 18:38, so you have 2h57m left. Bring one if you might be out near dusk.",
+      "septets": 81,
+      "first_text": "Sunset is 18:38, so you have 2h57m left. Bring one if you might be out near dusk.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9822792090|2026-04-01T07:57",
+      "path": "model",
+      "reply": "Bail. No storm, gusts 27km/h.",
+      "septets": 29,
+      "first_text": "Bail. No storm, gusts 27km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9822792090|2026-04-02T10:45",
+      "path": "model",
+      "reply": "No storm, no rain. Gusts to 24km/h. Feels like -20C.",
+      "septets": 52,
+      "first_text": "No storm, no rain. Gusts to 24km/h. Feels like -20C.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n11075188564|2025-08-27T08:16",
+      "path": "model",
+      "reply": "0C now, feels like -2C at the coldest.",
+      "septets": 38,
+      "first_text": "0C now, feels like -2C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n11075188564|2025-08-23T17:31",
+      "path": "model",
+      "reply": "No storm, no rain. Gusts to 48km/h. 17C now, feels like 2C later. Sunset 18:59.",
+      "septets": 79,
+      "first_text": "No storm, no rain. Gusts to 48km/h. 17C now, feels like 2C later. Sunset 18:59.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n11075188564|2025-08-22T15:33",
+      "path": "model",
+      "reply": "Sunset is 19:00. No rain expected.",
+      "septets": 34,
+      "first_text": "Sunset is 19:00. No rain expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n10677306073|2025-12-06T05:04",
+      "path": "model",
+      "reply": "No. Turn around by 10:00 to reach the car by 11:30. No storm, gusts up to 58km/h.",
+      "septets": 81,
+      "first_text": "No. Turn around by 10:00 to reach the car by 11:30. No storm, gusts up to 58km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n10677306073|2025-11-29T15:33",
+      "path": "model",
+      "reply": "No storm. Gusts to 66km/h.",
+      "septets": 26,
+      "first_text": "No storm. Gusts to 66km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n10677306073|2025-12-07T09:03",
+      "path": "model",
+      "reply": "No storm. Gusts up to 95km/h.",
+      "septets": 29,
+      "first_text": "No storm. Gusts up to 95km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n10677352007|2026-04-10T10:41",
+      "path": "model",
+      "reply": "Feels like 2C at the coldest. No storm, gusts up to 26km/h.",
+      "septets": 59,
+      "first_text": "Feels like 2C at the coldest. No storm, gusts up to 26km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n10677352007|2026-04-13T10:04",
+      "path": "model",
+      "reply": "Yes, turn around by 17:15 to reach the car by 18:45. No storm, gusts up to 45km/h.",
+      "septets": 82,
+      "first_text": "Yes, turn around by 17:15 to reach the car by 18:45. No storm, gusts up to 45km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n10677352007|2026-04-08T14:13",
+      "path": "model",
+      "reply": "Rain since 14:00, 100% chance. Gusts to 48km/h at 17:00. No storm.",
+      "septets": 66,
+      "first_text": "Rain since 14:00, 100% chance. Gusts to 48km/h at 17:00. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n10677352013|2025-05-10T11:05",
+      "path": "model",
+      "reply": "No rain before 17:30. First rain is 18:00.",
+      "septets": 42,
+      "first_text": "No rain before 17:30. First rain is 18:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n10677352013|2025-05-08T07:22",
+      "path": "model",
+      "reply": "No. It's dark, feels like -1C, gusts to 80km/h, and rain started at 07:00. No storm.",
+      "septets": 84,
+      "first_text": "No. It's dark, feels like -1C, gusts to 80km/h, and rain started at 07:00. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n10677352013|2025-05-09T09:35",
+      "path": "model",
+      "reply": "No. Turn around by 15:45 to reach car by 17:15. No storm, gusts 21km/h.",
+      "septets": 71,
+      "first_text": "No. Turn around by 15:45 to reach car by 17:15. No storm, gusts 21km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4920357342|2026-04-06T09:33",
+      "path": "model",
+      "reply": "Gusts up to 26km/h at 13:00. No storm expected.",
+      "septets": 47,
+      "first_text": "Gusts up to 26km/h at 13:00. No storm expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4920357342|2026-03-29T17:49",
+      "path": "model",
+      "reply": "No storm. Sunset 19:37, gusts 48km/h.",
+      "septets": 37,
+      "first_text": "No storm. Sunset 19:37, gusts 48km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4920357342|2026-04-03T17:23",
+      "path": "model",
+      "reply": "No. Turn around by 18:30. No storm, gusts 69km/h.",
+      "septets": 49,
+      "first_text": "No. Turn around by 18:30. No storm, gusts 69km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4920357344|2025-08-24T05:58",
+      "path": "model",
+      "reply": "No turn-around time given. Sunset 19:04, sunrise 08:22. No storm, gusts 25km/h.",
+      "septets": 79,
+      "first_text": "No turn-around time given. Sunset 19:04, sunrise 08:22. No storm, gusts 25km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4920357344|2025-08-25T05:29",
+      "path": "model",
+      "reply": "No storm before 10:00. Gusts up to 17km/h.",
+      "septets": 42,
+      "first_text": "No storm before 10:00. Gusts up to 17km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4920357344|2025-08-22T15:02",
+      "path": "model",
+      "reply": "Sunset at 19:02. No rain expected.",
+      "septets": 34,
+      "first_text": "Sunset at 19:02. No rain expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4920357353|2026-03-12T13:45",
+      "path": "model",
+      "reply": "No. Turn around by 18:30. No storm, gusts up to 99km/h.",
+      "septets": 55,
+      "first_text": "No. Turn around by 18:30. No storm, gusts up to 99km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4920357353|2026-03-11T07:52",
+      "path": "model",
+      "reply": "Yes, rain starts at 09:00. No storm, gusts up to 31km/h.",
+      "septets": 56,
+      "first_text": "Yes, rain starts at 09:00. No storm, gusts up to 31km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4920357353|2026-03-10T16:52",
+      "path": "model",
+      "reply": "Yes, ridge ok by 19:00. No storm, gusts 47km/h. Turn around by 20:45 to reach car by 22:15.",
+      "septets": 91,
+      "first_text": "Yes, ridge ok by 19:00. No storm, gusts 47km/h. Turn around by 20:45 to reach car by 22:15.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4932330127|2026-01-06T09:20",
+      "path": "model",
+      "reply": "3C now, feels like 0C at the coldest. Sunset is 21:27.",
+      "septets": 54,
+      "first_text": "3C now, feels like 0C at the coldest. Sunset is 21:27.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4932330127|2026-01-04T11:52",
+      "path": "model",
+      "reply": "Yes. Feels like 0C at the coldest.",
+      "septets": 34,
+      "first_text": "Yes. Feels like 0C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4932330127|2026-01-11T05:28",
+      "path": "model",
+      "reply": "Yes, storm started at 05:00. Gusts up to 95km/h.",
+      "septets": 48,
+      "first_text": "Yes, storm started at 05:00. Gusts up to 95km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4933425128|2026-04-01T05:24",
+      "path": "model",
+      "reply": "Sunset is 19:32.",
+      "septets": 16,
+      "first_text": "Sunset is 19:32.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4933425128|2026-03-31T15:19",
+      "path": "model",
+      "reply": "No storm. Gusts 19km/h.",
+      "septets": 23,
+      "first_text": "No storm. Gusts 19km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4933425128|2026-03-29T07:15",
+      "path": "model",
+      "reply": "No storm. Gusts to 47km/h.",
+      "septets": 26,
+      "first_text": "No storm. Gusts to 47km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4933425129|2026-07-12T08:21",
+      "path": "model",
+      "reply": "No storm. Gusts 22km/h. No rain. Temp -8C, feels like -12C.",
+      "septets": 59,
+      "first_text": "No storm. Gusts 22km/h. No rain. Temp -8C, feels like -12C.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4933425129|2026-07-15T11:51",
+      "path": "model",
+      "reply": "No storm. Gusts up to 33km/h.",
+      "septets": 29,
+      "first_text": "No storm. Gusts up to 33km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4933425129|2026-07-07T13:18",
+      "path": "model",
+      "reply": "No storm. Car at 22:15.",
+      "septets": 23,
+      "first_text": "No storm. Car at 22:15.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1811008555|2025-10-08T14:41",
+      "path": "model",
+      "reply": "No storm. Gusts to 77km/h.",
+      "septets": 26,
+      "first_text": "No storm. Gusts to 77km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1811008555|2025-10-15T14:25",
+      "path": "model",
+      "reply": "Sunset at 19:37. Rain started at 14:00 with 100% chance.",
+      "septets": 56,
+      "first_text": "Sunset at 19:37. Rain started at 14:00 with 100% chance.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1811008555|2025-10-11T13:29",
+      "path": "model",
+      "reply": "No storm. Car at 16:15.",
+      "septets": 23,
+      "first_text": "No storm. Car at 16:15.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1818856294|2026-02-10T12:12",
+      "path": "model",
+      "reply": "No storm.",
+      "septets": 9,
+      "first_text": "No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1818856294|2026-02-09T11:44",
+      "path": "model",
+      "reply": "Sunset is 20:28. No storm, gusts 34km/h.",
+      "septets": 40,
+      "first_text": "Sunset is 20:28. No storm, gusts 34km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1818856294|2026-02-14T11:24",
+      "path": "model",
+      "reply": "No. Turn around by 12:30 to reach car by 14:00. No storm, gusts 34km/h.",
+      "septets": 71,
+      "first_text": "No. Turn around by 12:30 to reach car by 14:00. No storm, gusts 34km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1831968473|2026-03-24T10:27",
+      "path": "model",
+      "reply": "Feels like 7C at the coldest. No storm, gusts up to 50km/h.",
+      "septets": 59,
+      "first_text": "Feels like 7C at the coldest. No storm, gusts up to 50km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n1831968473|2026-03-21T09:36",
+      "path": "model-retry",
+      "reply": "No turn around time given. Sunset at 19:26. No storm, gusts up to 27km/h.",
+      "septets": 73,
+      "first_text": "No turn around time given. No storm, gusts up to 27km/h.",
+      "first_reasons": [
+        "missing_fact:sunset"
+      ]
+    },
+    {
+      "id": "osm:n1831968473|2026-03-20T12:28",
+      "path": "model",
+      "reply": "No storm before 18:00. Gusts up to 39km/h.",
+      "septets": 42,
+      "first_text": "No storm before 18:00. Gusts up to 39km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2364312487|2025-11-09T07:07",
+      "path": "model",
+      "reply": "13h1m left. Sunset is 20:08.",
+      "septets": 28,
+      "first_text": "13h1m left. Sunset is 20:08.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2364312487|2025-11-01T14:52",
+      "path": "model",
+      "reply": "Gusts up to 26km/h at 17:00. Feels like 3C at the coldest.",
+      "septets": 58,
+      "first_text": "Gusts up to 26km/h at 17:00. Feels like 3C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2364312487|2025-11-06T05:28",
+      "path": "model",
+      "reply": "Dark now, sunrise 05:55. 2C now, feels like -3C. Rain from 10:00, 100% chance. Gusts to 63km/h at 09:00. No storm.",
+      "septets": 114,
+      "first_text": "Dark now, sunrise 05:55. 2C now, feels like -3C. Rain from 10:00, 100% chance. Gusts to 63km/h at 09:00. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2402942705|2026-06-10T14:44",
+      "path": "model",
+      "reply": "Yes, a storm started at 14:00. Gusts up to 71km/h.",
+      "septets": 50,
+      "first_text": "Yes, a storm started at 14:00. Gusts up to 71km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2402942705|2026-06-13T13:14",
+      "path": "model",
+      "reply": "Storm started at 13:00 with gusts to 78km/h. Rain chance 100%. Temp feels like -4C.",
+      "septets": 83,
+      "first_text": "Storm started at 13:00 with gusts to 78km/h. Rain chance 100%. Temp feels like -4C.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2402942705|2026-06-06T10:05",
+      "path": "model",
+      "reply": "No storm, gusts 52km/h. Rain started at 10:00 with 69% chance.",
+      "septets": 62,
+      "first_text": "No storm, gusts 52km/h. Rain started at 10:00 with 69% chance.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2402942707|2025-09-25T16:04",
+      "path": "model",
+      "reply": "Rain from 16:00, 100% chance. Gusts 50km/h. No storm.",
+      "septets": 53,
+      "first_text": "Rain from 16:00, 100% chance. Gusts 50km/h. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2402942707|2025-09-21T11:57",
+      "path": "model",
+      "reply": "No storm. Car at 20:15.",
+      "septets": 23,
+      "first_text": "No storm. Car at 20:15.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2402942707|2025-09-22T12:33",
+      "path": "model",
+      "reply": "Yes, rain started at 12:00 with 100% chance. No storm, gusts up to 59km/h.",
+      "septets": 74,
+      "first_text": "Yes, rain started at 12:00 with 100% chance. No storm, gusts up to 59km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2980584558|2025-09-22T13:05",
+      "path": "model",
+      "reply": "Yes, rain starts at 14:00. No storm, gusts up to 47km/h.",
+      "septets": 56,
+      "first_text": "Yes, rain starts at 14:00. No storm, gusts up to 47km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2980584558|2025-09-20T16:13",
+      "path": "model",
+      "reply": "No. Sunset is 18:05, 1h52m left. No storm, gusts 23km/h.",
+      "septets": 56,
+      "first_text": "No. Sunset is 18:05, 1h52m left. No storm, gusts 23km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n2980584558|2025-09-27T09:55",
+      "path": "model",
+      "reply": "Yes, turn around by 15:30 to reach the car by 17:00. No storm, gusts up to 34km/h.",
+      "septets": 82,
+      "first_text": "Yes, turn around by 15:30 to reach the car by 17:00. No storm, gusts up to 34km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5351135979|2026-09-23T08:03",
+      "path": "model",
+      "reply": "Gusts to 43km/h at 14:00, rain from 12:00 with 86% chance. 1C now, feels like -3C at the coldest.",
+      "septets": 97,
+      "first_text": "Gusts to 43km/h at 14:00, rain from 12:00 with 86% chance. 1C now, feels like -3C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5351135979|2026-09-19T13:00",
+      "path": "model",
+      "reply": "5C now, feels like -7C. Sunset at 18:05.",
+      "septets": 40,
+      "first_text": "5C now, feels like -7C. Sunset at 18:05.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5351135979|2026-09-20T08:25",
+      "path": "model",
+      "reply": "Yes. Gusts up to 33km/h at 15:00. No storm.",
+      "septets": 43,
+      "first_text": "Yes. Gusts up to 33km/h at 15:00. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5351138555|2026-05-06T09:18",
+      "path": "model",
+      "reply": "No storm. Car at 17:57.",
+      "septets": 23,
+      "first_text": "No storm. Car at 17:57.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5351138555|2026-05-05T15:59",
+      "path": "model",
+      "reply": "Feels like -10C. No storm, gusts to 54km/h.",
+      "septets": 43,
+      "first_text": "Feels like -10C. No storm, gusts to 54km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5351138555|2026-05-08T06:16",
+      "path": "model",
+      "reply": "-5C now, feels like -9C. Gusts to 48km/h at 14:00. No rain, no storm.",
+      "septets": 69,
+      "first_text": "-5C now, feels like -9C. Gusts to 48km/h at 14:00. No rain, no storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5351138556|2025-08-21T06:53",
+      "path": "model",
+      "reply": "-9C now, feels like -13C at the coldest.",
+      "septets": 40,
+      "first_text": "-9C now, feels like -13C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5351138556|2025-08-14T13:35",
+      "path": "model",
+      "reply": "No. Turn around by 15:15 to reach the car by 16:45. No storm, gusts up to 42km/h.",
+      "septets": 81,
+      "first_text": "No. Turn around by 15:15 to reach the car by 16:45. No storm, gusts up to 42km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5351138556|2025-08-19T14:23",
+      "path": "model",
+      "reply": "Gusts up to 39km/h. No storm expected.",
+      "septets": 38,
+      "first_text": "Gusts up to 39km/h. No storm expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n6053065584|2025-12-09T08:33",
+      "path": "model",
+      "reply": "Yes, rain starts at 14:00 with a 78% chance. No storm expected.",
+      "septets": 63,
+      "first_text": "Yes, rain starts at 14:00 with a 78% chance. No storm expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n6053065584|2025-12-07T06:15",
+      "path": "model",
+      "reply": "Sunset is 18:20.",
+      "septets": 16,
+      "first_text": "Sunset is 18:20.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n6053065584|2025-12-05T11:06",
+      "path": "model",
+      "reply": "Yes, turn around by 12:30. No storm, gusts up to 53km/h.",
+      "septets": 56,
+      "first_text": "Yes, turn around by 12:30. No storm, gusts up to 53km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n6393181691|2026-02-04T14:15",
+      "path": "model",
+      "reply": "No storm.",
+      "septets": 9,
+      "first_text": "No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n6393181691|2026-01-30T14:59",
+      "path": "model",
+      "reply": "Turn back by 22:15. No storm, gusts up to 36km/h.",
+      "septets": 49,
+      "first_text": "Turn back by 22:15. No storm, gusts up to 36km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n6393181691|2026-01-31T05:18",
+      "path": "model",
+      "reply": "Yes. Gusts up to 48km/h at 14:00. No storm.",
+      "septets": 43,
+      "first_text": "Yes. Gusts up to 48km/h at 14:00. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7733028945|2025-12-06T10:38",
+      "path": "model",
+      "reply": "No storm or rain before 17:30. Chance is 0%.",
+      "septets": 44,
+      "first_text": "No storm or rain before 17:30. Chance is 0%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7733028945|2025-12-10T17:18",
+      "path": "model",
+      "reply": "Yes. Feels like -7C. No storm.",
+      "septets": 30,
+      "first_text": "Yes. Feels like -7C. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7733028945|2025-12-04T12:46",
+      "path": "model",
+      "reply": "5C now, feels like -10C at the coldest.",
+      "septets": 39,
+      "first_text": "5C now, feels like -10C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7733028946|2026-03-09T12:09",
+      "path": "model",
+      "reply": "No, sunset is 18:25. You have 6h16m of light.",
+      "septets": 45,
+      "first_text": "No, sunset is 18:25. You have 6h16m of light.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7733028946|2026-03-10T09:44",
+      "path": "model",
+      "reply": "Turn around by 16:30 to reach the car by 18:00. No storm, gusts up to 21km/h.",
+      "septets": 77,
+      "first_text": "Turn around by 16:30 to reach the car by 18:00. No storm, gusts up to 21km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7733028946|2026-03-07T17:09",
+      "path": "model",
+      "reply": "1h17m left. Sunset is 18:26.",
+      "septets": 28,
+      "first_text": "1h17m left. Sunset is 18:26.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7733028947|2025-11-18T08:32",
+      "path": "model",
+      "reply": "No car time given. Sunset 18:11, 9h39m left. No storm, gusts 35km/h.",
+      "septets": 68,
+      "first_text": "No car time given. Sunset 18:11, 9h39m left. No storm, gusts 35km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7733028947|2025-11-25T12:28",
+      "path": "model",
+      "reply": "No storm. Gusts to 54km/h.",
+      "septets": 26,
+      "first_text": "No storm. Gusts to 54km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7733028947|2025-11-24T12:00",
+      "path": "model",
+      "reply": "Yes, rain starts at 12:00 with a 98% chance.",
+      "septets": 44,
+      "first_text": "Yes, rain starts at 12:00 with a 98% chance.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7733028948|2025-12-13T07:10",
+      "path": "model",
+      "reply": "Yes. No storm, gusts 28km/h. Rain starts 12:00.",
+      "septets": 47,
+      "first_text": "Yes. No storm, gusts 28km/h. Rain starts 12:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7733028948|2025-12-15T08:45",
+      "path": "model",
+      "reply": "Sunset is 18:24.",
+      "septets": 16,
+      "first_text": "Sunset is 18:24.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7733028948|2025-12-10T11:00",
+      "path": "model",
+      "reply": "Feels like -7C. No storm, gusts 35km/h.",
+      "septets": 39,
+      "first_text": "Feels like -7C. No storm, gusts 35km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7733028949|2026-05-27T08:37",
+      "path": "model",
+      "reply": "Sunset is 17:55.",
+      "septets": 16,
+      "first_text": "Sunset is 17:55.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7733028949|2026-05-25T12:15",
+      "path": "model",
+      "reply": "No storm. Gusts up to 47km/h.",
+      "septets": 29,
+      "first_text": "No storm. Gusts up to 47km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7733028949|2026-06-02T12:59",
+      "path": "model",
+      "reply": "Yes. No storm, gusts 30km/h. Sunset 17:55, 4h56m left.",
+      "septets": 54,
+      "first_text": "Yes. No storm, gusts 30km/h. Sunset 17:55, 4h56m left.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7733028950|2025-12-14T09:35",
+      "path": "model",
+      "reply": "Yes, rain starts at 14:00 with a 95% chance. No storm, gusts up to 29km/h.",
+      "septets": 74,
+      "first_text": "Yes, rain starts at 14:00 with a 95% chance. No storm, gusts up to 29km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7733028950|2025-12-17T10:25",
+      "path": "model",
+      "reply": "No storm, gusts 35km/h. Sunset 18:26, 8h1m left.",
+      "septets": 48,
+      "first_text": "No storm, gusts 35km/h. Sunset 18:26, 8h1m left.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7733028950|2025-12-16T17:16",
+      "path": "model",
+      "reply": "-1C now, feels like -7C.",
+      "septets": 24,
+      "first_text": "-1C now, feels like -7C.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n775802435|2026-07-22T15:50",
+      "path": "model",
+      "reply": "Yes, ridge ok by 19:30. No storm, gusts 36km/h. Car at 23:15.",
+      "septets": 61,
+      "first_text": "Yes, ridge ok by 19:30. No storm, gusts 36km/h. Car at 23:15.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n775802435|2026-07-25T07:36",
+      "path": "model",
+      "reply": "No rain expected, only 6% chance.",
+      "septets": 33,
+      "first_text": "No rain expected, only 6% chance.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n775802435|2026-07-20T08:46",
+      "path": "model",
+      "reply": "Gusts to 37km/h at 14:00. Feels like -12C. No storm.",
+      "septets": 52,
+      "first_text": "Gusts to 37km/h at 14:00. Feels like -12C. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n786964141|2025-08-13T07:58",
+      "path": "model",
+      "reply": "Yes. No storm, gusts 40km/h. Rain starts 12:00, 84% chance.",
+      "septets": 59,
+      "first_text": "Yes. No storm, gusts 40km/h. Rain starts 12:00, 84% chance.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n786964141|2025-08-15T17:18",
+      "path": "model",
+      "reply": "No storm. Gusts 32km/h.",
+      "septets": 23,
+      "first_text": "No storm. Gusts 32km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n786964141|2025-08-12T10:32",
+      "path": "model",
+      "reply": "No storm expected. Gusts up to 37km/h.",
+      "septets": 38,
+      "first_text": "No storm expected. Gusts up to 37km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n786998052|2026-08-19T09:12",
+      "path": "model",
+      "reply": "No storm expected. Gusts up to 32km/h.",
+      "septets": 38,
+      "first_text": "No storm expected. Gusts up to 32km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n786998052|2026-08-26T10:47",
+      "path": "model",
+      "reply": "Sunset is 18:07, so you have 7h20m of light. Bring one if you might be out near dusk.",
+      "septets": 85,
+      "first_text": "Sunset is 18:07, so you have 7h20m of light. Bring one if you might be out near dusk.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n786998052|2026-08-23T06:15",
+      "path": "model",
+      "reply": "Sunset at 18:07. No rain expected.",
+      "septets": 34,
+      "first_text": "Sunset at 18:07. No rain expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n805889381|2025-05-11T14:26",
+      "path": "model",
+      "reply": "Sunset at 17:57. Rain started at 14:00 with 100% chance.",
+      "septets": 56,
+      "first_text": "Sunset at 17:57. Rain started at 14:00 with 100% chance.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n805889381|2025-05-12T16:45",
+      "path": "model",
+      "reply": "Turn back by 17:45. No storm, gusts up to 48km/h.",
+      "septets": 49,
+      "first_text": "Turn back by 17:45. No storm, gusts up to 48km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n805889381|2025-05-05T09:05",
+      "path": "model",
+      "reply": "Gusts to 39km/h at 11:00. Feels like -6C. No storm.",
+      "septets": 51,
+      "first_text": "Gusts to 39km/h at 11:00. Feels like -6C. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n818372772|2025-09-25T14:14",
+      "path": "model",
+      "reply": "1C now, feels like -11C. Sunset at 18:04.",
+      "septets": 41,
+      "first_text": "1C now, feels like -11C. Sunset at 18:04.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n818372772|2025-09-24T07:28",
+      "path": "model",
+      "reply": "Bail. Turn around by 12:00. No storm, gusts 61km/h.",
+      "septets": 51,
+      "first_text": "Bail. Turn around by 12:00. No storm, gusts 61km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n818372772|2025-09-26T06:57",
+      "path": "model",
+      "reply": "No storm. Rain starts at 08:00, chance 100%.",
+      "septets": 44,
+      "first_text": "No storm. Rain starts at 08:00, chance 100%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240117300|2025-10-09T13:34",
+      "path": "model",
+      "reply": "No. Turn around by 17:30 to reach car by 19:00. No storm, gusts 27km/h.",
+      "septets": 71,
+      "first_text": "No. Turn around by 17:30 to reach car by 19:00. No storm, gusts 27km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240117300|2025-10-15T12:12",
+      "path": "model",
+      "reply": "Gusts to 22km/h at 14:00. Feels like -5C. No storm.",
+      "septets": 51,
+      "first_text": "Gusts to 22km/h at 14:00. Feels like -5C. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240117300|2025-10-07T11:09",
+      "path": "model",
+      "reply": "No storm, gusts 30km/h. Sunset 18:04, 6h55m left.",
+      "septets": 49,
+      "first_text": "No storm, gusts 30km/h. Sunset 18:04, 6h55m left.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240138688|2025-09-30T14:34",
+      "path": "model",
+      "reply": "Yes. No storm, gusts 24km/h. Rain started at 14:00, 99% chance.",
+      "septets": 63,
+      "first_text": "Yes. No storm, gusts 24km/h. Rain started at 14:00, 99% chance.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240138688|2025-10-04T12:58",
+      "path": "model",
+      "reply": "Yes, feels like -10C. Sunset at 18:04.",
+      "septets": 38,
+      "first_text": "Yes, feels like -10C. Sunset at 18:04.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240138688|2025-10-05T16:12",
+      "path": "model",
+      "reply": "No. Gusts up to 46km/h. No storm.",
+      "septets": 33,
+      "first_text": "No. Gusts up to 46km/h. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240144621|2025-10-01T16:23",
+      "path": "model",
+      "reply": "Feels like -11C. No storm, gusts to 33km/h.",
+      "septets": 43,
+      "first_text": "Feels like -11C. No storm, gusts to 33km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240144621|2025-10-02T12:49",
+      "path": "model",
+      "reply": "Safe. No storm. Gusts 31km/h.",
+      "septets": 29,
+      "first_text": "Safe. No storm. Gusts 31km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240144621|2025-09-27T11:33",
+      "path": "model",
+      "reply": "No rain expected, chance up to 37%.",
+      "septets": 35,
+      "first_text": "No rain expected, chance up to 37%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240149060|2026-04-17T15:08",
+      "path": "model",
+      "reply": "No storm. Gusts up to 23km/h.",
+      "septets": 29,
+      "first_text": "No storm. Gusts up to 23km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240149060|2026-04-15T08:56",
+      "path": "model",
+      "reply": "No storm. Safe till 14:00. Gusts 26km/h.",
+      "septets": 40,
+      "first_text": "No storm. Safe till 14:00. Gusts 26km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240149060|2026-04-14T07:35",
+      "path": "model",
+      "reply": "Yes. No storm, gusts 28km/h. Rain starts 11:00.",
+      "septets": 47,
+      "first_text": "Yes. No storm, gusts 28km/h. Rain starts 11:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240151950|2025-05-24T10:00",
+      "path": "model",
+      "reply": "Yes. No storm, gusts 28km/h. Rain starts 12:00, 100% chance.",
+      "septets": 60,
+      "first_text": "Yes. No storm, gusts 28km/h. Rain starts 12:00, 100% chance.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240151950|2025-05-21T05:09",
+      "path": "model",
+      "reply": "Yes, ridge ok by 08:00. No storm, gusts up to 32km/h.",
+      "septets": 53,
+      "first_text": "Yes, ridge ok by 08:00. No storm, gusts up to 32km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240151950|2025-05-25T13:41",
+      "path": "model",
+      "reply": "No, sunset is 17:55. You have 4h14m of light.",
+      "septets": 45,
+      "first_text": "No, sunset is 17:55. You have 4h14m of light.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240163512|2025-11-11T11:40",
+      "path": "model",
+      "reply": "Yes. No storm, gusts 32km/h. Rain starts 13:00.",
+      "septets": 47,
+      "first_text": "Yes. No storm, gusts 32km/h. Rain starts 13:00.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240163512|2025-11-14T09:46",
+      "path": "model",
+      "reply": "Yes, safe until 14:00. No storm expected, gusts up to 31km/h.",
+      "septets": 61,
+      "first_text": "Yes, safe until 14:00. No storm expected, gusts up to 31km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240163512|2025-11-10T14:29",
+      "path": "model",
+      "reply": "Turn back by 18:00. No storm, gusts 27km/h.",
+      "septets": 43,
+      "first_text": "Turn back by 18:00. No storm, gusts 27km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240442378|2025-07-27T17:43",
+      "path": "model",
+      "reply": "8C now, feels like -4C. Gusts to 38km/h. No rain, no storm. Sunset 18:05.",
+      "septets": 73,
+      "first_text": "8C now, feels like -4C. Gusts to 38km/h. No rain, no storm. Sunset 18:05.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240442378|2025-07-26T15:16",
+      "path": "model",
+      "reply": "Gusts up to 32km/h at 16:00. No storm.",
+      "septets": 38,
+      "first_text": "Gusts up to 32km/h at 16:00. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240442378|2025-07-25T07:43",
+      "path": "model",
+      "reply": "No rain expected, chance only 24%.",
+      "septets": 34,
+      "first_text": "No rain expected, chance only 24%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240471160|2025-10-06T14:37",
+      "path": "model",
+      "reply": "Turn around by 17:45. No storm, gusts up to 43km/h.",
+      "septets": 51,
+      "first_text": "Turn around by 17:45. No storm, gusts up to 43km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240471160|2025-10-05T08:12",
+      "path": "model",
+      "reply": "No. Rain starts at 12:00. Sunset is 18:04.",
+      "septets": 42,
+      "first_text": "No. Rain starts at 12:00. Sunset is 18:04.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n9240471160|2025-10-08T09:37",
+      "path": "model",
+      "reply": "Yes. No storm, gusts 25km/h.",
+      "septets": 28,
+      "first_text": "Yes. No storm, gusts 25km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n13025779902|2026-03-22T10:39",
+      "path": "model",
+      "reply": "Yes. Gusts up to 20km/h at 14:00. No storm.",
+      "septets": 43,
+      "first_text": "Yes. Gusts up to 20km/h at 14:00. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n13025779902|2026-03-28T09:26",
+      "path": "model",
+      "reply": "Sunset at 19:28. No rain expected.",
+      "septets": 34,
+      "first_text": "Sunset at 19:28. No rain expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n13025779902|2026-03-27T13:32",
+      "path": "model",
+      "reply": "No rain. Chance is 0%.",
+      "septets": 22,
+      "first_text": "No rain. Chance is 0%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n348999534|2025-06-18T10:27",
+      "path": "model",
+      "reply": "No. Sunset is 21:06. No storm. Gusts 35km/h.",
+      "septets": 44,
+      "first_text": "No. Sunset is 21:06. No storm. Gusts 35km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n348999534|2025-06-21T06:39",
+      "path": "model",
+      "reply": "No storm before 10:30. Gusts up to 33km/h.",
+      "septets": 42,
+      "first_text": "No storm before 10:30. Gusts up to 33km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n348999534|2025-06-19T13:13",
+      "path": "model",
+      "reply": "Sunset is 21:06. No storm, gusts 20km/h.",
+      "septets": 40,
+      "first_text": "Sunset is 21:06. No storm, gusts 20km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n348999579|2026-02-24T08:34",
+      "path": "model",
+      "reply": "No storm before 14:00. Gusts up to 26km/h.",
+      "septets": 42,
+      "first_text": "No storm before 14:00. Gusts up to 26km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n348999579|2026-02-23T11:22",
+      "path": "model",
+      "reply": "-9C now, feels like -16C at the coldest.",
+      "septets": 40,
+      "first_text": "-9C now, feels like -16C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n348999579|2026-02-27T15:48",
+      "path": "model",
+      "reply": "-5C now, feels like -16C. Gusts to 58km/h. No rain, no storm.",
+      "septets": 61,
+      "first_text": "-5C now, feels like -16C. Gusts to 58km/h. No rain, no storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4103537289|2025-07-19T05:37",
+      "path": "model",
+      "reply": "No. Sunset is 20:56. No storm. Gusts 25km/h.",
+      "septets": 44,
+      "first_text": "No. Sunset is 20:56. No storm. Gusts 25km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4103537289|2025-07-17T08:23",
+      "path": "model",
+      "reply": "13C now, feels like 11C at the coldest.",
+      "septets": 39,
+      "first_text": "13C now, feels like 11C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n4103537289|2025-07-20T09:19",
+      "path": "model",
+      "reply": "Yes. No storm, gusts up to 21km/h.",
+      "septets": 34,
+      "first_text": "Yes. No storm, gusts up to 21km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n53016051|2025-12-30T06:53",
+      "path": "model",
+      "reply": "Turn around by 12:15. No storm, gusts up to 43km/h.",
+      "septets": 51,
+      "first_text": "Turn around by 12:15. No storm, gusts up to 43km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n53016051|2025-12-26T15:43",
+      "path": "model",
+      "reply": "No storm. Gusts to 53km/h. Rain chance 87%.",
+      "septets": 43,
+      "first_text": "No storm. Gusts to 53km/h. Rain chance 87%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n53016051|2025-12-25T15:19",
+      "path": "model",
+      "reply": "Rain started at 15:00 with a 53% chance. No storm expected.",
+      "septets": 59,
+      "first_text": "Rain started at 15:00 with a 53% chance. No storm expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n53173172|2026-02-18T12:50",
+      "path": "model",
+      "reply": "Yes. Sunset 18:32, 5h42m left. No storm, gusts 13km/h.",
+      "septets": 54,
+      "first_text": "Yes. Sunset 18:32, 5h42m left. No storm, gusts 13km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n53173172|2026-02-20T13:56",
+      "path": "model",
+      "reply": "0C now, feels like -8C. Gusts to 29km/h at 23:00. No rain, no storm.",
+      "septets": 68,
+      "first_text": "0C now, feels like -8C. Gusts to 29km/h at 23:00. No rain, no storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n53173172|2026-02-14T17:50",
+      "path": "model",
+      "reply": "Gusts up to 13km/h. No storm.",
+      "septets": 29,
+      "first_text": "Gusts up to 13km/h. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n53230853|2025-10-30T06:42",
+      "path": "model",
+      "reply": "6C now, feels like 1C at the coldest.",
+      "septets": 37,
+      "first_text": "6C now, feels like 1C at the coldest.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n53230853|2025-11-02T07:50",
+      "path": "model",
+      "reply": "Sunset is 17:45. No storm, gusts 36km/h.",
+      "septets": 40,
+      "first_text": "Sunset is 17:45. No storm, gusts 36km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n53230853|2025-11-03T11:29",
+      "path": "model",
+      "reply": "6C now, feels like 0C. Gusts to 44km/h. No storm.",
+      "septets": 49,
+      "first_text": "6C now, feels like 0C. Gusts to 44km/h. No storm.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5353951920|2026-03-03T13:16",
+      "path": "model",
+      "reply": "No rain. Chance up to 46%.",
+      "septets": 26,
+      "first_text": "No rain. Chance up to 46%.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5353951920|2026-02-23T15:21",
+      "path": "model",
+      "reply": "Yes. Sunset is 18:40. No storm. Gusts 31km/h.",
+      "septets": 45,
+      "first_text": "Yes. Sunset is 18:40. No storm. Gusts 31km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n5353951920|2026-03-01T10:38",
+      "path": "model",
+      "reply": "0% chance. No rain expected.",
+      "septets": 28,
+      "first_text": "0% chance. No rain expected.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7556467684|2025-11-20T14:56",
+      "path": "model",
+      "reply": "No storm. Gusts 17km/h.",
+      "septets": 23,
+      "first_text": "No storm. Gusts 17km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7556467684|2025-11-21T06:45",
+      "path": "model",
+      "reply": "Bail. Turn around by 09:00. No storm, gusts 28km/h.",
+      "septets": 51,
+      "first_text": "Bail. Turn around by 09:00. No storm, gusts 28km/h.",
+      "first_reasons": []
+    },
+    {
+      "id": "osm:n7556467684|2025-11-22T12:18",
+      "path": "model",
+      "reply": "5h2m left. Sunset is 17:20.",
+      "septets": 27,
+      "first_text": "5h2m left. Sunset is 17:20.",
+      "first_reasons": []
+    }
+  ]
+}
