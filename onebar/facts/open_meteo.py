@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import json
+import time
+import urllib.error
 import urllib.request
 from datetime import datetime, timedelta, timezone
 from typing import Callable
@@ -29,8 +31,16 @@ def forecast_url(lat: float, lon: float, days: int = 3) -> str:
 
 
 def _http_get(url: str, timeout: float = 20.0) -> dict:
-    with urllib.request.urlopen(url, timeout=timeout) as resp:
-        return json.load(resp)
+    req = urllib.request.Request(url, headers={"User-Agent": "onebar/0.1 (+https://github.com/JUICEWRLD998/onebar)"})
+    for attempt in range(4):  # Open-Meteo answers 429/5xx now and then, more often to shared cloud IPs
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                return json.load(resp)
+        except urllib.error.HTTPError as exc:
+            if exc.code not in (429, 500, 502, 503, 504) or attempt == 3:
+                raise
+            time.sleep(1.5 * (attempt + 1))
+    raise AssertionError("unreachable")
 
 
 def fetch_forecast(
@@ -43,6 +53,7 @@ def fetch_forecast(
     try:
         data = get(url)
     except Exception as exc:  # network, HTTP or JSON errors all mean "no forecast"
+        print(f"forecast fetch failed: {type(exc).__name__}: {exc}", flush=True)
         raise ForecastError(f"Open-Meteo request failed: {exc}") from exc
     if not isinstance(data, dict) or data.get("error"):
         reason = data.get("reason") if isinstance(data, dict) else "bad response"

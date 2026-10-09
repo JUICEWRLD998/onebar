@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import json
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass
@@ -18,8 +20,16 @@ class Place:
 
 
 def _http_get(url: str, timeout: float = 15.0) -> dict:
-    with urllib.request.urlopen(url, timeout=timeout) as resp:
-        return json.load(resp)
+    req = urllib.request.Request(url, headers={"User-Agent": "onebar/0.1 (+https://github.com/JUICEWRLD998/onebar)"})
+    for attempt in range(4):  # same transient 429/5xx handling as the forecast client
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                return json.load(resp)
+        except urllib.error.HTTPError as exc:
+            if exc.code not in (429, 500, 502, 503, 504) or attempt == 3:
+                raise
+            time.sleep(1.5 * (attempt + 1))
+    raise AssertionError("unreachable")
 
 
 def geocode(name: str, get: Callable[[str], dict] = _http_get) -> Place | None:
