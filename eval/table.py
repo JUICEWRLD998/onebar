@@ -6,7 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ORDER = ["template", "base", "large", "tuned"]
-LABEL = {"template": "Code template (no model)", "base": "Base Qwen3-8B", "large": "Large Qwen3.5-397B",
+LABEL = {"template": "Code template (no model)", "base": "Base Qwen3-8B", "large": "Larger Qwen3.6-35B-A3B",
          "tuned": "Tuned Qwen3-8B (LoRA)"}
 
 

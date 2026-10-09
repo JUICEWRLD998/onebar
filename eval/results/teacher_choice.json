@@ -15,9 +15,9 @@
   },
   "Qwen/Qwen3.6-35B-A3B": {
     "questions": 50,
-    "errors": 50,
-    "with_a_passing_candidate": 0,
-    "first_candidate_passes": 0,
-    "seconds": 11.9
+    "errors": 0,
+    "with_a_passing_candidate": 44,
+    "first_candidate_passes": 39,
+    "seconds": 41.9
   }
 }

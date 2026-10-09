@@ -3,10 +3,13 @@
   "locations": 1603,
   "situations": 4809,
   "test_rows": 414,
-  "train_rows": 1824,
-  "val_rows": 295,
+  "train_rows": 3290,
+  "val_rows": 514,
   "paraphrased_share": 0.343,
-  "reply_septets_mean": 51.9,
-  "storm_ahead_share_train": 0.102,
-  "teacher": "Qwen/Qwen3.5-397B-A17B"
+  "reply_septets_mean": 46.4,
+  "storm_ahead_share_train": 0.07,
+  "teachers": {
+    "Qwen/Qwen3.5-397B-A17B": 2119,
+    "Qwen/Qwen3.6-35B-A3B": 1685
+  }
 }

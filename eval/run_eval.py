@@ -2,7 +2,7 @@
 
   python eval/run_eval.py --system template
   python eval/run_eval.py --system base            # Qwen/Qwen3-8B
-  python eval/run_eval.py --system large           # Qwen/Qwen3.5-397B-A17B, same short prompt as base
+  python eval/run_eval.py --system large           # Qwen/Qwen3.6-35B-A3B, same short prompt as base
   python eval/run_eval.py --system tuned           # ONEBAR_MODEL (tinker://.../sampler_weights/...)
 
 Accuracy metrics come from one concurrent pass over every row. Latency comes from a second, sequential pass over the
@@ -27,7 +27,7 @@ from onebar.env import load_env
 from onebar.model.client import TinkerDraft
 from onebar.pipeline import answer_from_facts
 
-MODELS = {"base": "Qwen/Qwen3-8B", "large": "Qwen/Qwen3.5-397B-A17B"}
+MODELS = {"base": "Qwen/Qwen3-8B", "large": "Qwen/Qwen3.6-35B-A3B"}
 
 
 def load_rows(limit: int | None) -> list[dict]:

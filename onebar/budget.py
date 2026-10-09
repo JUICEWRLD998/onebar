@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PRICES = ROOT / "eval" / "prices.json"
 LEDGER = ROOT / "data" / "spend.json"
-DEFAULT_CAP_USD = 5.0  # sampling for data and eval; the rest of the grant is held back for training
+DEFAULT_CAP_USD = 3.2  # sampling for data and eval; about $1.5 is held back for training so the whole grant stays under $5
 
 
 class BudgetExceeded(RuntimeError):

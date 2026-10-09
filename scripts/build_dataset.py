@@ -217,41 +217,50 @@ def cmd_teacher_eval(args) -> None:
     log("best teacher by questions with a passing candidate:", best)
 
 
+def load_teacher_caches() -> dict[str, tuple[str, list[str]]]:
+    """id -> (model that wrote the candidates, candidates), merged over every teacher_*.jsonl cache."""
+    done: dict[str, tuple[str, list[str]]] = {}
+    for path in sorted(CACHE.glob("teacher_*.jsonl")):
+        model = path.stem[len("teacher_"):].replace("_", "/", 1)
+        for r in read_jsonl(path, lenient=True):
+            done.setdefault(r["id"], (model, r["candidates"]))
+    return done
+
+
 def cmd_teacher(args) -> None:
     rows = read_jsonl(DATA / "questions.jsonl")
     todo_rows = [r for r in rows if r["split"] in ("train", "val")]
     cache_path = CACHE / f"teacher_{args.model.replace('/', '_')}.jsonl"
-    done = {r["id"]: r["candidates"] for r in read_jsonl(cache_path, lenient=True)}
-    todo = [r for r in todo_rows if r["id"] not in done]
-    if args.cached_only:
-        todo = []
-    sampler = llm.Sampler(args.model)
+    done = load_teacher_caches()
+    todo = [] if args.cached_only else [r for r in todo_rows if r["id"] not in done]
     log(f"teacher {args.model}: {len(todo)} to draw, {len(done)} cached")
+    if todo:
+        sampler = llm.Sampler(args.model)
 
-    def work(row):
-        cs = draw(sampler, args.model, row, args.candidates, 0.8)
-        append_jsonl(cache_path, {"id": row["id"], "candidates": cs})
-        return cs
+        def work(row):
+            cs = draw(sampler, args.model, row, args.candidates, 0.8)
+            append_jsonl(cache_path, {"id": row["id"], "candidates": cs})
+            return cs
 
-    errs = [r for r in llm.parallel_map(work, todo, workers=args.workers) if isinstance(r, Exception)]
-    if errs:
-        log(f"{len(errs)} draws failed; rerun to retry them. first: {errs[0]}")
-    done = {r["id"]: r["candidates"] for r in read_jsonl(cache_path, lenient=True)}
+        errs = [r for r in llm.parallel_map(work, todo, workers=args.workers) if isinstance(r, Exception)]
+        if errs:
+            log(f"{len(errs)} draws failed; rerun to retry them. first: {errs[0]}")
+        done = load_teacher_caches()
 
     kept: dict[str, list[dict]] = {"train": [], "val": []}
     dropped: Counter = Counter()
     for row in todo_rows:
-        cs = done.get(row["id"])
-        if cs is None:
+        if row["id"] not in done:
             dropped["no_draw"] += 1
             continue
+        model, cs = done[row["id"]]
         facts = facts_from_json(row["facts"])
         ch = teacher.pick(cs, facts, row["question"])
         if ch is None:
             dropped["no_passing_candidate"] += 1
             continue
         kept[row["split"]].append({**row, "reply": ch.text, "septets": ch.result.septets,
-                                   "teacher": {"model": args.model, "candidates": ch.n_candidates, "passed": ch.n_passed}})
+                                   "teacher": {"model": model, "candidates": ch.n_candidates, "passed": ch.n_passed}})
     write_jsonl(DATA / "train.jsonl", kept["train"])
     write_jsonl(DATA / "val.jsonl", kept["val"])
     log(f"teacher: train {len(kept['train'])}, val {len(kept['val'])}, dropped {dict(dropped)}")
@@ -273,7 +282,7 @@ def cmd_assemble(args) -> None:
         "paraphrased_share": share(rows, lambda r: r["paraphrased"]),
         "reply_septets_mean": round(sum(r["septets"] for r in train) / max(len(train), 1), 1),
         "storm_ahead_share_train": share(train, lambda r: any(f["key"] == "storm_first" for f in r["facts"])),
-        "teacher": train[0]["teacher"]["model"] if train else None,
+        "teachers": dict(Counter(r["teacher"]["model"] for r in train + val)),
     }
     (DATA / "stats.json").write_text(json.dumps(stats, indent=2) + "\n", encoding="utf-8")
     log(json.dumps(stats, indent=2))
