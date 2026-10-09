@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import urllib.request
+from datetime import datetime, timedelta, timezone
 from typing import Callable
 
 BASE = "https://api.open-meteo.com/v1/forecast"
@@ -50,3 +51,12 @@ def fetch_forecast(
     if not isinstance(hourly, dict) or any(k not in hourly for k in REQUIRED_HOURLY):
         raise ForecastError("Open-Meteo response is missing hourly data")
     return data
+
+
+def local_now(forecast: dict, now_utc: datetime | None = None) -> datetime:
+    """The place's own wall-clock time, as a naive datetime on the forecast's clock (timezone=auto)."""
+    now_utc = now_utc or datetime.now(timezone.utc)
+    offset = forecast.get("utc_offset_seconds")
+    if offset is None:
+        raise ForecastError("forecast has no utc_offset_seconds")
+    return now_utc.astimezone(timezone(timedelta(seconds=offset))).replace(tzinfo=None)

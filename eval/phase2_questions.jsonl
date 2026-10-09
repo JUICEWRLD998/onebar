@@ -1,0 +1,20 @@
+{"id": "q01", "place": "jungfrau_ch", "question": "storm before I'm back at the car?", "return_by": "17:00"}
+{"id": "q02", "place": "snowdon_uk", "question": "gonna rain on the summit?"}
+{"id": "q03", "place": "ben_nevis_uk", "question": "how windy is it up top rn"}
+{"id": "q04", "place": "mont_blanc_fr", "question": "when is sunset, need my headlamp?"}
+{"id": "q05", "place": "dolomites_it", "question": "cold enough for the big jacket?"}
+{"id": "q06", "place": "tatra_pl", "question": "when do i need to turn around?", "return_by": "16:30"}
+{"id": "q07", "place": "galdhopiggen_no", "question": "ridge ok by 3 then car?"}
+{"id": "q08", "place": "kebnekaise_se", "question": "is it safe to keep going up"}
+{"id": "q09", "place": "teide_es", "question": "weather looking ok?"}
+{"id": "q10", "place": "half_dome_us", "question": "thunderstorms today? i'm on the cables at 2", "storm_at": "13:00"}
+{"id": "q11", "place": "rainier_us", "question": "wind and rain by 4?"}
+{"id": "q12", "place": "longs_peak_us", "question": "storm by noon? should i bail", "storm_at": "11:00"}
+{"id": "q13", "place": "presidential_us", "question": "how cold will it feel up there"}
+{"id": "q14", "place": "banff_ca", "question": "will it be dark before I get down, back at 6", "return_by": "18:00"}
+{"id": "q15", "place": "torres_cl", "question": "gusts bad on the pass?"}
+{"id": "q16", "place": "aconcagua_ar", "question": "can i summit and be back by 5?", "return_by": "17:00"}
+{"id": "q17", "place": "kilimanjaro_tz", "question": "any storms, am heading up now", "storm_at": "15:00"}
+{"id": "q18", "place": "everest_bc_np", "question": "temp and wind at camp?"}
+{"id": "q19", "place": "fuji_jp", "question": "ok to go on? back at the hut by 4", "return_by": "16:00", "storm_at": "14:00"}
+{"id": "q20", "place": "tongariro_nz", "question": "rain coming? sunset time too"}

@@ -1,0 +1,497 @@
+{
+  "summary": {
+    "model": "Qwen/Qwen3-8B",
+    "n": 20,
+    "first_try_pass": 12,
+    "pass_after_retry": 18,
+    "template_fallback": 2,
+    "latency_p50_s": 1.24,
+    "latency_max_s": 4.87,
+    "model_errors": 0
+  },
+  "rows": [
+    {
+      "id": "q01",
+      "question": "storm before I'm back at the car?",
+      "synthetic_storm": false,
+      "path": "model-retry",
+      "reply": "No storm before 15:30 when you must turn around to reach car by 17:00 before sunset at 18:54",
+      "septets": 92,
+      "latency_s": 3.82,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "No storm",
+          "passed": false,
+          "reasons": [
+            "missing_fact:turn_by|car_by|sunset"
+          ],
+          "error": null,
+          "latency_s": 2.69
+        },
+        {
+          "source": "model-retry",
+          "text": "No storm before 15:30 when you must turn around to reach car by 17:00 before sunset at 18:54",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 1.13
+        }
+      ]
+    },
+    {
+      "id": "q02",
+      "question": "gonna rain on the summit?",
+      "synthetic_storm": false,
+      "path": "model",
+      "reply": "Yes. highest chance of rain in the next hours: 100% first rain hour: 17:00",
+      "septets": 74,
+      "latency_s": 1.28,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "Yes. highest chance of rain in the next hours: 100% first rain hour: 17:00",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 1.28
+        }
+      ]
+    },
+    {
+      "id": "q03",
+      "question": "how windy is it up top rn",
+      "synthetic_storm": false,
+      "path": "model",
+      "reply": "The strongest wind gust in the next hours is 62km/h.",
+      "septets": 52,
+      "latency_s": 1.28,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "The strongest wind gust in the next hours is 62km/h.",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 1.28
+        }
+      ]
+    },
+    {
+      "id": "q04",
+      "question": "when is sunset, need my headlamp?",
+      "synthetic_storm": false,
+      "path": "model",
+      "reply": "next sunset: 18:59",
+      "septets": 18,
+      "latency_s": 0.89,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "next sunset: 18:59",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 0.89
+        }
+      ]
+    },
+    {
+      "id": "q05",
+      "question": "cold enough for the big jacket?",
+      "synthetic_storm": false,
+      "path": "model",
+      "reply": "Yes. coldest feels-like in the next hours: -1C",
+      "septets": 46,
+      "latency_s": 1.16,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "Yes. coldest feels-like in the next hours: -1C",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 1.16
+        }
+      ]
+    },
+    {
+      "id": "q06",
+      "question": "when do i need to turn around?",
+      "synthetic_storm": false,
+      "path": "model-retry",
+      "reply": "Latest turn-around time: 15:00 thunderstorm: no storm",
+      "septets": 53,
+      "latency_s": 2.16,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "Latest turn-around time: 15:00",
+          "passed": false,
+          "reasons": [
+            "missing_fact:storm_none"
+          ],
+          "error": null,
+          "latency_s": 0.82
+        },
+        {
+          "source": "model-retry",
+          "text": "Latest turn-around time: 15:00 thunderstorm: no storm",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 1.33
+        }
+      ]
+    },
+    {
+      "id": "q07",
+      "question": "ridge ok by 3 then car?",
+      "synthetic_storm": false,
+      "path": "model-retry",
+      "reply": "Yes. -16C. 48km/h. 19:00. 35%. 18:35. 07:53. 8h15m. 2221m. 15:00. thunderstorm: no storm.",
+      "septets": 89,
+      "latency_s": 4.87,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "Yes. 14:40. 55km/h. 19:00. 35%. 18:35. 07:53. 8h15m. 2221m. 15:00.",
+          "passed": false,
+          "reasons": [
+            "invented_number:14:40",
+            "invented_number:55km/h",
+            "missing_fact:storm_none",
+            "missing_fact:gust_max"
+          ],
+          "error": null,
+          "latency_s": 2.33
+        },
+        {
+          "source": "model-retry",
+          "text": "Yes. -16C. 48km/h. 19:00. 35%. 18:35. 07:53. 8h15m. 2221m. 15:00. thunderstorm: no storm.",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 2.54
+        }
+      ]
+    },
+    {
+      "id": "q08",
+      "question": "is it safe to keep going up",
+      "synthetic_storm": false,
+      "path": "template",
+      "reply": "Looks OK. Gusts 47km/h. No storm expected.",
+      "septets": 42,
+      "latency_s": 2.02,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "No. Strongest wind gust 47km/h at 10:00. Coldest feels-like -19C. Rain no. Thunderstorm no.",
+          "passed": false,
+          "reasons": [
+            "missing_fact:storm_none"
+          ],
+          "error": null,
+          "latency_s": 1.12
+        },
+        {
+          "source": "model-retry",
+          "text": "No. Strongest wind gust 47km/h at 10:00. Coldest feels-like -19C. Rain no. Thunderstorm no.",
+          "passed": false,
+          "reasons": [
+            "missing_fact:storm_none"
+          ],
+          "error": null,
+          "latency_s": 0.9
+        },
+        {
+          "source": "template",
+          "text": "Looks OK. Gusts 47km/h. No storm expected.",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 0.0
+        }
+      ]
+    },
+    {
+      "id": "q09",
+      "question": "weather looking ok?",
+      "synthetic_storm": false,
+      "path": "model",
+      "reply": "Yes. Temperature 2C. Coldest -5C. Wind 37km/h at 20:00. No rain. No storm.",
+      "septets": 74,
+      "latency_s": 1.05,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "Yes. Temperature 2C. Coldest -5C. Wind 37km/h at 20:00. No rain. No storm.",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 1.05
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "thunderstorms today? i'm on the cables at 2",
+      "synthetic_storm": true,
+      "path": "template",
+      "reply": "Storm from 13:00, before 14:00.",
+      "septets": 31,
+      "latency_s": 1.93,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "No thunderstorms today. First thunderstorm hour: 13:00. Rain: no rain.",
+          "passed": false,
+          "reasons": [
+            "contradiction:storm"
+          ],
+          "error": null,
+          "latency_s": 1.03
+        },
+        {
+          "source": "model-retry",
+          "text": "No thunderstorms today. First thunderstorm hour: 13:00. Rain: no rain.",
+          "passed": false,
+          "reasons": [
+            "contradiction:storm"
+          ],
+          "error": null,
+          "latency_s": 0.9
+        },
+        {
+          "source": "template",
+          "text": "Storm from 13:00, before 14:00.",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 0.0
+        }
+      ]
+    },
+    {
+      "id": "q11",
+      "question": "wind and rain by 4?",
+      "synthetic_storm": false,
+      "path": "model",
+      "reply": "No rain. No storm. Strongest wind gust 26km/h at 21:00.",
+      "septets": 55,
+      "latency_s": 1.2,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "No rain. No storm. Strongest wind gust 26km/h at 21:00.",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 1.2
+        }
+      ]
+    },
+    {
+      "id": "q12",
+      "question": "storm by noon? should i bail",
+      "synthetic_storm": true,
+      "path": "model",
+      "reply": "No storm by noon. Strongest wind gust 22km/h at 11:00. First thunderstorm hour 11:00. Rain: no rain.",
+      "septets": 100,
+      "latency_s": 0.97,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "No storm by noon. Strongest wind gust 22km/h at 11:00. First thunderstorm hour 11:00. Rain: no rain.",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 0.97
+        }
+      ]
+    },
+    {
+      "id": "q13",
+      "question": "how cold will it feel up there",
+      "synthetic_storm": false,
+      "path": "model",
+      "reply": "The coldest feels-like in the next hours is -6C.",
+      "septets": 48,
+      "latency_s": 0.97,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "The coldest feels-like in the next hours is -6C.",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 0.97
+        }
+      ]
+    },
+    {
+      "id": "q14",
+      "question": "will it be dark before I get down, back at 6",
+      "synthetic_storm": false,
+      "path": "model-retry",
+      "reply": "No. Next sunset is 19:06. You arrive back at 18:00. Daylight left is 8h46m. Thunderstorm: no storm.",
+      "septets": 99,
+      "latency_s": 3.8,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "No. Next sunset is 19:06. You arrive back at 18:00. Daylight left is 8h46m.",
+          "passed": false,
+          "reasons": [
+            "missing_fact:storm_none"
+          ],
+          "error": null,
+          "latency_s": 1.88
+        },
+        {
+          "source": "model-retry",
+          "text": "No. Next sunset is 19:06. You arrive back at 18:00. Daylight left is 8h46m. Thunderstorm: no storm.",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 1.92
+        }
+      ]
+    },
+    {
+      "id": "q15",
+      "question": "gusts bad on the pass?",
+      "synthetic_storm": false,
+      "path": "model",
+      "reply": "No. Strongest wind gust in the next hours: 17km/h. Time of the strongest gust: 21:00.",
+      "septets": 85,
+      "latency_s": 1.11,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "No. Strongest wind gust in the next hours: 17km/h. Time of the strongest gust: 21:00.",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 1.11
+        }
+      ]
+    },
+    {
+      "id": "q16",
+      "question": "can i summit and be back by 5?",
+      "synthetic_storm": false,
+      "path": "model-retry",
+      "reply": "No. Latest turn-around time: 15:30. Daylight left: 9h27m. First rain hour: 15:00. Strongest wind gust in the next hours: 93km/h. Thunderstorm: no storm.",
+      "septets": 152,
+      "latency_s": 2.57,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "No. Latest turn-around time: 15:30. Daylight left: 9h27m. First rain hour: 15:00. Thunderstorm: no storm.",
+          "passed": false,
+          "reasons": [
+            "missing_fact:gust_max"
+          ],
+          "error": null,
+          "latency_s": 1.31
+        },
+        {
+          "source": "model-retry",
+          "text": "No. Latest turn-around time: 15:30. Daylight left: 9h27m. First rain hour: 15:00. Strongest wind gust in the next hours: 93km/h. Thunderstorm: no storm.",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 1.26
+        }
+      ]
+    },
+    {
+      "id": "q17",
+      "question": "any storms, am heading up now",
+      "synthetic_storm": true,
+      "path": "model",
+      "reply": "Yes. First thunderstorm hour: 15:00. First rain hour: 11:00. Strongest wind gust: 63km/h at 10:00.",
+      "septets": 98,
+      "latency_s": 1.04,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "Yes. First thunderstorm hour: 15:00. First rain hour: 11:00. Strongest wind gust: 63km/h at 10:00.",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 1.04
+        }
+      ]
+    },
+    {
+      "id": "q18",
+      "question": "temp and wind at camp?",
+      "synthetic_storm": false,
+      "path": "model",
+      "reply": "-5C 18km/h",
+      "septets": 10,
+      "latency_s": 0.72,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "-5C 18km/h",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 0.72
+        }
+      ]
+    },
+    {
+      "id": "q19",
+      "question": "ok to go on? back at the hut by 4",
+      "synthetic_storm": true,
+      "path": "model-retry",
+      "reply": "No. Latest turn-around time: 14:30. Daylight left: 6h58m. First thunderstorm hour: 14:00. Strongest wind gust in the next hours: 24km/h.",
+      "septets": 136,
+      "latency_s": 2.26,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "No. Latest turn-around time: 14:30. Daylight left: 6h58m. First thunderstorm hour: 14:00.",
+          "passed": false,
+          "reasons": [
+            "missing_fact:gust_max"
+          ],
+          "error": null,
+          "latency_s": 1.05
+        },
+        {
+          "source": "model-retry",
+          "text": "No. Latest turn-around time: 14:30. Daylight left: 6h58m. First thunderstorm hour: 14:00. Strongest wind gust in the next hours: 24km/h.",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 1.21
+        }
+      ]
+    },
+    {
+      "id": "q20",
+      "question": "rain coming? sunset time too",
+      "synthetic_storm": false,
+      "path": "model",
+      "reply": "Yes. 69% chance. 16:00. 19:29.",
+      "septets": 30,
+      "latency_s": 0.94,
+      "attempts": [
+        {
+          "source": "model",
+          "text": "Yes. 69% chance. 16:00. 19:29.",
+          "passed": true,
+          "reasons": [],
+          "error": null,
+          "latency_s": 0.94
+        }
+      ]
+    }
+  ]
+}

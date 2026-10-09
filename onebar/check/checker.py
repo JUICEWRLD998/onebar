@@ -6,6 +6,7 @@ Reason codes (the retry prompt and the UI read these):
   charset:<chars>          characters outside GSM-7
   invented_number:<text>   a number that is in no fact and not in the question
   missing_fact:<k1|k2>     the question needs one of these facts and the reply states none
+  contradiction:<topic>    the reply denies a storm or rain the facts contain, or announces one they rule out
 """
 from __future__ import annotations
 
@@ -15,6 +16,7 @@ from dataclasses import dataclass
 from onebar.check.gsm7 import LIMIT, analyze
 from onebar.check.intents import classify, required_groups
 from onebar.check.numbers import NumberTrace, extract, invented, trace_numbers
+from onebar.check.polarity import contradictions
 from onebar.facts.model import FactSet
 
 
@@ -48,6 +50,8 @@ def check(reply: str, facts: FactSet, question: str) -> CheckResult:
 
     traces = trace_numbers(reply, facts, question)
     reasons.extend(f"invented_number:{text}" for text in invented(traces))
+
+    reasons.extend(f"contradiction:{topic}" for topic in contradictions(reply, facts))
 
     for group in required_groups(list(intents)):
         present = [k for k in group if k in facts]
