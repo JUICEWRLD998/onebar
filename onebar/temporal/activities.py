@@ -16,12 +16,15 @@ from temporalio import activity
 from temporalio.exceptions import ApplicationError
 
 from onebar import pipeline, trips
-from onebar.channels.traces import make_trace
+from onebar.channels.traces import hours_slice, make_baseline, make_trace
+from onebar.model.prompt import render as render_prompt
 from onebar.facts.engine import Trip
 from onebar.facts.locate import Place, geocode
 from onebar.facts.open_meteo import ForecastError, fetch_forecast
 from onebar.model.client import Draft
-from onebar.temporal.models import AnswerReq, AnswerResult, ResolveReq, ResolveResult, SendReq
+from onebar.temporal.models import (
+    AnswerReq, AnswerResult, PlaceReq, PlaceResult, ResolveReq, ResolveResult, SendReq,
+)
 
 DEFAULT_GRACE_MIN = 30
 
@@ -33,6 +36,7 @@ class Deps:
     get_forecast: Callable[[str], dict] | None = None  # None uses the real Open-Meteo getter
     get_geocode: Callable[[str], dict] | None = None
     traces: object | None = None  # a TraceStore: where the trace of each answer is saved
+    baseline_draft: Draft | None = None  # the base model, only to show how it fares on the same question
     grace_min: int = field(default_factory=lambda: int(os.environ.get("ONEBAR_GRACE_MIN", DEFAULT_GRACE_MIN)))
     cache_ttl_s: float = 600.0  # 0 turns the forecast cache off
     _cache: dict = field(default_factory=dict, repr=False)
@@ -85,6 +89,20 @@ class Activities:
         )
 
     @activity.defn
+    def resolve_place(self, req: PlaceReq) -> PlaceResult:
+        """PLACE <name or lat,lon>: coordinates and the place's UTC offset, with no trip and no deadline."""
+        if req.coords:
+            place = Place(f"{req.coords[0]:.3f},{req.coords[1]:.3f}", req.coords[0], req.coords[1])
+        else:
+            kw = {"get": self.deps.get_geocode} if self.deps.get_geocode else {}
+            found = geocode(req.place, **kw)
+            if found is None:
+                return PlaceResult(ok=False, error="Could not find that place. Use PLACE lat,lon, like 46.55,7.98.")
+            place = found
+        offset = int(_forecast(self.deps, place.lat, place.lon)["utc_offset_seconds"])
+        return PlaceResult(ok=True, place=place.name, lat=place.lat, lon=place.lon, offset_s=offset)
+
+    @activity.defn
     def answer_question(self, req: AnswerReq) -> AnswerResult:
         """Facts and draft in one activity, so the 70 KB forecast never enters the workflow history."""
         forecast = _forecast(self.deps, req.lat, req.lon)
@@ -96,7 +114,17 @@ class Activities:
         except ValueError as exc:  # the forecast does not cover this moment; retrying will not change that
             raise ApplicationError(str(exc), non_retryable=True) from exc
         if self.deps.traces is not None and req.msg_id:
-            self.deps.traces.save(req.msg_id, make_trace(req.question, reply))
+            baseline = None
+            if self.deps.baseline_draft is not None:  # the base model's draft, shown beside ours and never sent
+                try:
+                    text = self.deps.baseline_draft(render_prompt(reply.facts, req.question))
+                    baseline = make_baseline(text, reply.facts, req.question)
+                except Exception:
+                    baseline = None  # a missing comparison must never cost the hiker their reply
+            self.deps.traces.save(
+                req.msg_id,
+                make_trace(req.question, reply, hours_slice(forecast, at), baseline, place=(req.lat, req.lon)),
+            )
         return AnswerResult(text=reply.text, path=reply.path, septets=reply.result.septets)
 
     @activity.defn
@@ -105,4 +133,4 @@ class Activities:
         return bool(self.deps.sender.send(req.key, req.to, req.text))
 
     def all(self) -> list:
-        return [self.resolve_trip, self.answer_question, self.send]
+        return [self.resolve_trip, self.resolve_place, self.answer_question, self.send]

@@ -1,0 +1,705 @@
+[
+ {
+  "id": "example-ridge",
+  "recorded": true,
+  "question": "ridge ok by 3:30pm then car?",
+  "place": {
+   "name": "Punta Salarioli",
+   "lat": 46.270668,
+   "lon": 8.1855412,
+   "elevation": "2651m"
+  },
+  "at": "2026-08-19T13:46",
+  "trip": {
+   "return_by": "18:30",
+   "descent_min": 90
+  },
+  "reply": "Yes, ridge ok by 15:30. No storm until 21:00, gusts up to 54km/h.",
+  "path": "model",
+  "septets": 65,
+  "intents": [
+   "turnaround",
+   "go_nogo"
+  ],
+  "numbers": [
+   {
+    "text": "15:30",
+    "ok": true,
+    "sources": [
+     [
+      "target",
+      null
+     ],
+     [
+      "question",
+      null
+     ]
+    ]
+   },
+   {
+    "text": "21:00",
+    "ok": true,
+    "sources": [
+     [
+      "storm_first",
+      "2026-08-19T21:00"
+     ]
+    ]
+   },
+   {
+    "text": "54km/h",
+    "ok": true,
+    "sources": [
+     [
+      "gust_max",
+      "2026-08-20T00:00"
+     ]
+    ]
+   }
+  ],
+  "attempts": [
+   {
+    "source": "model",
+    "text": "Yes, ridge ok by 15:30. No storm until 21:00, gusts up to 54km/h.",
+    "passed": true,
+    "reasons": [],
+    "error": null
+   }
+  ],
+  "hours": [
+   {
+    "t": "2026-08-19T13:00",
+    "temp": 14.2,
+    "gust": 29.2,
+    "pop": 0,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-08-19T14:00",
+    "temp": 14.4,
+    "gust": 31.3,
+    "pop": 0,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-08-19T15:00",
+    "temp": 14.3,
+    "gust": 28.8,
+    "pop": 0,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-08-19T16:00",
+    "temp": 13.6,
+    "gust": 29.2,
+    "pop": 5,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-08-19T17:00",
+    "temp": 13.4,
+    "gust": 29.2,
+    "pop": 30,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-08-19T18:00",
+    "temp": 12.8,
+    "gust": 28.1,
+    "pop": 38,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-08-19T19:00",
+    "temp": 12.0,
+    "gust": 30.2,
+    "pop": 55,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-08-19T20:00",
+    "temp": 11.7,
+    "gust": 31.3,
+    "pop": 60,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-08-19T21:00",
+    "temp": 10.9,
+    "gust": 36.7,
+    "pop": 8,
+    "storm": true,
+    "rain": false
+   },
+   {
+    "t": "2026-08-19T22:00",
+    "temp": 11.4,
+    "gust": 53.6,
+    "pop": 0,
+    "storm": true,
+    "rain": false
+   },
+   {
+    "t": "2026-08-19T23:00",
+    "temp": 11.5,
+    "gust": 44.6,
+    "pop": 0,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-08-20T00:00",
+    "temp": 11.4,
+    "gust": 54.0,
+    "pop": 0,
+    "storm": false,
+    "rain": false
+   }
+  ],
+  "baseline": {
+   "text": "Yes. 17:00 latest turn-around. 18:30 car time. 13:46 now. 15:30 question time. 20:29 next sunset. 6h43m daylight left. 21:00 first thunderstorm. 54km/h wind gust at 00:00. 7C coldest feels-like. 14C temperature now. 60% rain chance. No rain.",
+   "passed": false,
+   "reasons": [
+    "too_long:241",
+    "contradiction:rain"
+   ],
+   "septets": 241,
+   "numbers": [
+    {
+     "text": "17:00",
+     "ok": true,
+     "sources": [
+      [
+       "turn_by",
+       null
+      ]
+     ]
+    },
+    {
+     "text": "18:30",
+     "ok": true,
+     "sources": [
+      [
+       "car_by",
+       null
+      ]
+     ]
+    },
+    {
+     "text": "13:46",
+     "ok": true,
+     "sources": [
+      [
+       "now",
+       null
+      ]
+     ]
+    },
+    {
+     "text": "15:30",
+     "ok": true,
+     "sources": [
+      [
+       "target",
+       null
+      ],
+      [
+       "question",
+       null
+      ]
+     ]
+    },
+    {
+     "text": "20:29",
+     "ok": true,
+     "sources": [
+      [
+       "sunset",
+       "2026-08-19T20:29"
+      ]
+     ]
+    },
+    {
+     "text": "6h43m",
+     "ok": true,
+     "sources": [
+      [
+       "daylight_left",
+       null
+      ]
+     ]
+    },
+    {
+     "text": "21:00",
+     "ok": true,
+     "sources": [
+      [
+       "storm_first",
+       "2026-08-19T21:00"
+      ]
+     ]
+    },
+    {
+     "text": "54km/h",
+     "ok": true,
+     "sources": [
+      [
+       "gust_max",
+       "2026-08-20T00:00"
+      ]
+     ]
+    },
+    {
+     "text": "00:00",
+     "ok": true,
+     "sources": [
+      [
+       "gust_max_at",
+       "2026-08-20T00:00"
+      ]
+     ]
+    },
+    {
+     "text": "7C",
+     "ok": true,
+     "sources": [
+      [
+       "feels_min",
+       "2026-08-20T00:00"
+      ]
+     ]
+    },
+    {
+     "text": "14C",
+     "ok": true,
+     "sources": [
+      [
+       "temp_now",
+       "2026-08-19T13:00"
+      ]
+     ]
+    },
+    {
+     "text": "60%",
+     "ok": true,
+     "sources": [
+      [
+       "pop_max",
+       "2026-08-19T20:00"
+      ]
+     ]
+    }
+   ]
+  },
+  "created": "2026-10-09"
+ },
+ {
+  "id": "example-storm",
+  "recorded": true,
+  "question": "is it safe to stay out until 18:30, or is a storm coming?",
+  "place": {
+   "name": "Seducker Hochalm",
+   "lat": 47.1151963,
+   "lon": 11.2101032,
+   "elevation": "2265m"
+  },
+  "at": "2026-08-06T14:11",
+  "trip": {
+   "return_by": "20:15",
+   "descent_min": 90
+  },
+  "reply": "Storm started at 14:00. Gusts up to 23km/h.",
+  "path": "model",
+  "septets": 43,
+  "intents": [
+   "storm",
+   "go_nogo"
+  ],
+  "numbers": [
+   {
+    "text": "14:00",
+    "ok": true,
+    "sources": [
+     [
+      "storm_first",
+      "2026-08-06T14:00"
+     ],
+     [
+      "rain_first",
+      "2026-08-06T14:00"
+     ]
+    ]
+   },
+   {
+    "text": "23km/h",
+    "ok": true,
+    "sources": [
+     [
+      "gust_max",
+      "2026-08-06T19:00"
+     ]
+    ]
+   }
+  ],
+  "attempts": [
+   {
+    "source": "model",
+    "text": "Storm started at 14:00. Gusts up to 23km/h.",
+    "passed": true,
+    "reasons": [],
+    "error": null
+   }
+  ],
+  "hours": [
+   {
+    "t": "2026-08-06T14:00",
+    "temp": 13.7,
+    "gust": 18.0,
+    "pop": 100,
+    "storm": true,
+    "rain": true
+   },
+   {
+    "t": "2026-08-06T15:00",
+    "temp": 13.6,
+    "gust": 19.4,
+    "pop": 100,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-08-06T16:00",
+    "temp": 14.0,
+    "gust": 22.0,
+    "pop": 100,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-08-06T17:00",
+    "temp": 12.4,
+    "gust": 22.3,
+    "pop": 95,
+    "storm": true,
+    "rain": true
+   },
+   {
+    "t": "2026-08-06T18:00",
+    "temp": 12.5,
+    "gust": 21.6,
+    "pop": 95,
+    "storm": false,
+    "rain": true
+   },
+   {
+    "t": "2026-08-06T19:00",
+    "temp": 11.5,
+    "gust": 23.4,
+    "pop": 100,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-08-06T20:00",
+    "temp": 11.0,
+    "gust": 22.7,
+    "pop": 98,
+    "storm": false,
+    "rain": true
+   },
+   {
+    "t": "2026-08-06T21:00",
+    "temp": 10.8,
+    "gust": 15.8,
+    "pop": 98,
+    "storm": false,
+    "rain": true
+   },
+   {
+    "t": "2026-08-06T22:00",
+    "temp": 10.5,
+    "gust": 15.1,
+    "pop": 90,
+    "storm": false,
+    "rain": true
+   },
+   {
+    "t": "2026-08-06T23:00",
+    "temp": 10.9,
+    "gust": 15.1,
+    "pop": 80,
+    "storm": false,
+    "rain": true
+   },
+   {
+    "t": "2026-08-07T00:00",
+    "temp": 10.6,
+    "gust": 23.0,
+    "pop": 68,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-08-07T01:00",
+    "temp": 10.5,
+    "gust": 22.3,
+    "pop": 55,
+    "storm": false,
+    "rain": false
+   }
+  ],
+  "baseline": {
+   "text": "It is not safe to stay out until 18:30. First thunderstorm hour: 14:00. Latest turn-around time: 18:45. Time the hiker asked about: 18:30.",
+   "passed": false,
+   "reasons": [
+    "missing_fact:gust_max"
+   ],
+   "septets": 138,
+   "numbers": [
+    {
+     "text": "18:30",
+     "ok": true,
+     "sources": [
+      [
+       "target",
+       null
+      ],
+      [
+       "question",
+       null
+      ]
+     ]
+    },
+    {
+     "text": "14:00",
+     "ok": true,
+     "sources": [
+      [
+       "storm_first",
+       "2026-08-06T14:00"
+      ],
+      [
+       "rain_first",
+       "2026-08-06T14:00"
+      ]
+     ]
+    },
+    {
+     "text": "18:45",
+     "ok": true,
+     "sources": [
+      [
+       "turn_by",
+       null
+      ]
+     ]
+    },
+    {
+     "text": "18:30",
+     "ok": true,
+     "sources": [
+      [
+       "target",
+       null
+      ],
+      [
+       "question",
+       null
+      ]
+     ]
+    }
+   ]
+  },
+  "created": "2026-10-09"
+ },
+ {
+  "id": "example-turnback",
+  "recorded": true,
+  "question": "when to turn back?",
+  "place": {
+   "name": "P3597",
+   "lat": 46.1215251,
+   "lon": 8.0179172,
+   "elevation": "3572m"
+  },
+  "at": "2026-09-08T17:43",
+  "trip": {
+   "return_by": "20:30",
+   "descent_min": 90
+  },
+  "reply": "Turn back by 19:00. No storm before 22:00, gusts up to 64km/h.",
+  "path": "model",
+  "septets": 62,
+  "intents": [
+   "turnaround"
+  ],
+  "numbers": [
+   {
+    "text": "19:00",
+    "ok": true,
+    "sources": [
+     [
+      "turn_by",
+      null
+     ]
+    ]
+   },
+   {
+    "text": "22:00",
+    "ok": true,
+    "sources": [
+     [
+      "storm_first",
+      "2026-09-08T22:00"
+     ]
+    ]
+   },
+   {
+    "text": "64km/h",
+    "ok": true,
+    "sources": [
+     [
+      "gust_max",
+      "2026-09-08T23:00"
+     ]
+    ]
+   }
+  ],
+  "attempts": [
+   {
+    "source": "model",
+    "text": "Turn back by 19:00. No storm before 22:00, gusts up to 64km/h.",
+    "passed": true,
+    "reasons": [],
+    "error": null
+   }
+  ],
+  "hours": [
+   {
+    "t": "2026-09-08T17:00",
+    "temp": 7.8,
+    "gust": 43.2,
+    "pop": 60,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-09-08T18:00",
+    "temp": 7.4,
+    "gust": 44.6,
+    "pop": 85,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-09-08T19:00",
+    "temp": 6.4,
+    "gust": 44.6,
+    "pop": 85,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-09-08T20:00",
+    "temp": 5.2,
+    "gust": 43.9,
+    "pop": 88,
+    "storm": false,
+    "rain": true
+   },
+   {
+    "t": "2026-09-08T21:00",
+    "temp": 4.7,
+    "gust": 42.1,
+    "pop": 85,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-09-08T22:00",
+    "temp": 3.6,
+    "gust": 50.8,
+    "pop": 75,
+    "storm": true,
+    "rain": true
+   },
+   {
+    "t": "2026-09-08T23:00",
+    "temp": 4.5,
+    "gust": 63.7,
+    "pop": 18,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-09-09T00:00",
+    "temp": 3.3,
+    "gust": 48.2,
+    "pop": 40,
+    "storm": false,
+    "rain": false
+   },
+   {
+    "t": "2026-09-09T01:00",
+    "temp": 3.2,
+    "gust": 34.6,
+    "pop": 53,
+    "storm": false,
+    "rain": true
+   },
+   {
+    "t": "2026-09-09T02:00",
+    "temp": 3.0,
+    "gust": 38.5,
+    "pop": 58,
+    "storm": false,
+    "rain": true
+   },
+   {
+    "t": "2026-09-09T03:00",
+    "temp": 2.4,
+    "gust": 38.5,
+    "pop": 58,
+    "storm": false,
+    "rain": true
+   },
+   {
+    "t": "2026-09-09T04:00",
+    "temp": 1.7,
+    "gust": 43.6,
+    "pop": 53,
+    "storm": false,
+    "rain": true
+   }
+  ],
+  "baseline": {
+   "text": "Latest turn-around time: 19:00",
+   "passed": false,
+   "reasons": [
+    "missing_fact:storm_first"
+   ],
+   "septets": 30,
+   "numbers": [
+    {
+     "text": "19:00",
+     "ok": true,
+     "sources": [
+      [
+       "turn_by",
+       null
+      ]
+     ]
+    }
+   ]
+  },
+  "created": "2026-10-09"
+ }
+]

@@ -35,7 +35,8 @@ class WorkflowState:
     sender: str
     trip: Optional[TripState] = None
     seen: List[str] = field(default_factory=list)  # message ids already accepted, newest last
-    last_pos: Optional[List[float]] = None  # [lat, lon] of the last trip
+    last_pos: Optional[List[float]] = None  # [lat, lon] of the last trip or PLACE
+    last_offset_s: int = 0  # that place's UTC offset, so a question without a trip still gets the right local time
     last_msg_iso: Optional[str] = None
     processed: int = 0  # messages handled since the last continue-as-new
     can_after: int = 100  # continue-as-new after this many messages, to keep history small
@@ -63,6 +64,22 @@ class ResolveResult:
     alert_iso: str = ""
     back_local: str = ""
     alert_local: str = ""
+
+
+@dataclass
+class PlaceReq:
+    place: str
+    coords: Optional[List[float]]
+
+
+@dataclass
+class PlaceResult:
+    ok: bool
+    error: str = ""
+    place: str = ""
+    lat: float = 0.0
+    lon: float = 0.0
+    offset_s: int = 0
 
 
 @dataclass

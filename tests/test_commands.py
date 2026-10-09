@@ -68,6 +68,18 @@ def test_phone_contacts_are_refused_when_no_sms_channel_exists():
     assert isinstance(C.parse("TRIP 46.5,7.9 BACK 17:00 CONTACT nobody", allow_phone=False), C.BadCmd)
 
 
+def test_place_command_takes_a_name_or_coordinates():
+    assert C.parse("PLACE Zermatt") == C.PlaceCmd("Zermatt", None)
+    assert C.parse("place Ben Nevis summit") == C.PlaceCmd("Ben Nevis summit", None)
+    assert C.parse("Place 46.55, 7.98") == C.PlaceCmd("46.55, 7.98", (46.55, 7.98))
+    assert isinstance(C.parse("PLACE 95,10"), C.BadCmd)
+
+
+@pytest.mark.parametrize("text", ["place for a tent, is wind bad?", "PLACE", "place", "where is the best place to turn?"])
+def test_place_is_not_taken_from_questions(text):
+    assert isinstance(C.parse(text), C.QuestionCmd)
+
+
 def test_empty_and_overlong_messages():
     assert isinstance(C.parse(""), C.BadCmd) and isinstance(C.parse("   "), C.BadCmd)
     assert isinstance(C.parse("x" * (C.MAX_LEN + 1)), C.BadCmd)

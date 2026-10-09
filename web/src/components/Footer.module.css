@@ -1,0 +1,36 @@
+.footer {
+  margin-top: var(--s-8);
+  border-top: 1px solid var(--line);
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.inner {
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding: var(--s-5) var(--gutter);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3) var(--s-6);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1) var(--s-4);
+}
+
+.links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
+  color: var(--ink-muted);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .links a:hover {
+    color: var(--ink);
+  }
+}

@@ -17,7 +17,8 @@ with workflow.unsafe.imports_passed_through():
     from onebar import commands, trips
     from onebar.temporal.activities import Activities
     from onebar.temporal.models import (
-        AnswerReq, AnswerResult, Inbound, ResolveReq, ResolveResult, SendReq, TripState, WorkflowState,
+        AnswerReq, AnswerResult, Inbound, PlaceReq, PlaceResult, ResolveReq, ResolveResult, SendReq, TripState,
+        WorkflowState,
     )
 
 SEEN_KEEP = 1000
@@ -56,6 +57,7 @@ class TripWorkflow:
     def status(self) -> dict:
         t = self.s.trip
         return {"trip": None if t is None else {"place": t.place, "back": t.back_local, "alerted": t.alerted},
+                "pos": self.s.last_pos, "offset_s": self.s.last_offset_s,
                 "queued": len(self.inbox), "processed": self.s.processed}
 
     # ---- main loop -------------------------------------------------------------------------------------------
@@ -108,6 +110,8 @@ class TripWorkflow:
             self.done = True
         elif isinstance(cmd, commands.HelpCmd):
             await self._reply(msg, commands.HELP_TEXT)
+        elif isinstance(cmd, commands.PlaceCmd):
+            await self._place(msg, cmd)
         elif isinstance(cmd, commands.BadCmd):
             await self._reply(msg, cmd.reason)
         else:
@@ -133,7 +137,25 @@ class TripWorkflow:
         )
         self.alert_failed = False
         self.s.last_pos = [res.lat, res.lon]
+        self.s.last_offset_s = res.offset_s
         await self._reply(msg, trips.trip_saved_text(res.back_local, res.alert_local))
+
+    async def _place(self, msg: Inbound, cmd: "commands.PlaceCmd") -> None:
+        try:
+            res: PlaceResult = await workflow.execute_activity_method(
+                Activities.resolve_place,
+                PlaceReq(place=cmd.place, coords=list(cmd.coords) if cmd.coords else None),
+                start_to_close_timeout=timedelta(seconds=60), retry_policy=NET_RETRY,
+            )
+        except ActivityError:
+            await self._reply(msg, trips.FORECAST_DOWN)
+            return
+        if not res.ok:
+            await self._reply(msg, res.error)
+            return
+        self.s.last_pos = [res.lat, res.lon]
+        self.s.last_offset_s = res.offset_s
+        await self._reply(msg, f"Place set: {res.place}. Ask your question.")
 
     async def _question(self, msg: Inbound, text: str) -> None:
         t = self.s.trip
@@ -141,7 +163,7 @@ class TripWorkflow:
         if pos is None:
             await self._reply(msg, trips.NEED_PLACE)
             return
-        offset = t.offset_s if t else 0
+        offset = t.offset_s if t else self.s.last_offset_s
         try:
             ans: AnswerResult = await workflow.execute_activity_method(
                 Activities.answer_question,

@@ -1,0 +1,37 @@
+/* Sits in the top right of a reading page and fades out toward the text. Hidden where it would sit under the heading. */
+.field {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(46%, 36rem);
+  height: 21rem;
+  pointer-events: none;
+  /* Fades toward the text on the left and toward the content below, so it has no hard edge. */
+  -webkit-mask-image:
+    linear-gradient(to left, var(--ink) 25%, transparent 100%), linear-gradient(to bottom, var(--ink) 55%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to left, var(--ink) 25%, transparent 100%), linear-gradient(to bottom, var(--ink) 55%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.minor {
+  fill: none;
+  stroke: var(--terrain);
+  stroke-width: 0.9;
+  opacity: 0.5;
+}
+
+.major {
+  fill: none;
+  stroke: var(--terrain-ink);
+  stroke-width: 1.5;
+  opacity: 0.6;
+}
+
+@media (min-width: 64rem) {
+  .field {
+    display: block;
+  }
+}

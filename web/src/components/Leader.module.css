@@ -1,0 +1,30 @@
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* A surface-coloured halo under the line keeps it readable where it crosses text. */
+.halo {
+  fill: none;
+  stroke: var(--ground);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dot {
+  fill: var(--accent);
+  stroke: var(--ground);
+  stroke-width: 2;
+}

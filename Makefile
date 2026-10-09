@@ -24,6 +24,15 @@ train:
 web:
 	uvicorn onebar.channels.web_server:app --port 8000
 
+web-dev:
+	cd web && npm run dev
+
+web-build:
+	cd web && npm run typecheck && npm test && npm run build
+
+web-check:
+	cd web && npm run palette
+
 worker:
 	python -m onebar.temporal.worker
 

@@ -16,3 +16,13 @@ data/e2e.log
 data/e2e-temporal.db*
 data/outbox.jsonl
 data/*.tmp
+
+# web UI (Phase 7)
+web/node_modules/
+web/dist/
+data/ui-shots/
+data/ui-score/
+data/preview.log
+data/worker*.log
+data/api*.log
+data/spend.json.tmp

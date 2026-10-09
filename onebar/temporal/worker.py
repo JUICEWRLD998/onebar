@@ -43,7 +43,13 @@ async def main() -> None:
         os.environ["IMAP_APP_PASSWORD"] = ""  # build_sender enables email only when both are set
     sender = wiring.build_sender(st)
     print("channels: email", "on" if sender.email else "off (local outbox)", "| web on", flush=True)
-    acts = Activities(Deps(sender=sender, draft=draft, traces=st.traces))
+    baseline = None
+    if draft is not None and os.environ.get("ONEBAR_COMPARE", "1") != "0":
+        try:  # the untuned base model, run only to show the comparison on the trace page
+            baseline = TinkerDraft(model="Qwen/Qwen3-8B")
+        except ModelError:
+            baseline = None
+    acts = Activities(Deps(sender=sender, draft=draft, traces=st.traces, baseline_draft=baseline))
     client = await Client.connect(os.environ.get("TEMPORAL_ADDRESS", "localhost:7233"),
                                   namespace=os.environ.get("TEMPORAL_NAMESPACE", "default"))
     keep_s = float(os.environ.get("ONEBAR_KEEPALIVE_S", 15))

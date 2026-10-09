@@ -4,6 +4,7 @@
   OUT                                                              checked in safe, cancels the alert
   FORGET                                                           delete everything stored about the sender
   HELP                                                             list the commands
+  PLACE <place or lat,lon>                                         set where you are, no trip needed
   anything else                                                    a weather question
 """
 from __future__ import annotations
@@ -42,6 +43,13 @@ class HelpCmd:
 
 
 @dataclass(frozen=True)
+class PlaceCmd:
+    """PLACE <name or lat,lon>: where the hiker is, with no trip and no contact."""
+    place: str
+    coords: tuple[float, float] | None
+
+
+@dataclass(frozen=True)
 class QuestionCmd:
     text: str
 
@@ -51,10 +59,11 @@ class BadCmd:
     reason: str  # short, safe to send back to the hiker
 
 
-Command = TripCmd | OutCmd | ForgetCmd | HelpCmd | QuestionCmd | BadCmd
+Command = TripCmd | OutCmd | ForgetCmd | HelpCmd | PlaceCmd | QuestionCmd | BadCmd
 
 _I = re.IGNORECASE
 _TRIP = re.compile(r"trip\s+(?P<place>.+?)\s+back\s+(?P<back>\S+)\s+contact\s+(?P<contact>.+)", _I | re.DOTALL)
+_PLACE = re.compile(r"place\s+(?P<place>.{1,80})", _I)
 _COORDS = re.compile(r"(-?\d{1,3}(?:\.\d+)?)\s*,\s*(-?\d{1,3}(?:\.\d+)?)")
 _EMAIL = re.compile(r"[^@\s]+@[^@\s]+\.[^@\s]+")
 _PHONE = re.compile(r"\+?\d[\d \-]{6,18}\d")
@@ -81,7 +90,20 @@ def parse(text: str, allow_phone: bool = True) -> Command:
         return _WORD[word.group(1).lower()]()
     if re.match(r"trip\b", text, _I):
         return _parse_trip(text, allow_phone)
+    place = _PLACE.fullmatch(text)
+    if place and "?" not in text:  # "place ..." with a question mark is a question
+        return _parse_place(place.group("place").strip())
     return QuestionCmd(text)
+
+
+def _parse_place(place: str) -> Command:
+    c = _COORDS.fullmatch(place)
+    if not c:
+        return PlaceCmd(place=place, coords=None)
+    lat, lon = float(c.group(1)), float(c.group(2))
+    if not (-90 <= lat <= 90 and -180 <= lon <= 180):
+        return BadCmd("Coordinates are out of range. Use: PLACE <place or lat,lon>")
+    return PlaceCmd(place=place, coords=(lat, lon))
 
 
 def _parse_trip(text: str, allow_phone: bool = True) -> Command:

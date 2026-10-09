@@ -1,0 +1,636 @@
+/* The audit sheet: one continuous survey sheet, not a stack of cards. Blocks differ in structure, not just content. */
+
+.sheet {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  min-width: 0;
+  padding: var(--s-5);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sheet);
+  box-shadow: var(--shadow-sheet);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s-3) var(--s-5);
+}
+
+.headText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  flex: 1 1 18rem;
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--step-2);
+}
+
+.caption {
+  color: var(--ink-muted);
+}
+
+.h3 {
+  margin-bottom: var(--s-2);
+  font-size: var(--step-1);
+}
+
+.quiet {
+  color: var(--ink-muted);
+}
+
+/* ---- Tuned / Base toggle ------------------------------------------------------------------------------------ */
+/* A segmented control: a sunk track with a raised ink segment. Radius is concentric: outer = inner + padding. */
+.toggle {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  background: var(--sunk);
+  border-radius: var(--r-control);
+  flex: none;
+}
+
+.toggleBtn {
+  min-height: calc(var(--target) - 6px);
+  padding: 0 var(--s-4);
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  font-weight: 600;
+}
+
+.toggleBtn[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--ground);
+}
+
+/* Disabled says so three ways: dimmed, struck through, and a not-allowed cursor. */
+.toggleBtn:disabled {
+  color: var(--ink-muted);
+  opacity: 0.6;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+/* ---- base model draft --------------------------------------------------------------------------------------- */
+.draft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-4);
+  background: var(--sunk);
+  border-radius: var(--r-control);
+}
+
+.draftLabel {
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+.draftText {
+  font-size: var(--step-1);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.draftNum {
+  font-weight: 700;
+  text-decoration: underline 2px solid var(--accent);
+  text-underline-offset: 0.2em;
+  padding: 0 2px;
+  border-radius: 3px;
+}
+
+.draftNum[data-ok="false"] {
+  background: var(--reject-wash);
+  text-decoration: underline 1.5px wavy var(--reject);
+}
+
+.draftNum[data-active="true"][data-ok="true"] {
+  background: var(--accent-wash);
+}
+
+.draftVerdict,
+.footVerdict {
+  font-weight: 600;
+}
+
+.draftVerdict[data-tone="bad"],
+.footVerdict[data-tone="bad"] {
+  color: var(--reject);
+}
+
+.draftVerdict[data-tone="good"],
+.footVerdict[data-tone="good"] {
+  color: var(--accent-ink);
+}
+
+/* ---- terrain map -------------------------------------------------------------------------------------------- */
+.map {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  margin: 0;
+}
+
+.frame {
+  position: relative;
+  background: var(--sunk);
+  border-radius: var(--r-tag);
+  overflow: hidden;
+}
+
+.mapSvg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.minor {
+  fill: none;
+  stroke: var(--terrain);
+  stroke-width: 0.9;
+  opacity: 0.6;
+  stroke-linejoin: round;
+}
+
+.major {
+  fill: none;
+  stroke: var(--terrain-ink);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+
+.summit {
+  fill: var(--terrain-ink);
+}
+
+.pinHalo {
+  fill: var(--sunk);
+  opacity: 0.85;
+}
+
+.pin {
+  fill: var(--accent);
+  stroke: var(--surface);
+  stroke-width: 2;
+}
+
+.mapLabel {
+  position: absolute;
+  max-width: 55%;
+  padding: 1px 6px;
+  background: color-mix(in oklab, var(--sunk) 88%, transparent);
+  border-radius: var(--r-tag);
+  color: var(--ink);
+  font-size: var(--step--1);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform: translate(14px, -50%);
+  pointer-events: none;
+}
+
+.mapLabel[data-side="left"] {
+  transform: translate(calc(-100% - 14px), -50%);
+}
+
+.mapLabel[data-kind="spot"] {
+  color: var(--terrain-ink);
+  font-weight: 600;
+  transform: translate(8px, -120%);
+}
+
+.mapLabel[data-kind="spot"][data-side="left"] {
+  transform: translate(calc(-100% - 8px), -120%);
+}
+
+.mapCaption {
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.mapEmpty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 7;
+  padding: var(--s-4);
+  background: var(--sunk);
+  border-radius: var(--r-tag);
+  color: var(--ink-muted);
+  text-align: center;
+}
+
+/* ---- hour strip --------------------------------------------------------------------------------------------- */
+.strip {
+  display: flex;
+  flex-direction: column;
+}
+
+.cols {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 3px;
+  height: 7.5rem;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.peak {
+  height: 1.1em;
+  font-size: var(--step--1);
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.barWrap {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  min-height: 0;
+}
+
+.bar {
+  display: block;
+  width: 100%;
+  border-radius: 2px 2px 0 0;
+  background: var(--source);
+}
+
+.col[data-kind="rain"] .bar {
+  background: repeating-linear-gradient(135deg, var(--source) 0 2px, var(--source-wash) 2px 5px);
+  box-shadow: inset 0 0 0 1px var(--source);
+}
+
+.col[data-kind="storm"] .bar {
+  background: var(--ink);
+}
+
+.noData {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--line-strong) 0 2px, transparent 2px 4px);
+}
+
+.hour {
+  padding-top: 2px;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  text-align: center;
+}
+
+.col[data-active="true"] {
+  border-bottom-color: var(--accent);
+  border-bottom-width: 3px;
+}
+
+.col[data-active="true"] .hour {
+  color: var(--accent-ink);
+  font-weight: 700;
+}
+
+.legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1) var(--s-4);
+  margin-top: var(--s-2);
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: var(--source);
+}
+
+.swatch[data-kind="rain"] {
+  background: repeating-linear-gradient(135deg, var(--source) 0 2px, var(--source-wash) 2px 5px);
+  box-shadow: inset 0 0 0 1px var(--source);
+}
+
+.swatch[data-kind="storm"] {
+  background: var(--ink);
+}
+
+.details {
+  margin-top: var(--s-2);
+}
+
+.details summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
+  color: var(--accent-ink);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.table {
+  width: 100%;
+  margin-top: var(--s-2);
+  border-collapse: collapse;
+  font-size: var(--step--1);
+}
+
+.table th,
+.table td {
+  padding: var(--s-1) var(--s-2);
+  border-top: 1px solid var(--line);
+  text-align: right;
+  font-weight: 400;
+}
+
+.table th:first-child,
+.table td:last-child {
+  text-align: left;
+}
+
+.table thead th {
+  border-top: 0;
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+
+.table tbody th {
+  font-weight: 600;
+}
+
+.table tr[data-active="true"] {
+  background: var(--accent-wash);
+}
+
+/* ---- number rows -------------------------------------------------------------------------------------------- */
+.rows {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  max-width: none; /* the page's reading measure is for prose, not for table rows */
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: var(--s-1) var(--s-3);
+  padding: var(--s-2) var(--s-3);
+  border-top: 1px solid var(--line);
+}
+
+.row:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.rowNum {
+  font-weight: 700;
+}
+
+.rowSrc {
+  color: var(--ink);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.rowAt {
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+.key {
+  margin-left: var(--s-2);
+  padding: 0 var(--s-1);
+  background: var(--source-wash);
+  border-radius: var(--r-tag);
+  color: var(--source);
+  font-size: var(--step--1);
+}
+
+.also {
+  color: var(--ink-muted);
+}
+
+.row[data-state="pending"] {
+  opacity: 0.55;
+}
+
+.row[data-state="bad"] {
+  background: var(--reject-wash);
+}
+
+.row[data-state="bad"] .rowNum {
+  color: var(--reject);
+}
+
+.row[data-active="true"] {
+  background: var(--accent-wash);
+}
+
+.row[data-active="true"] .rowNum {
+  color: var(--accent-ink);
+}
+
+/* ---- checks ------------------------------------------------------------------------------------------------- */
+.meterRow {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  margin-bottom: var(--s-3);
+}
+
+.meter {
+  flex: 1;
+  height: 8px;
+  background: var(--sunk);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.meterFill {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transform-origin: left center;
+}
+
+.meter[data-over="true"] .meterFill {
+  background: var(--reject);
+}
+
+.meterText {
+  min-width: 5.5rem;
+  text-align: right;
+  font-weight: 600;
+}
+
+.meterText[data-over="true"] {
+  color: var(--reject);
+}
+
+.checkList {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-3) var(--s-5);
+}
+
+.check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-2);
+  min-width: 0;
+}
+
+.mark {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.375rem;
+  height: 1.375rem;
+  margin-top: 1px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 50%;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.check[data-ticked="true"][data-pass="true"] .mark {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.check[data-ticked="true"][data-pass="false"] .mark {
+  background: var(--reject);
+  border-color: var(--reject);
+  color: var(--surface);
+}
+
+.checkBody {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.checkLabel {
+  font-weight: 600;
+}
+
+.checkDetail {
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  overflow-wrap: anywhere;
+}
+
+.check[data-pass="false"] .checkDetail {
+  color: var(--reject);
+}
+
+/* ---- foot --------------------------------------------------------------------------------------------------- */
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2) var(--s-5);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--line);
+}
+
+.permalink {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
+  font-weight: 600;
+}
+
+/* ---- motion: state feedback only. The signature sequence is driven from the hook, these only smooth it. ---- */
+@media (prefers-reduced-motion: no-preference) {
+  .meterFill {
+    transition: transform var(--dur-long) var(--ease-out);
+  }
+  .row,
+  .col,
+  .bar,
+  .mark,
+  .toggleBtn {
+    transition:
+      background-color var(--dur-short) var(--ease-out),
+      border-color var(--dur-short) var(--ease-out),
+      opacity var(--dur-short) var(--ease-out),
+      color var(--dur-micro) var(--ease-out);
+  }
+  .col[data-active="true"] .bar {
+    transform: translateY(-4px);
+  }
+  .bar {
+    transition: transform var(--dur-short) var(--ease-out);
+  }
+  .toggleBtn:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .toggleBtn[aria-pressed="false"]:hover:not(:disabled) {
+    background: var(--sunk);
+  }
+}
+
+@media (max-width: 40rem) {
+  .sheet {
+    padding: var(--s-4);
+    gap: var(--s-4);
+  }
+  .checkList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .row {
+    grid-template-columns: 5rem minmax(0, 1fr);
+  }
+  .rowAt {
+    grid-column: 2;
+  }
+  .table th:nth-child(4),
+  .table td:nth-child(4) {
+    display: none;
+  }
+}
+
+/* On a phone the map is narrow: the place name sits centred under its pin instead of beside it, where it would clip. */
+@media (max-width: 40rem) {
+  .mapLabel:not([data-kind="spot"]) {
+    max-width: 92%;
+    transform: translate(-50%, 12px);
+  }
+}

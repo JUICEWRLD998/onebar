@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+  <style>
+    .on { fill: oklch(0.5 0.1 168); }
+    .off { fill: oklch(0.63 0.025 225); }
+    @media (prefers-color-scheme: dark) {
+      .on { fill: oklch(0.8 0.135 168); }
+    }
+  </style>
+  <rect class="on" x="1" y="14" width="3.5" height="5" rx="1" />
+  <rect class="off" x="6.5" y="10" width="3.5" height="9" rx="1" />
+  <rect class="off" x="12" y="6" width="3.5" height="13" rx="1" />
+  <rect class="off" x="17.5" y="2" width="3.5" height="17" rx="1" />
+</svg>

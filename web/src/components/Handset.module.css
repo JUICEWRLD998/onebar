@@ -1,0 +1,449 @@
+.handset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  min-width: 0;
+}
+
+/* ---- status strip: one bar, and where you are --------------------------------------------------------------- */
+.status {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.statusText {
+  white-space: nowrap;
+}
+
+.place {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: var(--target);
+  max-width: 62%;
+  padding: 0 var(--s-3);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-control);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: var(--step-0);
+}
+
+.placeName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.placeAction {
+  color: var(--accent-ink);
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+/* ---- thread ------------------------------------------------------------------------------------------------- */
+.thread {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  min-height: 7rem;
+  max-height: 34rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--s-1) var(--s-1) var(--s-1) 0;
+}
+
+.you {
+  align-self: flex-end;
+  max-width: 85%;
+  padding: var(--s-2) var(--s-4);
+  background: var(--sunk);
+  border-radius: var(--r-bubble) var(--r-bubble) 4px var(--r-bubble);
+  overflow-wrap: anywhere;
+}
+
+.replyItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-1);
+  max-width: 94%;
+}
+
+/* The reply is the thing being judged, so it is set larger than the thread around it. */
+.reply {
+  padding: var(--s-3) var(--s-4);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-bubble) var(--r-bubble) var(--r-bubble) 4px;
+  box-shadow: var(--shadow-sheet);
+  font-size: var(--step-1);
+  line-height: 1.75; /* the gap between lines is where the leader line runs */
+  overflow-wrap: anywhere;
+}
+
+.glue {
+  white-space: nowrap;
+}
+
+.reply[data-selected="true"] {
+  border-color: var(--line-strong);
+}
+
+.recorded {
+  padding-left: var(--s-1);
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.again {
+  min-height: var(--target);
+  padding: 0 var(--s-1);
+  border: 0;
+  background: none;
+  color: var(--accent-ink);
+  font-size: var(--step--1);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.waiting,
+.note {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: var(--s-2) var(--s-3);
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.note {
+  max-width: 94%;
+  padding-left: var(--s-1);
+}
+
+.error {
+  align-self: flex-start;
+  max-width: 94%;
+  padding: var(--s-3) var(--s-4);
+  background: var(--reject-wash);
+  border: 1px solid var(--reject);
+  border-radius: var(--r-control);
+  color: var(--ink);
+}
+
+.error strong {
+  color: var(--reject);
+}
+
+.dots {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.dots i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.45;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dots i {
+    animation: pulse 1s var(--ease-in-out) infinite;
+  }
+  .dots i:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  .dots i:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  @keyframes pulse {
+    50% {
+      opacity: 1;
+    }
+  }
+}
+
+/* ---- the numbers in a reply: each is a control, and its underline says whether it has been traced --------------- */
+.token {
+  position: relative;
+  display: inline;
+  padding: 0 2px;
+  margin: 0 -1px;
+  border: 0;
+  border-radius: 3px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+  cursor: default;
+}
+
+button.token {
+  cursor: pointer;
+}
+
+/* A hit area taller than the line, so a finger can land on it. */
+button.token::after {
+  content: "";
+  position: absolute;
+  inset: -0.7rem -0.2rem;
+}
+
+.token[data-state="pending"] {
+  text-decoration-style: dashed;
+  text-decoration-color: var(--line-strong);
+}
+
+.token[data-state="verified"] {
+  text-decoration-style: solid;
+  text-decoration-color: var(--accent);
+}
+
+.token[data-state="active"] {
+  background: var(--accent-wash);
+  text-decoration-style: solid;
+  text-decoration-color: var(--accent);
+}
+
+.token[data-state="bad"] {
+  background: var(--reject-wash);
+  text-decoration-style: wavy;
+  text-decoration-color: var(--reject);
+  text-decoration-thickness: 1.5px;
+}
+
+/* ---- verdict line ------------------------------------------------------------------------------------------- */
+.verdict {
+  min-height: 1.5em;
+  margin: 0;
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+.verdict[data-tone="muted"] {
+  color: var(--ink-muted);
+  font-weight: 400;
+}
+
+.verdict[data-tone="bad"] {
+  color: var(--reject);
+}
+
+/* ---- empty thread ------------------------------------------------------------------------------------------- */
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-4) 0 var(--s-1);
+}
+
+.empty h2 {
+  font-size: var(--step-2);
+}
+
+.empty p {
+  color: var(--ink-muted);
+}
+
+/* ---- composer ----------------------------------------------------------------------------------------------- */
+.composer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+.chip {
+  min-height: var(--target);
+  padding: 0 var(--s-3);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-size: var(--step--1);
+}
+
+.chip:disabled {
+  opacity: 0.55;
+  border-style: dashed;
+  cursor: not-allowed;
+}
+
+.row {
+  display: flex;
+  gap: var(--s-2);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  min-height: var(--target);
+  padding: 0 var(--s-3);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-control);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 1rem; /* 16px: iOS Safari does not zoom the page on focus */
+}
+
+.input::placeholder {
+  color: var(--ink-muted);
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 1px;
+}
+
+.send {
+  min-height: var(--target);
+  padding: 0 var(--s-5);
+  border: 0;
+  border-radius: var(--r-control);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+}
+
+.send:disabled {
+  background: var(--sunk);
+  color: var(--ink-muted);
+  box-shadow: inset 0 0 0 1px var(--line);
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.count {
+  align-self: flex-end;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.count[data-near="true"] {
+  color: var(--reject);
+}
+
+/* ---- place picker ------------------------------------------------------------------------------------------- */
+.picker {
+  /* no border: the inputs inside are bordered, and a bordered box inside a bordered box reads as a card stack */
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  padding: var(--s-4);
+  background: var(--surface);
+  border-radius: var(--r-sheet);
+  box-shadow: var(--shadow-sheet);
+}
+
+.picker h2 {
+  font-size: var(--step-2);
+}
+
+.pickerHint {
+  color: var(--ink-muted);
+}
+
+.pickerGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.pickerLabel {
+  font-weight: 600;
+}
+
+.problem {
+  color: var(--reject);
+  font-weight: 600;
+}
+
+.replays {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+}
+
+.replay {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: var(--target);
+  padding: var(--s-2) var(--s-3);
+  border: 1px solid var(--line);
+  border-radius: var(--r-control);
+  background: transparent;
+  text-align: left;
+  line-height: 1.3;
+}
+
+.close {
+  align-self: flex-start;
+  min-height: var(--target);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+/* ---- states ------------------------------------------------------------------------------------------------- */
+@media (hover: hover) and (pointer: fine) {
+  .chip:hover:not(:disabled),
+  .replay:hover,
+  .place:hover {
+    background: var(--sunk);
+  }
+  .send:hover:not(:disabled) {
+    background: var(--accent-ink);
+    color: var(--on-accent);
+  }
+  button.token:hover {
+    background: var(--accent-wash);
+  }
+  .again:hover {
+    color: var(--ink);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .chip,
+  .replay,
+  .place,
+  .send,
+  .token {
+    transition:
+      background-color var(--dur-micro) var(--ease-out),
+      color var(--dur-micro) var(--ease-out),
+      transform var(--dur-micro) var(--ease-out);
+  }
+  .chip:active:not(:disabled),
+  .send:active:not(:disabled),
+  .replay:active,
+  .place:active {
+    transform: scale(0.97);
+  }
+}

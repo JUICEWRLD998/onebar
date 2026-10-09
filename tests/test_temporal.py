@@ -8,6 +8,7 @@ from pathlib import Path
 import pytest
 
 from onebar.channels.outbox import OutboxSender
+from onebar.channels.traces import TraceStore
 from onebar.check.gsm7 import LIMIT, analyze
 from onebar.facts.open_meteo import ForecastError
 from onebar.temporal.activities import Activities, Deps
@@ -24,9 +25,9 @@ CONTACT = "friend@example.org"
 GEOCODE = {"results": [{"name": "Zermatt", "latitude": 46.02, "longitude": 7.75, "country": "Switzerland"}]}
 
 
-def forecast(now: datetime) -> dict:
+def forecast(now: datetime, offset_s: int = 0) -> dict:
     fc = synth(start=(now - timedelta(days=1)).strftime("%Y-%m-%d"), days=5)
-    fc["utc_offset_seconds"] = 0
+    fc["utc_offset_seconds"] = offset_s
     return fc
 
 
@@ -39,9 +40,18 @@ class Harness:
     def __init__(self, tmp_path: Path, **deps):
         self.now = datetime.now(timezone.utc)
         self.box = OutboxSender(tmp_path / "outbox.jsonl")
+        self.offset_s = deps.pop("offset_s", 0)
+        self.traces = TraceStore(tmp_path / "traces")
         self.deps = Deps(sender=deps.pop("sender", self.box),
-                         get_forecast=deps.pop("get_forecast", lambda url: forecast(self.now)),
-                         get_geocode=deps.pop("get_geocode", lambda url: GEOCODE), grace_min=30, **deps)
+                         get_forecast=deps.pop("get_forecast", lambda url: forecast(self.now, self.offset_s)),
+                         get_geocode=deps.pop("get_geocode", lambda url: GEOCODE), grace_min=30,
+                         traces=self.traces, **deps)
+
+    def local_hour(self) -> str:
+        return (self.now + timedelta(seconds=self.offset_s)).strftime("%H")
+
+    def trace(self, msg_id: str) -> dict:
+        return self.traces.load(self.traces.trace_id(msg_id))
 
     def back_text(self, hours: float) -> str:
         return (self.now + timedelta(hours=hours)).strftime("%H:%M")
@@ -272,3 +282,88 @@ def test_continue_as_new_keeps_the_trip_and_the_dedupe_set(tmp_path):
     run_with(h, scenario)
     assert len(h.rows("reply:h")) == 5
     assert len(h.rows("alert:")) == 1
+
+
+# ---- PLACE, local time without a trip, and the richer trace -------------------------------------------------------
+
+def test_a_question_after_place_uses_that_places_local_time(tmp_path):
+    h = Harness(tmp_path, offset_s=7200)
+
+    async def scenario(env, h):
+        await deliver(env.client, SENDER, inbound("PLACE 46.5, 7.9", "p1", h.now))
+        await deliver(env.client, SENDER, inbound("how windy is it going to get?", "q1", h.now))
+        await env.sleep(timedelta(minutes=5))
+        st = await status(env)
+        assert st["pos"] == [46.5, 7.9] and st["offset_s"] == 7200 and st["trip"] is None
+
+    run_with(h, scenario)
+    assert h.rows("reply:p1")[0]["text"].startswith("Place set: 46.500,7.900")
+    hours = h.trace("q1")["hours"]
+    assert len(hours) == 12 and hours[0]["t"][11:13] == h.local_hour()  # the hiker's clock, not UTC
+    assert h.trace("q1")["place"] == {"lat": 46.5, "lon": 7.9}  # so the trace page can draw the terrain
+
+
+def test_place_by_name_and_unknown_place(tmp_path):
+    h = Harness(tmp_path)
+
+    async def scenario(env, h):
+        await deliver(env.client, SENDER, inbound("PLACE Zermatt", "p1", h.now))
+        await env.sleep(timedelta(minutes=1))
+        assert (await status(env))["pos"] == [46.02, 7.75]
+
+    run_with(h, scenario)
+    assert "Zermatt, Switzerland" in h.rows("reply:p1")[0]["text"]
+
+    h2 = Harness(tmp_path / "b", get_geocode=lambda url: {})
+    (tmp_path / "b").mkdir()
+
+    async def scenario2(env, h):
+        await deliver(env.client, SENDER, inbound("PLACE Nowhereville", "p2", h.now))
+        await env.sleep(timedelta(minutes=1))
+        assert (await status(env))["pos"] is None
+
+    run_with(h2, scenario2)
+    assert "Could not find that place" in h2.rows("reply:p2")[0]["text"]
+
+
+def test_the_offset_survives_out_so_later_questions_keep_the_right_clock(tmp_path):
+    h = Harness(tmp_path, offset_s=-7 * 3600)
+
+    async def scenario(env, h):
+        await deliver(env.client, SENDER, trip_msg(h))
+        await deliver(env.client, SENDER, inbound("OUT", "o1", h.now))
+        await deliver(env.client, SENDER, inbound("how windy is it going to get?", "q1", h.now))
+        await env.sleep(timedelta(minutes=5))
+
+    run_with(h, scenario)
+    assert h.trace("q1")["hours"][0]["t"][11:13] == h.local_hour()
+
+
+def test_trace_carries_the_baseline_draft_checked_by_the_same_checker(tmp_path):
+    h = Harness(tmp_path, baseline_draft=lambda prompt: "Gusts 999km/h at 03:33, bring a jacket.")
+
+    async def scenario(env, h):
+        await deliver(env.client, SENDER, inbound("PLACE 46.5, 7.9", "p1", h.now))
+        await deliver(env.client, SENDER, inbound("how windy is it going to get?", "q1", h.now))
+        await env.sleep(timedelta(minutes=5))
+
+    run_with(h, scenario)
+    base = h.trace("q1")["baseline"]
+    assert base["passed"] is False
+    assert any(r.startswith("invented_number") for r in base["reasons"])
+    assert [n["ok"] for n in base["numbers"]] == [False, False]
+
+
+def test_a_failing_baseline_never_costs_the_hiker_their_reply(tmp_path):
+    def boom(prompt):
+        raise RuntimeError("baseline model down")
+
+    h = Harness(tmp_path, baseline_draft=boom)
+
+    async def scenario(env, h):
+        await deliver(env.client, SENDER, inbound("PLACE 46.5, 7.9", "p1", h.now))
+        await deliver(env.client, SENDER, inbound("how windy is it going to get?", "q1", h.now))
+        await env.sleep(timedelta(minutes=5))
+
+    run_with(h, scenario)
+    assert "km/h" in h.rows("reply:q1")[0]["text"] and h.trace("q1")["baseline"] is None

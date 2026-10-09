@@ -1,0 +1,123 @@
+.charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+  gap: var(--s-6);
+}
+
+.chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  margin: 0;
+  min-width: 0;
+}
+
+.chartTitle {
+  font-weight: 700;
+  font-size: var(--step-1);
+}
+
+.bars {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.barRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "name value" "track track";
+  gap: var(--s-1) var(--s-3);
+  align-items: baseline;
+}
+
+.barName {
+  grid-area: name;
+  color: var(--ink-muted);
+  overflow-wrap: anywhere;
+}
+
+.barValue {
+  grid-area: value;
+  font-weight: 700;
+}
+
+.track {
+  grid-area: track;
+  display: block;
+  height: 10px;
+  background: var(--sunk);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--line-strong);
+  border-radius: 5px;
+  transform-origin: left center;
+}
+
+/* One accent: the tuned model. Everything it is compared with stays neutral. */
+.barRow[data-tuned="true"] .barName {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.barRow[data-tuned="true"] .fill {
+  background: var(--accent);
+}
+
+.note {
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  max-width: 48ch;
+}
+
+.scroll {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sheet);
+}
+
+.table {
+  width: 100%;
+  min-width: 46rem;
+  border-collapse: collapse;
+  font-size: var(--step--1);
+}
+
+.table th,
+.table td {
+  padding: var(--s-2) var(--s-3);
+  border-top: 1px solid var(--line);
+  text-align: right;
+  vertical-align: baseline;
+}
+
+.table th:first-child {
+  text-align: left;
+  font-weight: 400;
+  max-width: 22rem;
+}
+
+.table thead th {
+  border-top: 0;
+  background: var(--sunk);
+  font-weight: 700;
+  vertical-align: bottom;
+}
+
+.table [data-tuned="true"] {
+  background: var(--accent-wash);
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fill {
+    transition: transform var(--dur-long) var(--ease-out);
+  }
+}

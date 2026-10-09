@@ -1,0 +1,71 @@
+/* Shared by the reading pages: Results, How it works, Trace. */
+
+.page {
+  position: relative;
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding: var(--s-6) var(--gutter) var(--s-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-7);
+}
+
+.head {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.h1 {
+  font-size: clamp(var(--step-3), 4vw, var(--step-4));
+  max-width: 24ch;
+}
+
+.lede {
+  color: var(--ink-muted);
+  font-size: var(--step-1);
+  max-width: 56ch;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  max-width: 62rem;
+}
+
+.section h2 {
+  font-size: var(--step-2);
+}
+
+.prose {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+/* The reply on the trace page: set large, with the numbers marked. */
+.reply {
+  font-size: var(--step-2);
+  line-height: 1.4;
+  font-weight: 500;
+  max-width: 40ch;
+}
+
+.num {
+  padding: 0 2px;
+  border-radius: 3px;
+  font-weight: 700;
+  text-decoration: underline 2px solid var(--accent);
+  text-underline-offset: 0.2em;
+}
+
+.num[data-ok="false"] {
+  background: var(--reject-wash);
+  text-decoration: underline 1.5px wavy var(--reject);
+}
+
+.num[data-active="true"][data-ok="true"] {
+  background: var(--accent-wash);
+}

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Text a question from one bar of signal. Get one checked reply of at most 160 characters, with every number traced to the forecast." />
+    <title>OneBar</title>
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <script>
+      // Apply the saved theme before first paint so there is no flash. Wrapped: storage can throw.
+      try {
+        var t = localStorage.getItem("onebar-theme");
+        if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
