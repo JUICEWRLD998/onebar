@@ -1,0 +1,16 @@
+{
+  "Qwen/Qwen3.5-397B-A17B": {
+    "questions": 50,
+    "errors": 0,
+    "with_a_passing_candidate": 44,
+    "first_candidate_passes": 35,
+    "seconds": 27.3
+  },
+  "openai/gpt-oss-120b": {
+    "questions": 50,
+    "errors": 0,
+    "with_a_passing_candidate": 41,
+    "first_candidate_passes": 29,
+    "seconds": 46.6
+  }
+}

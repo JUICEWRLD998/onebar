@@ -3,3 +3,6 @@
 __pycache__/
 data/cache/
 .tools/
+data/situations.jsonl
+data/questions.jsonl
+data/*.log

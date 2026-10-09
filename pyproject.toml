@@ -8,6 +8,8 @@ dependencies = []
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "pytest-cov>=5"]
+model = ["openai>=1"]
+data = ["openai>=1"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
