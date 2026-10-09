@@ -2,7 +2,7 @@
 
 Text a question from one bar of signal. Get one checked reply of at most 160 characters.
 
-**Status: NOT LIVE.** Nothing is deployed and no model is tuned yet. Built so far (Phase 0-4):
+**Status: NOT LIVE.** Nothing is deployed and no model is tuned yet. Built so far (Phase 0-5):
 
 | Part | Status |
 |---|---|
@@ -12,7 +12,8 @@ Text a question from one bar of signal. Get one checked reply of at most 160 cha
 | Model reply (base Qwen3-8B on Tinker) with one corrected retry, then the template; CLI `python -m onebar ask` | built, tested, measured on 20 questions |
 | Dataset (real places, past forecasts, checker-passing teacher replies) and eval harness with base numbers | built, tested, eval table has template, base and larger-model rows |
 | Tuned Qwen3-8B (LoRA SFT on Tinker): 98.1% first-try checker pass on the frozen test set vs 56.8% for the base model | built, measured; weights on Tinker, HF export pending a token |
-| Temporal trip workflow, email and web channels | NEXT |
+| Temporal trip workflow: durable trips, idempotent replies, overdue alert that survives a worker kill (delivery to a local outbox file for now) | built, tested, run live |
+| Email and web channels, web UI, deploy | NEXT |
 
 How it will work: code locates the hiker and computes the facts (Open-Meteo forecast, sunrise and sunset, elevation, their trip). A model writes one reply. A deterministic checker gates it: any invented number, wrong length or missing fact and the reply is rejected; after two failures the code's own template goes out.
 

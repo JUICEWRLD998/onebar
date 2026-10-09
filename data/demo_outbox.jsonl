@@ -1,0 +1,2 @@
+{"key": "reply:demo-trip", "to": "demo-hiker@example.org", "text": "Trip saved. Text OUT when you are safe. If I hear nothing by 13:48 your contact is told. Back 13:47.", "at": "2026-10-09T11:45:41+00:00"}
+{"key": "alert:demo-trip", "to": "demo-contact@example.org", "text": "OneBar: demo-hiker@example.org planned to be back at 13:47 and has not checked out. Trip area: 46.550,7.980 (46.550, 7.980). Last message from them at 13:45 local time. OneBar is not a rescue service. If you are worried, call the local emergency number.", "at": "2026-10-09T11:48:57+00:00"}

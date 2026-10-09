@@ -20,3 +20,5 @@ Every number in the README or post links to a row here, and each row points at a
 | Tuned: cost per answer, calls per answer, mean septets | $0.000069, 1.02, 47 | `eval/results/tuned.json`, `eval/prices.json` | measured 2026-10-09 |
 | SFT run: 3,290 rows, 2 epochs, LoRA rank 32, validation first-try pass epoch 1 / epoch 2 | 96.7% / 98.7% (150 val questions) | `eval/results/sft_run.json` | measured 2026-10-09 |
 | Whole-grant Tinker spend through Phase 4 | $3.68 | `data/spend.json` | by published prices, upper bound |
+| Live run: worker killed mid-trip, restarted after the alert time; overdue alert delivered | 1 alert, to the contact, after restart | `data/demo5.log`, `data/demo_outbox.jsonl`, `scripts/demo_phase5.py` | run 2026-10-09 on a local Temporal dev server; delivery was to a local outbox file, not a real channel |
+| TripWorkflow tests on Temporal's time-skipping server: alert once, OUT cancels, duplicate id one reply, flaky send, outage, FORGET, continue-as-new | 12 tests pass | `tests/test_temporal.py` | `make test`; two planted defects were caught |

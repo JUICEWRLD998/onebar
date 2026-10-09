@@ -6,3 +6,4 @@ data/cache/
 data/situations.jsonl
 data/questions.jsonl
 data/*.log
+data/demo-temporal.db*
