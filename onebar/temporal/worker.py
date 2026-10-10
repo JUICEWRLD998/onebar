@@ -49,7 +49,8 @@ async def main() -> None:
             baseline = TinkerDraft(model="Qwen/Qwen3-8B")
         except ModelError:
             baseline = None
-    acts = Activities(Deps(sender=sender, draft=draft, traces=st.traces, baseline_draft=baseline))
+    acts = Activities(Deps(sender=sender, draft=draft, traces=st.traces, baseline_draft=baseline,
+                             hints=st.hints))
     client = await Client.connect(os.environ.get("TEMPORAL_ADDRESS", "localhost:7233"),
                                   namespace=os.environ.get("TEMPORAL_NAMESPACE", "default"))
     keep_s = float(os.environ.get("ONEBAR_KEEPALIVE_S", 15))

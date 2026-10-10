@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import json
+import math
+import re
 import time
 import urllib.error
 import urllib.request
@@ -62,6 +64,59 @@ def fetch_forecast(
     if not isinstance(hourly, dict) or any(k not in hourly for k in REQUIRED_HOURLY):
         raise ForecastError("Open-Meteo response is missing hourly data")
     return data
+
+
+_HOUR_RX = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$")
+_DAY_RX = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+GRID_TOLERANCE_DEG = 0.25  # Open-Meteo snaps to its model grid; the returned point is never this far off
+MAX_HOURS = 16 * 24
+
+
+def _is_num(v: object) -> bool:
+    return isinstance(v, (int, float)) and not isinstance(v, bool) and math.isfinite(v)
+
+
+def _column(values: object, n: int, name: str, ok: Callable[[object], bool]) -> list:
+    if not isinstance(values, list) or len(values) != n:
+        raise ValueError(f"forecast column {name} has the wrong length")
+    if not all(ok(v) for v in values):
+        raise ValueError(f"forecast column {name} holds a value of the wrong kind")
+    return list(values)
+
+
+def clean_forecast(data: object, lat: float, lon: float) -> dict:
+    """A forecast that did not come from this server's own fetch (the visitor's browser fetched forecast_url(lat, lon)),
+    checked for shape and cut down to the fields the facts engine reads. Raises ValueError."""
+    if not isinstance(data, dict) or data.get("error"):
+        raise ValueError("forecast is not a forecast")
+    if not (_is_num(data.get("latitude")) and _is_num(data.get("longitude"))):
+        raise ValueError("forecast has no coordinates")
+    if abs(data["latitude"] - lat) > GRID_TOLERANCE_DEG or abs(data["longitude"] - lon) > GRID_TOLERANCE_DEG:
+        raise ValueError("forecast is for another place")
+    offset = data.get("utc_offset_seconds")
+    if not isinstance(offset, int) or isinstance(offset, bool) or abs(offset) > 14 * 3600:
+        raise ValueError("forecast has no usable utc_offset_seconds")
+    hourly, daily = data.get("hourly"), data.get("daily")
+    if not isinstance(hourly, dict) or not isinstance(daily, dict):
+        raise ValueError("forecast is missing hourly or daily data")
+    times = hourly.get("time")
+    if not isinstance(times, list) or not 0 < len(times) <= MAX_HOURS:
+        raise ValueError("forecast has no hours")
+    n = len(times)
+    out_h = {"time": _column(times, n, "time", lambda v: isinstance(v, str) and bool(_HOUR_RX.match(v)))}
+    for key in HOURLY.split(","):
+        out_h[key] = _column(hourly.get(key), n, key, lambda v: v is None or _is_num(v))
+    days = daily.get("time")
+    if not isinstance(days, list) or not 0 < len(days) <= 16:
+        raise ValueError("forecast has no days")
+    out_d = {"time": _column(days, len(days), "daily time", lambda v: isinstance(v, str) and bool(_DAY_RX.match(v)))}
+    for key in DAILY.split(","):
+        out_d[key] = _column(daily.get(key), len(days), key, lambda v: isinstance(v, str) and bool(_HOUR_RX.match(v)))
+    out = {"latitude": data["latitude"], "longitude": data["longitude"], "utc_offset_seconds": offset,
+           "hourly": out_h, "daily": out_d}
+    if _is_num(data.get("elevation")):
+        out["elevation"] = data["elevation"]
+    return out
 
 
 def local_now(forecast: dict, now_utc: datetime | None = None) -> datetime:

@@ -1,0 +1,128 @@
+{
+  "product": { "name": "OneBar", "tagline": "One bar of signal. One checked reply.", "url": "onebar-v46s.onrender.com" },
+  "url": "https://onebar-v46s.onrender.com",
+  "targetSeconds": 120,
+  "colorScheme": "dark",
+  "theme": {
+    "bg": "oklch(0.175 0.024 258)",
+    "surface": "oklch(0.215 0.026 258)",
+    "fg": "oklch(0.94 0.012 220)",
+    "muted": "oklch(0.73 0.022 240)",
+    "accent": "oklch(0.8 0.135 168)",
+    "accent2": "oklch(0.68 0.085 70)",
+    "font": "\"Overpass\", system-ui, \"Segoe UI\", sans-serif",
+    "display": "\"Overpass\", system-ui, \"Segoe UI\", sans-serif",
+    "fontUrl": "https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;800&display=swap"
+  },
+  "voice": { "edgeVoice": "en-US-AvaMultilingualNeural", "rate": "-4%", "lead": 0.6, "tail": 0.5 },
+  "transition": 0.5,
+  "captions": true,
+  "thumbnailAt": 2.6,
+  "scenes": [
+    {
+      "id": "s01-title",
+      "vo": "This is OneBar. Ask about the weather on your route, and get one checked answer that fits in a single text.",
+      "say": "This is One Bar. Ask about the weather on your route, and get one checked answer that fits in a single text.",
+      "visual": { "type": "card", "template": "title", "kicker": "DEV Hacktoberfest · Touch Grass", "name": "OneBar",
+        "tagline": "One bar of signal. One *checked* reply.", "image": "scout/reply.png" }
+    },
+    {
+      "id": "s02-ridge",
+      "vo": "You're up on a ridge with one bar of signal. Your weather app won't load, and the clouds are building.",
+      "visual": { "type": "card", "template": "statement", "kicker": "The problem",
+        "lines": ["You're on a ridge.", "*One bar* of signal.", { "text": "The weather app won't load.", "dim": true }] }
+    },
+    {
+      "id": "s03-madeup",
+      "vo": "You could ask a chatbot, but it might make up a number. Up here, a made-up storm time can hurt you.",
+      "visual": { "type": "card", "template": "statement", "kicker": "The problem",
+        "lines": ["A chatbot can make up a number.", "Up here, that's a *storm you didn't see*."] }
+    },
+    {
+      "id": "s04-how",
+      "vo": "OneBar splits the work. Code reads the forecast for your exact spot, a small model writes the reply, and a checker makes sure every number in it is real.",
+      "say": "One Bar splits the work. Code reads the forecast for your exact spot, a small model writes the reply, and a checker makes sure every number in it is real.",
+      "visual": { "type": "page", "url": "/",
+        "prep": [
+          { "do": "click", "text": "Zermatt", "move": 1, "after": 100 },
+          { "do": "waitFor", "text": "Ask one question", "timeout": 120000 }
+        ],
+        "settle": 600,
+        "actions": [
+          { "do": "hover", "text": "Ask about the weather on your route", "onWord": "OneBar" },
+          { "do": "hover", "text": "Zermatt", "onWord": "forecast" },
+          { "do": "hover", "selector": "section[aria-label=\"Phone\"] input", "onWord": "model" },
+          { "do": "hover", "text": "A recorded example, checked", "onWord": "checker" }
+        ] }
+    },
+    {
+      "id": "s05-ask",
+      "vo": "I'm near Zermatt, so I type storm before three and hit send. One short reply comes back, already checked.",
+      "visual": { "type": "page",
+        "actions": [
+          { "do": "type", "selector": "section[aria-label=\"Phone\"] input", "value": "storm before 3?", "onWord": "type", "cps": 12 },
+          { "do": "click", "text": "Send", "onWord": "send" },
+          { "do": "waitFor", "js": "(document.querySelector('[aria-live=polite]')?.innerText || '').startsWith('Checked')", "timeout": 60000 },
+          { "do": "zoom", "selector": "section[aria-label=\"Phone\"]", "scale": 1.7, "onWord": "checked" }
+        ] }
+    },
+    {
+      "id": "s06-proof",
+      "vo": "Hover any number in it, and a line runs back to the forecast hour it came from. The model didn't guess any of them.",
+      "visual": { "type": "page",
+        "actions": [
+          { "do": "unzoom", "ms": 700 },
+          { "do": "scroll", "y": 420, "ms": 900 },
+          { "do": "hover", "selector": "ol[aria-label=\"Messages\"] button[class*=\"token\"]", "nth": 0, "onWord": "number" },
+          { "do": "hover", "selector": "ol[aria-label=\"Messages\"] button[class*=\"token\"]", "nth": 1, "onWord": "hour", "optional": true },
+          { "do": "hover", "selector": "ol[aria-label=\"Messages\"] button[class*=\"token\"]", "nth": 2, "onWord": "guess", "optional": true }
+        ] }
+    },
+    {
+      "id": "s07-base",
+      "vo": "This one's a recorded question from our test set. Flip to the untuned base model, and its draft runs to two hundred and forty-one characters. That's too long for one text, so it never goes out.",
+      "visual": { "type": "page",
+        "actions": [
+          { "do": "scroll", "y": 0, "ms": 700 },
+          { "do": "click", "text": "Change", "move": 600 },
+          { "do": "scroll", "text": "Or watch a recorded example, no place needed", "block": 0.3, "ms": 800 },
+          { "do": "click", "text": "ridge ok by 3:30pm then car?", "onWord": "recorded" },
+          { "do": "wait", "ms": 1200 },
+          { "do": "scroll", "y": 0, "ms": 700 },
+          { "do": "click", "text": "Base model", "onWord": "Flip" },
+          { "do": "scroll", "text": "What the checker looked at", "block": 0.35, "ms": 1100, "onWord": "forty-one" },
+          { "do": "spotlight", "text": "241 of 160", "onWord": "long" }
+        ] }
+    },
+    {
+      "id": "s08-results",
+      "vo": "That's why OneBar runs its own model, an open Qwen fine-tuned on Tinker. On four hundred and fourteen questions at places it never saw, it passed the check first time ninety-eight percent of the time. The base model got just under fifty-seven.",
+      "say": "That's why One Bar runs its own model, an open Kwen, fine-tuned on Tinker. On four hundred and fourteen questions at places it never saw, it passed the check first time ninety-eight percent of the time. The base model got just under fifty-seven.",
+      "visual": { "type": "page", "url": "/results",
+        "actions": [
+          { "do": "hover", "text": "Does the tuned model beat the base model?", "onWord": "Tinker" },
+          { "do": "zoom", "text": "Tuned Qwen3-8B (LoRA)", "nth": 0, "scale": 1.5, "onWord": "ninety-eight" },
+          { "do": "hover", "text": "Base Qwen3-8B", "nth": 0, "onWord": "base" }
+        ] }
+    },
+    {
+      "id": "s09-trip",
+      "vo": "If you're heading out alone, text trip with your return time and a contact. Miss your time without texting out, and your contact gets an email. Temporal keeps that timer running, even if the worker crashes.",
+      "visual": { "type": "page", "url": "/how-it-works",
+        "actions": [
+          { "do": "scroll", "text": "The trip timer", "block": 0.25, "ms": 1400, "onWord": "heading" },
+          { "do": "hover", "text": "TRIP", "nth": 0, "onWord": "trip" },
+          { "do": "hover", "text": "OUT", "nth": 0, "onWord": "out" },
+          { "do": "spotlight", "text": "The trip timer", "onWord": "Temporal" }
+        ] }
+    },
+    {
+      "id": "s10-end",
+      "vo": "OneBar. One bar, one reply, every number checked. Try it at the link below.",
+      "say": "One Bar. One bar, one reply, every number checked. Try it at the link below.",
+      "hold": 1.0,
+      "visual": { "type": "card", "template": "end", "name": "OneBar", "tagline": "One bar. One reply. Every number *checked*.",
+        "url": "onebar-v46s.onrender.com", "credit": "Built for DEV Hacktoberfest · Mustapha Fadhlullah — independent security researcher" }
+    }
+  ]
+}

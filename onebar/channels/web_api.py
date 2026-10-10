@@ -16,10 +16,12 @@ from typing import Awaitable, Callable
 from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel, Field
 
+from onebar.channels.hints import MAX_HINT_BYTES, HintStore
 from onebar.channels.ratelimit import RateLimiter
 from onebar.channels.traces import TraceStore
 from onebar.commands import MAX_LEN
 from onebar.temporal.models import Inbound
+from onebar.temporal.starter import workflow_id
 
 SESSION_RX = re.compile(r"[A-Za-z0-9_-]{8,64}")
 ID_RX = re.compile(r"[0-9a-f]{32}")
@@ -62,10 +64,12 @@ class WebSender:
 class Message(BaseModel):
     session: str = Field(min_length=8, max_length=64)
     text: str = Field(min_length=1)
+    hint: dict | None = None  # what the browser looked up itself; see channels/hints.py
 
 
 def create_app(deliver: Deliver, web: WebSender, traces: TraceStore,
-               per_session: RateLimiter | None = None, per_ip: RateLimiter | None = None) -> FastAPI:
+               per_session: RateLimiter | None = None, per_ip: RateLimiter | None = None,
+               hints: HintStore | None = None) -> FastAPI:
     app = FastAPI(title="OneBar", docs_url=None, redoc_url=None, openapi_url=None)
     per_session = per_session or RateLimiter(max_events=10, window_s=600)
     per_ip = per_ip or RateLimiter(max_events=30, window_s=600)
@@ -84,8 +88,11 @@ def create_app(deliver: Deliver, web: WebSender, traces: TraceStore,
         if not per_ip.allow(ip) or not per_session.allow(body.session):
             raise HTTPException(429, "too many messages; wait a few minutes")
         message_id = uuid.uuid4().hex
+        sender = f"web:{body.session}"
+        if hints is not None and body.hint is not None and len(json.dumps(body.hint)) <= MAX_HINT_BYTES:
+            hints.save(workflow_id(sender), body.hint)  # a hint that fails its checks is dropped; the message still goes
         try:
-            await deliver(f"web:{body.session}", Inbound(id=message_id, text=body.text, channel="web",
+            await deliver(sender, Inbound(id=message_id, text=body.text, channel="web",
                                                          ts=datetime.now(timezone.utc).isoformat()))
         except Exception:
             raise HTTPException(503, "could not reach the service; try again") from None

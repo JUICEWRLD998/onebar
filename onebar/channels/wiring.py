@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from onebar.channels.email_io import EmailSender, SeenSet, ThreadStore
+from onebar.channels.hints import HintStore
 from onebar.channels.outbox import OutboxSender
 from onebar.channels.router import RouterSender
 from onebar.channels.traces import TraceStore
@@ -21,6 +22,7 @@ class Stores:
     seen: SeenSet
     email_log: OutboxSender
     outbox: OutboxSender
+    hints: HintStore
 
 
 def stores(data_dir: Path | None = None) -> Stores:
@@ -32,6 +34,7 @@ def stores(data_dir: Path | None = None) -> Stores:
         seen=SeenSet(d / "email_seen.json"),
         email_log=OutboxSender(d / "email_sent.jsonl"),
         outbox=OutboxSender(d / "outbox.jsonl"),
+        hints=HintStore(d / "hints"),
     )
 
 

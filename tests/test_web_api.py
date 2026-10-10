@@ -1,10 +1,16 @@
 import pytest
 from fastapi.testclient import TestClient
 
+import json
+
+from onebar.channels.hints import HintStore
 from onebar.channels.ratelimit import RateLimiter
 from onebar.channels.router import RouterSender
 from onebar.channels.traces import TraceStore
 from onebar.channels.web_api import WebSender, create_app
+from onebar.temporal.starter import workflow_id
+
+from conftest import FIXTURE_DIR
 
 SESSION = "sess-abcdef12"
 
@@ -13,6 +19,7 @@ class Rig:
     def __init__(self, tmp_path, fail=False, per_session=None, per_ip=None):
         self.web = WebSender(tmp_path / "web")
         self.traces = TraceStore(tmp_path / "tr")
+        self.hints = HintStore(tmp_path / "hints")
         self.delivered = []
         self.fail = fail
 
@@ -21,7 +28,7 @@ class Rig:
                 raise ConnectionError("temporal down")
             self.delivered.append((sender, msg))
 
-        self.client = TestClient(create_app(deliver, self.web, self.traces, per_session, per_ip))
+        self.client = TestClient(create_app(deliver, self.web, self.traces, per_session, per_ip, hints=self.hints))
 
 
 def test_post_message_delivers_to_a_web_sender_and_returns_an_id(tmp_path):
@@ -104,6 +111,28 @@ def test_the_trace_never_exposes_the_session_or_address(tmp_path):
     tid = r.traces.save(mid, {"reply": "x", "question": "hi", "numbers": []})
     assert SESSION not in r.client.get(f"/api/trace/{tid}").text
     assert SESSION not in r.client.get(f"/api/reply/{mid}").text
+
+
+REAL = json.loads((FIXTURE_DIR.parent / "open_meteo_46.55_7.98.json").read_text())
+
+
+def test_a_browser_hint_is_filed_under_the_sessions_workflow(tmp_path):
+    r = Rig(tmp_path)
+    hint = {"forecast": {"lat": 46.55, "lon": 7.98, "data": REAL}}
+    res = r.client.post("/api/message", json={"session": SESSION, "text": "storm?", "hint": hint})
+    assert res.status_code == 200 and len(r.delivered) == 1
+    assert r.hints.forecast(workflow_id(f"web:{SESSION}"), 46.55, 7.98) is not None
+    assert r.hints.forecast(workflow_id("web:sess-zzzzzzzz"), 46.55, 7.98) is None
+
+
+def test_a_bad_or_oversized_hint_is_dropped_but_the_message_still_goes(tmp_path):
+    r = Rig(tmp_path)
+    for hint in ({"forecast": {"lat": 46.55, "lon": 7.98, "data": {"hourly": "x"}}},
+                 {"place": {"query": "a", "name": "b" * 300_000, "lat": 1, "lon": 1}}):
+        res = r.client.post("/api/message", json={"session": SESSION, "text": "storm?", "hint": hint})
+        assert res.status_code == 200
+    assert len(r.delivered) == 2
+    assert not (tmp_path / "hints").exists()
 
 
 def test_health_and_no_openapi_docs(tmp_path):

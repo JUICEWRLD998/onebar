@@ -17,6 +17,6 @@ services:
       - key: ONEBAR_PUBLIC_URL
         sync: false          # your final https://....onrender.com URL, used for trace links in email
       - key: ONEBAR_BUDGET_USD
-        value: "3.2"
+        value: "4.6"         # the seeded ledger already holds $3.68; at 3.2 every reply fell back to the template
       - key: TEMPORAL_ADDRESS
         value: 127.0.0.1:7233

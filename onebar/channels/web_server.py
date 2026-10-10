@@ -27,7 +27,7 @@ async def _deliver(sender, inbound) -> None:
     await deliver(_client, sender, inbound)
 
 
-app = create_app(_deliver, _stores.web, _stores.traces)
+app = create_app(_deliver, _stores.web, _stores.traces, hints=_stores.hints)
 
 # Production: serve the built UI from the same origin. SPA fallback so /results, /trace/<id> load on refresh.
 _DIST = Path(__file__).resolve().parents[2] / "web" / "dist"

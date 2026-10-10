@@ -12,6 +12,7 @@ data/email_seen.json
 data/email_threads.json
 data/web_replies/
 data/traces/
+data/hints/
 data/e2e.log
 data/e2e-temporal.db*
 data/outbox.jsonl
@@ -26,3 +27,6 @@ data/preview.log
 data/worker*.log
 data/api*.log
 data/spend.json.tmp
+
+# demo video build output
+demo/build/

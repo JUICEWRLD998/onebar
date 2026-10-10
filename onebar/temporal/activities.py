@@ -37,14 +37,40 @@ class Deps:
     get_geocode: Callable[[str], dict] | None = None
     traces: object | None = None  # a TraceStore: where the trace of each answer is saved
     baseline_draft: Draft | None = None  # the base model, only to show how it fares on the same question
+    hints: object | None = None  # a HintStore: what this session's own browser looked up (see channels/hints.py)
     grace_min: int = field(default_factory=lambda: int(os.environ.get("ONEBAR_GRACE_MIN", DEFAULT_GRACE_MIN)))
     cache_ttl_s: float = 600.0  # 0 turns the forecast cache off
     _cache: dict = field(default_factory=dict, repr=False)
     _lock: threading.Lock = field(default_factory=threading.Lock, repr=False)
 
 
-def _forecast(deps: Deps, lat: float, lon: float) -> dict:
-    """The forecast for a place, reused for deps.cache_ttl_s seconds so follow-up questions skip the network call."""
+def _wid() -> str | None:
+    """The running workflow's id, which is also the key its session's hints are filed under."""
+    try:
+        return activity.info().workflow_id
+    except RuntimeError:  # called outside an activity (tests, scripts)
+        return None
+
+
+def _place(deps: Deps, name: str) -> Place | None:
+    """The browser's own lookup for this session when it matches the words typed, else the geocoder."""
+    wid = _wid()
+    if wid and deps.hints is not None:
+        hinted = deps.hints.place(wid, name)
+        if hinted is not None:
+            return hinted
+    kw = {"get": deps.get_geocode} if deps.get_geocode else {}
+    return geocode(name, **kw)
+
+
+def _forecast(deps: Deps, lat: float, lon: float, wid: str | None = None) -> dict:
+    """The forecast for a place, reused for deps.cache_ttl_s seconds so follow-up questions skip the network call.
+
+    A copy the session's own browser fetched comes first. It is never written to the shared cache."""
+    if wid and deps.hints is not None:
+        hinted = deps.hints.forecast(wid, lat, lon)
+        if hinted is not None:
+            return hinted
     key = (round(lat, 2), round(lon, 2))
     now = _time.monotonic()  # `time` in this module is datetime.time
     with deps._lock:
@@ -73,12 +99,11 @@ class Activities:
         if req.coords:
             place = Place(f"{req.coords[0]:.3f},{req.coords[1]:.3f}", req.coords[0], req.coords[1])
         else:
-            kw = {"get": self.deps.get_geocode} if self.deps.get_geocode else {}
-            found = geocode(req.place, **kw)
+            found = _place(self.deps, req.place)
             if found is None:
                 return ResolveResult(ok=False, error="Could not find that place. Use lat,lon, like 46.55,7.98.")
             place = found
-        offset = int(_forecast(self.deps, place.lat, place.lon)["utc_offset_seconds"])
+        offset = int(_forecast(self.deps, place.lat, place.lon, _wid())["utc_offset_seconds"])
         back = time.fromisoformat(req.back)
         deadline = trips.deadline_utc(now, offset, back)
         alert = deadline + timedelta(minutes=self.deps.grace_min)
@@ -94,18 +119,17 @@ class Activities:
         if req.coords:
             place = Place(f"{req.coords[0]:.3f},{req.coords[1]:.3f}", req.coords[0], req.coords[1])
         else:
-            kw = {"get": self.deps.get_geocode} if self.deps.get_geocode else {}
-            found = geocode(req.place, **kw)
+            found = _place(self.deps, req.place)
             if found is None:
                 return PlaceResult(ok=False, error="Could not find that place. Use PLACE lat,lon, like 46.55,7.98.")
             place = found
-        offset = int(_forecast(self.deps, place.lat, place.lon)["utc_offset_seconds"])
+        offset = int(_forecast(self.deps, place.lat, place.lon, _wid())["utc_offset_seconds"])
         return PlaceResult(ok=True, place=place.name, lat=place.lat, lon=place.lon, offset_s=offset)
 
     @activity.defn
     def answer_question(self, req: AnswerReq) -> AnswerResult:
         """Facts and draft in one activity, so the 70 KB forecast never enters the workflow history."""
-        forecast = _forecast(self.deps, req.lat, req.lon)
+        forecast = _forecast(self.deps, req.lat, req.lon, _wid())
         now = datetime.fromisoformat(req.now_iso).astimezone(timezone.utc)
         at = (now + timedelta(seconds=req.offset_s)).replace(tzinfo=None, second=0, microsecond=0)
         trip = Trip(return_by=time.fromisoformat(req.return_local)) if req.return_local else None

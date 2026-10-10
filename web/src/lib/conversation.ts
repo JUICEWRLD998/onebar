@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useReducer, useRef } from "react";
 import { ApiError, getTrace, sendMessage, waitForReply } from "./api";
-import { getPlace, getSession, parsePlaceReply, setPlace } from "./session";
+import { browserHint, hintPos, type Hint, type Pos } from "./openMeteo";
+import { getPlace, getPlacePos, getSession, parsePlaceReply, setPlace, setPlacePos } from "./session";
 import type { Message, Trace } from "./types";
 
 interface State {
@@ -30,7 +31,12 @@ export interface Deps {
   trace: typeof getTrace;
   session: () => string;
   pause: (ms: number) => Promise<void>;
+  /** What the browser looks up itself before sending `text` (see openMeteo.ts). Never throws. */
+  lookup: (text: string, current: Pos | null) => Promise<Hint | undefined>;
 }
+
+/** The server's reply when it holds no place for this visitor (trips.NEED_PLACE). */
+const NO_PLACE = "No place yet.";
 
 const defaultDeps: Deps = {
   send: sendMessage,
@@ -38,6 +44,7 @@ const defaultDeps: Deps = {
   trace: getTrace,
   session: getSession,
   pause: (ms) => new Promise((r) => setTimeout(r, ms)),
+  lookup: (text, current) => browserHint(text, current).catch(() => undefined),
 };
 
 export interface Conversation {
@@ -76,12 +83,37 @@ export function useConversation(deps: Deps = defaultDeps): Conversation {
     if (alive.current) dispatch({ type: "add", message });
   }, []);
 
+  /** One round trip: look up what the browser can, send, wait for the reply. Remembers a place the server confirms. */
+  const exchange = useCallback(
+    async (text: string, opts: { rename: boolean }): Promise<{ text: string; traceId: string | null }> => {
+      const hint = await deps.lookup(text, getPlacePos());
+      const id = await deps.send(deps.session(), text, fetch, hint);
+      const out = await deps.wait(id, { signal: controller.current.signal });
+      const placeName = parsePlaceReply(out.text);
+      if (placeName) {
+        setPlacePos(hintPos(hint));
+        if (opts.rename) {
+          setPlace(placeName);
+          if (alive.current) dispatch({ type: "place", place: placeName });
+        }
+      }
+      return out;
+    },
+    [deps],
+  );
+
   /** Send one text to the service and fill in the placeholder `replyId` with whatever comes back. */
   const run = useCallback(
     async (text: string, replyId: string): Promise<{ ok: boolean; text: string }> => {
       try {
-        const id = await deps.send(deps.session(), text);
-        const { text: reply, traceId } = await deps.wait(id, { signal: controller.current.signal });
+        let { text: reply, traceId } = await exchange(text, { rename: true });
+        const pos = getPlacePos();
+        if (reply.startsWith(NO_PLACE) && pos) {
+          // The server lost the place this page still shows (a restart on the free host wipes it). Tell it the
+          // confirmed coordinates again, keep the name the hiker chose, and ask once more.
+          const again = await exchange(`PLACE ${pos.lat}, ${pos.lon}`, { rename: false });
+          if (parsePlaceReply(again.text)) ({ text: reply, traceId } = await exchange(text, { rename: true }));
+        }
         let trace: Trace | undefined;
         if (traceId) {
           try {
@@ -89,11 +121,6 @@ export function useConversation(deps: Deps = defaultDeps): Conversation {
           } catch {
             trace = undefined; // the reply still stands; only its audit is missing
           }
-        }
-        const placeName = parsePlaceReply(reply);
-        if (placeName) {
-          setPlace(placeName);
-          if (alive.current) dispatch({ type: "place", place: placeName });
         }
         patch(replyId, { text: reply, status: "done", traceId: traceId ?? undefined, trace, fresh: Boolean(trace) });
         return { ok: true, text: reply };
@@ -104,7 +131,7 @@ export function useConversation(deps: Deps = defaultDeps): Conversation {
         return { ok: false, text: msg };
       }
     },
-    [deps, patch],
+    [deps, exchange, patch],
   );
 
   const send = useCallback(

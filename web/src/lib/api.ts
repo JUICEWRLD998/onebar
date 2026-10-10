@@ -1,3 +1,4 @@
+import type { Hint } from "./openMeteo";
 import type { Trace } from "./types";
 
 export type ApiErrorKind = "rate" | "toolong" | "down" | "bad";
@@ -19,13 +20,14 @@ type Fetch = typeof fetch;
 
 export const MAX_LEN = 500;
 
-export async function sendMessage(session: string, text: string, f: Fetch = fetch): Promise<string> {
+/** `hint` is what the browser looked up itself (see openMeteo.ts); the server checks it and may ignore it. */
+export async function sendMessage(session: string, text: string, f: Fetch = fetch, hint?: Hint): Promise<string> {
   let res: Response;
   try {
     res = await f("/api/message", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ session, text }),
+      body: JSON.stringify(hint ? { session, text, hint } : { session, text }),
     });
   } catch {
     throw new ApiError("down");

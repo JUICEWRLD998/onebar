@@ -151,6 +151,7 @@ describe("useConversation", () => {
     trace: vi.fn(async () => fakeTrace),
     session: () => "sess-12345678",
     pause: async () => {},
+    lookup: vi.fn(async () => undefined),
     ...over,
   });
   beforeEach(() => localStorage.clear());
@@ -201,10 +202,45 @@ describe("useConversation", () => {
     let out: { ok: boolean; text: string } | undefined;
     await act(async () => { out = await result.current.setPlace("Zermatt"); });
     expect(out).toEqual({ ok: true, text: "Place set: Zermatt, Switzerland. Ask your question." });
-    expect(d.send).toHaveBeenCalledWith("sess-12345678", "PLACE Zermatt");
+    expect(d.send).toHaveBeenCalledWith("sess-12345678", "PLACE Zermatt", expect.any(Function), undefined);
     expect(result.current.place).toBe("Zermatt, Switzerland");
     expect(localStorage.getItem("onebar-place")).toBe("Zermatt, Switzerland");
     expect(result.current.messages[0]).toMatchObject({ role: "note" });
+  });
+  it("sends what the browser looked up, and remembers the spot the server confirmed", async () => {
+    const hint = { place: { query: "Zermatt", name: "Zermatt, Switzerland", lat: 46.02, lon: 7.75 } };
+    const d = deps({
+      lookup: vi.fn(async () => hint),
+      wait: vi.fn(async () => ({ text: "Place set: Zermatt, Switzerland. Ask your question.", traceId: null })),
+    });
+    const { result } = renderHook(() => useConversation(d));
+    await act(async () => { await result.current.setPlace("Zermatt"); });
+    expect(d.lookup).toHaveBeenCalledWith("PLACE Zermatt", null);
+    expect(d.send).toHaveBeenCalledWith("sess-12345678", "PLACE Zermatt", expect.any(Function), hint);
+    expect(JSON.parse(localStorage.getItem("onebar-place-pos")!)).toEqual({ lat: 46.02, lon: 7.75 });
+  });
+  it("tells the server the place again when it has lost it, keeps the chosen name, and asks once more", async () => {
+    localStorage.setItem("onebar-place", "Zermatt, Switzerland");
+    localStorage.setItem("onebar-place-pos", JSON.stringify({ lat: 46.02, lon: 7.75 }));
+    const replies = [
+      { text: "No place yet. Text TRIP <place> BACK 17:00 CONTACT <email> first, then ask.", traceId: null },
+      { text: "Place set: 46.020,7.750. Ask your question.", traceId: null },
+      { text: example.reply, traceId: "t1" },
+    ];
+    const d = deps({ wait: vi.fn(async () => replies.shift()!) });
+    const { result } = renderHook(() => useConversation(d));
+    await act(async () => result.current.send("storm?"));
+    const sent = (d.send as ReturnType<typeof vi.fn>).mock.calls.map((c) => c[1]);
+    expect(sent).toEqual(["storm?", "PLACE 46.02, 7.75", "storm?"]);
+    expect(result.current.messages[1]).toMatchObject({ status: "done", text: example.reply });
+    expect(result.current.place).toBe("Zermatt, Switzerland");
+  });
+  it("passes a lost-place reply through when the page has no spot to restore", async () => {
+    const d = deps({ wait: vi.fn(async () => ({ text: "No place yet. Text TRIP first.", traceId: null })) });
+    const { result } = renderHook(() => useConversation(d));
+    await act(async () => result.current.send("storm?"));
+    expect(d.send).toHaveBeenCalledTimes(1);
+    expect(result.current.messages[1]).toMatchObject({ status: "done", text: "No place yet. Text TRIP first." });
   });
   it("reports a place the service could not find without remembering it", async () => {
     const d = deps({ wait: vi.fn(async () => ({ text: "Could not find that place. Use PLACE lat,lon, like 46.55,7.98.", traceId: null })) });
